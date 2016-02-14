@@ -10,6 +10,8 @@ using HealthySystem.Web.ViewModels;
 
 namespace HealthySystem.Web.Controllers
 {
+    using HealthySystem.Web.ViewModels.Manage;
+
     [Authorize]
     public class ManageController : Controller
     {
