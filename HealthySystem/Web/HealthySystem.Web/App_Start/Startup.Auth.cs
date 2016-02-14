@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using HealthySystem.Web.Models;
+using HealthySystem.Web.ViewModels;
 
 namespace HealthySystem.Web
 {

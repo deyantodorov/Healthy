@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using HealthySystem.Web.Models;
+using HealthySystem.Web.ViewModels;
 
 namespace HealthySystem.Web
 {

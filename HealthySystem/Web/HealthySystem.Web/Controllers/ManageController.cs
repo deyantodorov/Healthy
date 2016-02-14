@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using HealthySystem.Web.Models;
+using HealthySystem.Web.ViewModels;
 
 namespace HealthySystem.Web.Controllers
 {
