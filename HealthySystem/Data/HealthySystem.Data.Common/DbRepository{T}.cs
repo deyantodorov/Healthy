@@ -6,7 +6,8 @@
     using HealthySystem.Data.Common.Models;
 
     // TODO: Why BaseModel<int> instead BaseModel<TKey>?
-    public class DbRepository<T> : IDbRepository<T> where T : BaseModel<int>
+    public class DbRepository<T> : IDbRepository<T>
+        where T : BaseModel<int>
     {
         public DbRepository(DbContext context)
         {

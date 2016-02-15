@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace HealthySystem.Data.Common.Models
+﻿namespace HealthySystem.Data.Common.Models
 {
+    using System;
+
     public interface IDeletableEntity
     {
         bool IsDeleted { get; set; }
