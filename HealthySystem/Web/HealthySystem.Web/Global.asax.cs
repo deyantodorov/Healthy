@@ -9,6 +9,9 @@
     {
         protected void Application_Start()
         {
+            ViewEngineConfig.Initialize();
+            DatabaseConfig.Initialize();
+            AutofacConfig.RegisterAutofac();
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
