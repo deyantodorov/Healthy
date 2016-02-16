@@ -1,5 +1,6 @@
-﻿using System;namespace HealthySystem.Web.Infrastructure.Mapping
+﻿namespace HealthySystem.Web.Infrastructure.Mapping
 {
+    using System;
     using System.Linq;
     using System.Linq.Expressions;
     using AutoMapper.QueryableExtensions;
