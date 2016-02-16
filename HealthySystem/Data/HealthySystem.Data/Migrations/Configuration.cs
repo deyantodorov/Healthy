@@ -6,9 +6,8 @@ namespace HealthySystem.Data.Migrations
     {
         public Configuration()
         {
-            // Set to FALSE in production
-            this.AutomaticMigrationsEnabled = true;
-            this.AutomaticMigrationDataLossAllowed = true;
+            this.AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(ApplicationDbContext context)
