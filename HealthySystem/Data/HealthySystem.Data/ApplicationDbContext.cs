@@ -4,8 +4,8 @@
     using System.Data.Entity;
     using System.Linq;
     using HealthySystem.Data.Common.Models;
-    using Microsoft.AspNet.Identity.EntityFramework;
     using HealthySystem.Data.Models;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     public class ApplicationDbContext : IdentityDbContext<User>
     {
