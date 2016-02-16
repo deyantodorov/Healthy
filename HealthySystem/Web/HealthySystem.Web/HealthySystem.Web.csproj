@@ -251,6 +251,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="HealthySystem.Web.ruleset" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />

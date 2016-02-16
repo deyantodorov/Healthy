@@ -2,6 +2,7 @@
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.ModelConfiguration.Conventions;
     using System.Linq;
     using HealthySystem.Data.Common.Models;
     using HealthySystem.Data.Models;
@@ -14,6 +15,16 @@
         {
         }
 
+        public virtual IDbSet<Article> Articles { get; set; }
+
+        public virtual IDbSet<Comment> Comments { get; set; }
+
+        public virtual IDbSet<Image> Images { get; set; }
+
+        public virtual IDbSet<Rubric> Rubrics { get; set; }
+
+        public virtual IDbSet<Tag> Tags { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
@@ -23,6 +34,14 @@
         {
             this.ApplyAuditInfoRules();
             return base.SaveChanges();
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
+
+            base.OnModelCreating(modelBuilder);
         }
 
         private void ApplyAuditInfoRules()
