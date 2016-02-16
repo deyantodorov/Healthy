@@ -21,6 +21,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthySystem.Web", "Web\He
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthySystem.Web.Infrastructure", "Web\HealthySystem.Web.Infrastructure\HealthySystem.Web.Infrastructure.csproj", "{09AAC540-4991-4017-8643-7BD3677D64B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthySystem.Services.Data", "Services\HealthySystem.Services.Data\HealthySystem.Services.Data.csproj", "{5EE2CBAF-0424-4CB6-A01A-4AB99CAB6071}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthySystem.Services.Web", "Services\HealthySystem.Services.Web\HealthySystem.Services.Web.csproj", "{AEFABF28-8E1F-42B8-B04C-C8926A9A6B71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthySystem.Web.Controllers.Tests", "Tests\HealthySystem.Web.Controllers.Tests\HealthySystem.Web.Controllers.Tests.csproj", "{BFB67E84-51BE-43F2-B60A-8C6BA71BE42C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthySystem.Services.Web.Tests", "Tests\HealthySystem.Services.Web.Tests\HealthySystem.Services.Web.Tests.csproj", "{DA91DEC5-1CEB-42C1-9D9D-58890A63A346}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthySystem.Web.Routes.Tests", "Tests\HealthySystem.Web.Routes.Tests\HealthySystem.Web.Routes.Tests.csproj", "{019DA5DB-79BD-4921-83CE-C133F7249B74}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +57,26 @@ Global
 		{09AAC540-4991-4017-8643-7BD3677D64B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09AAC540-4991-4017-8643-7BD3677D64B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09AAC540-4991-4017-8643-7BD3677D64B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EE2CBAF-0424-4CB6-A01A-4AB99CAB6071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EE2CBAF-0424-4CB6-A01A-4AB99CAB6071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EE2CBAF-0424-4CB6-A01A-4AB99CAB6071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EE2CBAF-0424-4CB6-A01A-4AB99CAB6071}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEFABF28-8E1F-42B8-B04C-C8926A9A6B71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEFABF28-8E1F-42B8-B04C-C8926A9A6B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEFABF28-8E1F-42B8-B04C-C8926A9A6B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEFABF28-8E1F-42B8-B04C-C8926A9A6B71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFB67E84-51BE-43F2-B60A-8C6BA71BE42C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFB67E84-51BE-43F2-B60A-8C6BA71BE42C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFB67E84-51BE-43F2-B60A-8C6BA71BE42C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFB67E84-51BE-43F2-B60A-8C6BA71BE42C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA91DEC5-1CEB-42C1-9D9D-58890A63A346}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA91DEC5-1CEB-42C1-9D9D-58890A63A346}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA91DEC5-1CEB-42C1-9D9D-58890A63A346}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA91DEC5-1CEB-42C1-9D9D-58890A63A346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{019DA5DB-79BD-4921-83CE-C133F7249B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{019DA5DB-79BD-4921-83CE-C133F7249B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{019DA5DB-79BD-4921-83CE-C133F7249B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{019DA5DB-79BD-4921-83CE-C133F7249B74}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,5 +87,10 @@ Global
 		{D6D6083A-FC2B-4C52-918D-1943D108D3E0} = {457258C3-B5CB-4493-B7A8-3F42DB5B8AF2}
 		{5C802195-D9E0-404E-AB9C-D63E58FF26DA} = {4E97347C-FBDA-4F37-A0FB-88C60F02341A}
 		{09AAC540-4991-4017-8643-7BD3677D64B7} = {4E97347C-FBDA-4F37-A0FB-88C60F02341A}
+		{5EE2CBAF-0424-4CB6-A01A-4AB99CAB6071} = {3997C2A9-B7F1-468D-B676-55B9D7D1D844}
+		{AEFABF28-8E1F-42B8-B04C-C8926A9A6B71} = {3997C2A9-B7F1-468D-B676-55B9D7D1D844}
+		{BFB67E84-51BE-43F2-B60A-8C6BA71BE42C} = {BE90B11D-2457-4380-96C7-3539E3B19EA7}
+		{DA91DEC5-1CEB-42C1-9D9D-58890A63A346} = {BE90B11D-2457-4380-96C7-3539E3B19EA7}
+		{019DA5DB-79BD-4921-83CE-C133F7249B74} = {BE90B11D-2457-4380-96C7-3539E3B19EA7}
 	EndGlobalSection
 EndGlobal

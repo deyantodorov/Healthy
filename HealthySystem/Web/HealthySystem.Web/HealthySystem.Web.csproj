@@ -58,10 +58,6 @@
       <HintPath>..\..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
       <Private>True</Private>
@@ -209,6 +205,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEngineConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
@@ -317,6 +314,14 @@
       <Project>{a098df55-6f4b-41ef-a8fc-847ddfcb1741}</Project>
       <Name>HealthySystem.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Services\HealthySystem.Services.Data\HealthySystem.Services.Data.csproj">
+      <Project>{5ee2cbaf-0424-4cb6-a01a-4ab99cab6071}</Project>
+      <Name>HealthySystem.Services.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\HealthySystem.Services.Web\HealthySystem.Services.Web.csproj">
+      <Project>{aefabf28-8e1f-42b8-b04c-c8926a9a6b71}</Project>
+      <Name>HealthySystem.Services.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HealthySystem.Web.Infrastructure\HealthySystem.Web.Infrastructure.csproj">
       <Project>{09aac540-4991-4017-8643-7bd3677d64b7}</Project>
       <Name>HealthySystem.Web.Infrastructure</Name>
@@ -327,6 +332,7 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

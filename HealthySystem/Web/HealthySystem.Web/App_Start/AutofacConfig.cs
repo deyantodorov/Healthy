@@ -7,6 +7,9 @@
     using Autofac.Integration.Mvc;
     using HealthySystem.Data;
     using HealthySystem.Data.Common;
+    using HealthySystem.Services.Web;
+    using HealthySystem.Services.Web.Contracts;
+    using HealthySystem.Web.Controllers;
 
     public static class AutofacConfig
     {
@@ -48,19 +51,19 @@
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();
 
-            //builder.Register(x => new HttpCacheService())
-            //    .As<ICacheService>()
-            //    .InstancePerRequest();
+            builder.Register(x => new HttpCacheService())
+                .As<ICacheService>()
+                .InstancePerRequest();
+
+            builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
+                .AssignableTo<BaseController>().PropertiesAutowired();
+
             //builder.Register(x => new IdentifierProvider())
             //    .As<IIdentifierProvider>()
             //    .InstancePerRequest();
 
             //var servicesAssembly = Assembly.GetAssembly(typeof(IJokesService));
             //builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
-
-
-            //builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
-            //    .AssignableTo<BaseController>().PropertiesAutowired();
         }
     }
 }
