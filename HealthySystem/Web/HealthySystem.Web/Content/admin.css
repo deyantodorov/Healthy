@@ -1,0 +1,84 @@
+﻿.clearfix {
+  zoom: 1;
+}
+.clearfix:after {
+  display: block;
+  height: 0;
+  content: "";
+  clear: both;
+}
+body,
+header,
+section,
+footer,
+article,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+button,
+label,
+p,
+fieldset,
+nav,
+ul,
+li,
+a,
+span,
+strong,
+em {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+div,
+h1,
+h3,
+h4,
+h5,
+h6,
+header,
+content,
+footer,
+body,
+section,
+nav,
+article,
+aside {
+  display: block;
+}
+a img {
+  border: 0;
+}
+body {
+  font-size: 16px;
+  line-height: 1.85em;
+  background: #fff;
+  color: #000;
+  font-weight: 300;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+}
+body .row {
+  clear: both;
+  margin: 0;
+}
+body .row h1 {
+  clear: both;
+}
+body .row div > h2,
+body .row div > h3 {
+  margin: 60px 0 0 0;
+  padding: 0 0 0 15px;
+}
+body .navbar-right {
+  margin: 0 0 0 0;
+}
+body #loginForm {
+  width: 800px;
+  margin: 30px auto 0;
+  text-align: left;
+}

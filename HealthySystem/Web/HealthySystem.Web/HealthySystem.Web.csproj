@@ -251,11 +251,23 @@
     <Compile Include="Areas\Identity\ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin.css">
+      <DependentUpon>admin.less</DependentUpon>
+    </Content>
+    <Content Include="Content\admin.min.css">
+      <DependentUpon>admin.css</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\dimensions.css" />
+    <Content Include="Content\site.css">
+      <DependentUpon>site.less</DependentUpon>
+    </Content>
+    <Content Include="Content\site.min.css">
+      <DependentUpon>site.css</DependentUpon>
+    </Content>
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
     <Content Include="Content\themes\base\autocomplete.css" />
@@ -334,6 +346,10 @@
     <Content Include="Areas\Manager\Views\Tag\_ItemTagPartial.cshtml" />
     <Content Include="Content\admin.less" />
     <Content Include="Content\site.less" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\app\article.js" />
