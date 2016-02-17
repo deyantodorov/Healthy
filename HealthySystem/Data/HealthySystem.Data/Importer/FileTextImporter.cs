@@ -10,6 +10,32 @@
 
     public class FileTextImporter : IFileTextImporter
     {
+        public List<Image> ReadImagesFromFile(string file)
+        {
+            var images = new List<Image>();
+
+            using (var input = new StreamReader(file))
+            {
+                string line = input.ReadLine();
+                while (line != null)
+                {
+                    var currentWords = line.Split(new[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    var image = new Image()
+                    {
+                        ImagePath = currentWords[1],
+                        ImageDescription = currentWords[2]
+                    };
+
+                    images.Add(image);
+
+                    line = input.ReadLine();
+                }
+            }
+
+            return images;
+        }
+
         public SortedSet<string> ReadTagFromFile(string inputFile)
         {
             var result = new SortedSet<string>();

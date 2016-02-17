@@ -5,6 +5,8 @@
 
     public interface IFileTextImporter
     {
+        List<Image> ReadImagesFromFile(string file);
+
         SortedSet<string> ReadTagFromFile(string inputFile);
 
         List<string> ReadRubricFromFile(string inputFile);

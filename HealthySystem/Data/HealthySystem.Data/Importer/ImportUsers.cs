@@ -7,7 +7,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class ImportUsers : IContentImporter
+    public class ImportUsers : IDataImporter
     {
         public void Import(ApplicationDbContext context)
         {

@@ -51,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,11 +61,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
-    <Compile Include="Importer\Contracts\IContentImporter.cs" />
+    <Compile Include="Importer\Contracts\IDataImporter.cs" />
     <Compile Include="Importer\Contracts\IDateConverter.cs" />
     <Compile Include="Importer\Contracts\IFileTextImporter.cs" />
     <Compile Include="Importer\DateConverter.cs" />
     <Compile Include="Importer\FileTextImporter.cs" />
+    <Compile Include="Importer\ImportImages.cs" />
     <Compile Include="Importer\ImportRoles.cs" />
     <Compile Include="Importer\ImportUsers.cs" />
     <Compile Include="Migrations\Configuration.cs" />

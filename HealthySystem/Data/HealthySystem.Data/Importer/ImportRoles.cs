@@ -6,7 +6,7 @@
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class ImportRoles : IContentImporter
+    public class ImportRoles : IDataImporter
     {
         public void Import(ApplicationDbContext context)
         {

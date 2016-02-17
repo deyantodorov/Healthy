@@ -15,10 +15,11 @@ namespace HealthySystem.Data.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
-            var importCommands = new List<IContentImporter>()
+            var importCommands = new List<IDataImporter>()
             {
                 new ImportRoles(),
-                new ImportUsers()
+                new ImportUsers(),
+                new ImportImages()
             };
 
             foreach (var contentImporter in importCommands)

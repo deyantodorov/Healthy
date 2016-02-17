@@ -240,3 +240,4 @@ Cache/
 Uploads/
 ImportData/
 Web.Release.config
+WebConstants.cs

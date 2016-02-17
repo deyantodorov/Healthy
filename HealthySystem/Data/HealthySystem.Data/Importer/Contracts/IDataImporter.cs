@@ -1,6 +1,6 @@
 ﻿namespace HealthySystem.Data.Importer.Contracts
 {
-    public interface IContentImporter
+    public interface IDataImporter
     {
         void Import(ApplicationDbContext context);
     }
