@@ -204,33 +204,35 @@
     <Compile Include="App_Start\SmsService.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEngineConfig.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Areas\Identity\IdentityAreaRegistration.cs" />
+    <Compile Include="Areas\Manager\ManagerAreaRegistration.cs" />
+    <Compile Include="Areas\Identity\Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Areas\Identity\Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
-    <Compile Include="ViewModels\Account\ForgotPasswordViewModel.cs" />
-    <Compile Include="ViewModels\Account\ForgotViewModel.cs" />
-    <Compile Include="ViewModels\Account\LoginViewModel.cs" />
-    <Compile Include="ViewModels\Account\RegisterViewModel.cs" />
-    <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
-    <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
-    <Compile Include="ViewModels\Account\ExternalLoginListViewModel.cs" />
-    <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
-    <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
-    <Compile Include="ViewModels\Manage\ChangePasswordViewModel.cs" />
-    <Compile Include="ViewModels\Manage\ConfigureTwoFactorViewModel.cs" />
-    <Compile Include="ViewModels\Manage\FactorViewModel.cs" />
-    <Compile Include="ViewModels\Manage\IndexViewModel.cs" />
-    <Compile Include="ViewModels\Manage\ManageLoginsViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Account\ForgotPasswordViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Account\ForgotViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Account\LoginViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Account\RegisterViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Account\ResetPasswordViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Account\SendCodeViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Account\ExternalLoginListViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Manage\AddPhoneNumberViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Manage\ChangePasswordViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Manage\ConfigureTwoFactorViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Manage\FactorViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Manage\IndexViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModels\Manage\SetPasswordViewModel.cs" />
-    <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Manage\SetPasswordViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -250,6 +252,10 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="HealthySystem.Web.ruleset" />
+    <Content Include="Areas\Manager\Views\web.config" />
+    <Content Include="Areas\Manager\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Identity\Views\web.config" />
+    <Content Include="Areas\Identity\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.js" />
@@ -275,24 +281,24 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\Login.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\ResetPassword.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\SendCode.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\VerifyCode.cshtml" />
+    <Content Include="Areas\Identity\Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Areas\Identity\Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Areas\Identity\Views\Manage\Index.cshtml" />
+    <Content Include="Areas\Identity\Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Areas\Identity\Views\Manage\SetPassword.cshtml" />
+    <Content Include="Areas\Identity\Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
@@ -333,7 +339,13 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Views\Shared\" />
+    <Folder Include="Areas\Manager\Controllers\" />
+    <Folder Include="Areas\Manager\Models\" />
+    <Folder Include="Areas\Manager\Views\Shared\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
