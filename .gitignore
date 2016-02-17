@@ -239,5 +239,4 @@ _Pvt_Extensions
 Cache/
 Uploads/
 ImportData/
-Web.Release.config
-WebConstants.cs
+/HealthySystem/Common/HealthySystem.Common/WebConstants.cs
