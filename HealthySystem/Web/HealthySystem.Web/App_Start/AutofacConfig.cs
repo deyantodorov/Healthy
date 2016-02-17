@@ -55,15 +55,19 @@
                 .As<ICacheService>()
                 .InstancePerRequest();
 
+            builder.Register(x => new Transliterator())
+                .As<ITransliterator>()
+                .InstancePerRequest();
+
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();
+
+            //var servicesAssembly = Assembly.GetAssembly(typeof(ITransliterator));
+            //builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
 
             //builder.Register(x => new IdentifierProvider())
             //    .As<IIdentifierProvider>()
             //    .InstancePerRequest();
-
-            //var servicesAssembly = Assembly.GetAssembly(typeof(IJokesService));
-            //builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
         }
     }
 }

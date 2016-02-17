@@ -31,6 +31,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthySystem.Services.Web.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthySystem.Web.Routes.Tests", "Tests\HealthySystem.Web.Routes.Tests\HealthySystem.Web.Routes.Tests.csproj", "{019DA5DB-79BD-4921-83CE-C133F7249B74}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthySystem.Data.Importer", "Data\HealthySystem.Data.Importer\HealthySystem.Data.Importer.csproj", "{E735A59A-302B-4C52-86E1-6C76460EC5B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{019DA5DB-79BD-4921-83CE-C133F7249B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{019DA5DB-79BD-4921-83CE-C133F7249B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{019DA5DB-79BD-4921-83CE-C133F7249B74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E735A59A-302B-4C52-86E1-6C76460EC5B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E735A59A-302B-4C52-86E1-6C76460EC5B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E735A59A-302B-4C52-86E1-6C76460EC5B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E735A59A-302B-4C52-86E1-6C76460EC5B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,5 +98,6 @@ Global
 		{BFB67E84-51BE-43F2-B60A-8C6BA71BE42C} = {BE90B11D-2457-4380-96C7-3539E3B19EA7}
 		{DA91DEC5-1CEB-42C1-9D9D-58890A63A346} = {BE90B11D-2457-4380-96C7-3539E3B19EA7}
 		{019DA5DB-79BD-4921-83CE-C133F7249B74} = {BE90B11D-2457-4380-96C7-3539E3B19EA7}
+		{E735A59A-302B-4C52-86E1-6C76460EC5B7} = {457258C3-B5CB-4493-B7A8-3F42DB5B8AF2}
 	EndGlobalSection
 EndGlobal
