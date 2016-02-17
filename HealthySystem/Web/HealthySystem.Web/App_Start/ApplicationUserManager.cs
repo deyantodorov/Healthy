@@ -1,6 +1,7 @@
 ﻿namespace HealthySystem.Web
 {
     using System;
+    using HealthySystem.Common;
     using HealthySystem.Data;
     using HealthySystem.Data.Models;
     using Microsoft.AspNet.Identity;
@@ -29,7 +30,7 @@
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
+                RequiredLength = WebConstants.MinUserPasswordLength,
                 RequireNonLetterOrDigit = false,
                 RequireDigit = false,
                 RequireLowercase = false,

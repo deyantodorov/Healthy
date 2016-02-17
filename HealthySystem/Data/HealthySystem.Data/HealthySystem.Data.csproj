@@ -60,6 +60,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationDbContext.cs" />
+    <Compile Include="Importer\Contracts\IContentImporter.cs" />
+    <Compile Include="Importer\Contracts\IDateConverter.cs" />
+    <Compile Include="Importer\Contracts\IFileTextImporter.cs" />
+    <Compile Include="Importer\DateConverter.cs" />
+    <Compile Include="Importer\FileTextImporter.cs" />
+    <Compile Include="Importer\ImportRoles.cs" />
+    <Compile Include="Importer\ImportUsers.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -69,6 +76,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Common\HealthySystem.Common\HealthySystem.Common.csproj">
+      <Project>{d0c2c87a-e6ac-4846-bb11-1850e7422eef}</Project>
+      <Name>HealthySystem.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HealthySystem.Data.Common\HealthySystem.Data.Common.csproj">
       <Project>{e5952439-0bbf-4a8e-9130-d8218ec9ec00}</Project>
       <Name>HealthySystem.Data.Common</Name>
