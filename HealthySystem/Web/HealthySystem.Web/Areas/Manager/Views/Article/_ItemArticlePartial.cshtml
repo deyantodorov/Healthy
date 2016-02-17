@@ -1,0 +1,20 @@
+﻿@model HealthySystem.Web.Areas.Manager.ViewModels.Article.ArticlePreviewViewModel
+<tr>
+    <td>@Model.Id</td>
+    <td>@Model.Title</td>
+    <td>@Model.RubricName</td>
+    <td>@Model.AddDate</td>
+    <td>@Model.PublishDate</td>
+    <td>
+        @*@Html.ActionLink("Редактирай", "EditArticle", new { id = Model.Id }, new { @class = "btn btn-default" })
+        @Ajax.ActionLink("Изтрий", "DeleteArticle",
+        new { id = Model.Id },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            Confirm = "Сигурен ли си, че искаш да изтриеш статия " + @Model.Title,
+            OnSuccess = "window.location.reload()"
+        },
+        new { @class = "btn btn-default" })*@
+    </td>
+</tr>

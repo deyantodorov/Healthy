@@ -1,0 +1,50 @@
+﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
+@model HealthySystem.Web.Areas.Manager.ViewModels.Tag.TagViewModel
+<td colspan="5">
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-5">
+                <h4>Редактирай: @Model.Name</h4>
+            </div>
+        </div>
+
+        @*@using (Ajax.BeginForm("SaveEditTag", "Tag", new AjaxOptions()
+        {
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.ReplaceWith,
+            UpdateTargetId = "tag" + @Model.Id
+        }))
+        {
+            <div class="form-group">
+                <label class="control-label col-md-2">Id</label>
+                <div class="col-md-5 pt-7">
+                    @Model.Id
+                </div>
+            </div>
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.Rank)
+            @Html.EditorFor(m => m.Name, new { AddClass = "tagToEdit" })
+            @Html.EditorFor(m => m.Alias, new { AddClass = "tagToSave" })
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-5">
+                    @Html.Submit(new { @class = "btn btn-default", value = "Запиши" })
+                    @Ajax.ActionLink("Откажи", "CancelEditTag", null,
+                new { id = Model.Id },
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    InsertionMode = InsertionMode.ReplaceWith,
+                    UpdateTargetId = "tag" + @Model.Id
+                },
+                new { @class = "btn btn-default" })
+                </div>
+            </div>
+        }*@
+    </div>
+</td>
+
+<script>
+    Site.PostTransliterator('.tagToEdit', '.tagToSave', '/Manager/Home/Transliterate');
+</script>

@@ -6,12 +6,13 @@
     using System.Web.Mvc;
     using HealthySystem.Data.Models;
     using HealthySystem.Web.Areas.Identity.ViewModels.Account;
+    using HealthySystem.Web.Controllers;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
 
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";

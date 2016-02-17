@@ -1,0 +1,29 @@
+﻿@model HealthySystem.Web.Areas.Manager.ViewModels.Rubric.RubricViewModel
+<tr id="rubric@(Model.Id)">
+    <td>@Model.Id</td>
+    <td>@Model.Name</td>
+    <td>@Model.Alias</td>
+    <td>@Model.ParentId</td>
+    <td>
+        @*@Html.AntiForgeryToken()
+        @Ajax.ActionLink("Редактирай", "EditRubric",
+        new { id = Model.Id },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "rubric" + @Model.Id
+        },
+        new { @class = "btn btn-default" })
+
+        @Ajax.ActionLink("Изтрий", "DeleteRubric",
+        new { id = Model.Id },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            Confirm = "Сигурен ли си, че искаш да изтриеш рубриката " + @Model.Name,
+            OnSuccess = "window.location.reload()"
+        },
+        new { @class = "btn btn-default" })*@
+    </td>
+</tr>

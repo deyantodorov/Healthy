@@ -1,0 +1,7 @@
+﻿@model bool
+<div class="form-group">
+    @Html.LabelFor(m => m, new { @class = "control-label col-md-2" })
+    <div class="col-md-6 mt-4">
+        @Html.CheckBoxFor(m => m, new { @class = "checkbox " + ViewBag.AddClass })
+    </div>
+</div>

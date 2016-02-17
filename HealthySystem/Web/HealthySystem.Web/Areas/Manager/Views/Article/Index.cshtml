@@ -1,0 +1,59 @@
+﻿@using HealthySystem.Web.Areas.Manager.ViewModels.Article
+@using HealthySystem.Web.Infrastructure.HtmlHelpers
+@*@using PagedList.Mvc
+@model PagedList.IPagedList<ArticlePreviewViewModel>*@
+@{
+    ViewBag.Title = "Съдържание";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row p15">
+    <div class="pull-left">
+        @*@Html.ActionLink("Добави нова статия", "AddArticle", "Article", null, new { @class = "btn btn-primary" })*@
+    </div>
+
+    @using (@Html.BeginForm("Index", "Article", FormMethod.Get))
+    {
+        <div class="pull-right ml-15">
+            @Html.Submit(new { @class = "btn btn-default", value = "Търси" })
+        </div>
+        <div class="pull-right ml-15">
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as String, new { @class = "form-control" })
+        </div>
+        <div class="pull-right ml-30">
+            <span class="pull-left pt-6">Потърси по заглавие:</span>
+        </div>
+    }
+</div>
+<div class="row m10">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>@Html.ActionLink("Id", "Index", new { sortOrder = ViewBag.IdSortParam, currentFilter = ViewBag.CurrentFilter })</th>
+                <th>@Html.ActionLink("Заглавие", "Index", new { sortOrder = ViewBag.NameSortParam, currentFilter = ViewBag.CurrentFilter })</th>
+                <th>@Html.ActionLink("Рубрика", "Index", new { sortOrder = ViewBag.AliasSortParam, currentFilter = ViewBag.CurrentFilter })</th>
+                <th>Добавена на</th>
+                <th>Публикувана на</th>
+                <th>Опции</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                foreach (var tag in Model)
+                {
+                    @*@Html.Partial("_ItemArticlePartial", tag)*@
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="6">
+                    @*Страници: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) от @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+

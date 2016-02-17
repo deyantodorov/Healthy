@@ -1,0 +1,74 @@
+﻿@using HealthySystem.Web.Areas.Manager.ViewModels.Rubric
+@model IList<RubricViewModel>
+@{
+    ViewBag.Title = "Рубрика";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="row p15">
+    <div class="pull-left">
+        <span class="btn btn-primary" id="btnAddRubric">Добави нова рубрика</span><br />
+    </div>
+    <div class="pull-left ml-15">
+        <span class="btn btn-default" style="display: none;" id="btnCancelAddRubric">Откажи</span>
+    </div>
+</div>
+<div class="row p15 clearfix col-md-10" id="formAddRubric" style="display: none;">
+    <div class="form-horizontal">
+        @if (User.Identity.IsAuthenticated)
+        {
+            @Html.Partial("_AddRubricPartial", new RubricViewModel())
+        }
+    </div>
+</div>
+
+<div class="row p15">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Име на рубрика</th>
+                <th>URL</th>
+                <th>Основна рубрика Id</th>
+                <th>Опции</th>
+            </tr>
+        </thead>
+        <tbody id="allRubrics">
+
+            @if (Model != null)
+            {
+                foreach (var rubric in Model)
+                {
+                    @Html.Partial("_ItemRubricPartial", rubric)
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5">
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+@section scripts
+{
+    <script>
+        Site.PostTransliterator('#Name', '#Alias', '/Manager/Home/Transliterate');
+
+        function showHide() {
+            $('#btnCancelAddRubric').toggle();
+            $('#formAddRubric').toggle();
+        }
+
+        $('#btnAddRubric').click(function () {
+            showHide();
+        });
+
+        $('#btnCancelAddRubric').click(function () {
+            showHide();
+            $('#addNewRubricForm').trigger('reset');
+        });
+    </script>
+}

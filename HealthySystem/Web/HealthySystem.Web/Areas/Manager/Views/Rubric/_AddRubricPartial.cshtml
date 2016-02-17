@@ -1,0 +1,19 @@
+﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
+@model HealthySystem.Web.Areas.Manager.ViewModels.Rubric.RubricViewModel
+@*@using (Ajax.BeginForm("AddRubric", "Rubric", new AjaxOptions()
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.InsertBefore,
+    UpdateTargetId = "allRubrics",
+}, new { id = "addNewRubricForm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.EditorFor(m => m.Name)
+    @Html.EditorFor(m => m.ParentId)
+    @Html.EditorFor(m => m.Alias)
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            @Html.Submit(new { @class = "btn btn-primary", value = "Добави рубрика" })
+        </div>
+    </div>
+}*@

@@ -1,0 +1,39 @@
+﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
+@model HealthySystem.Web.Areas.Manager.ViewModels.Image.ImageListViewModel
+    <td colspan="5">
+        <div class="form-horizontal">
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-5">
+                    <h4>Редактирай: @Model.Id</h4>
+            </div>
+        </div>
+
+        @*@using (Ajax.BeginForm("Update", "Image", new AjaxOptions()
+        {
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.ReplaceWith,
+            UpdateTargetId = "image" + @Model.Id
+        }))
+        {
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.ImagePath)
+            @Html.EditorFor(m => m.ImageDescription)
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-5">
+                    @Html.Submit(new { @class = "btn btn-default", value = "Запиши" })
+                    @Ajax.ActionLink("Откажи", "UpdateCancel", null,
+                new { id = Model.Id },
+                new AjaxOptions
+                {
+                    HttpMethod = "POST",
+                    InsertionMode = InsertionMode.ReplaceWith,
+                    UpdateTargetId = "image" + @Model.Id
+                },
+                new { @class = "btn btn-default" })
+                </div>
+            </div>
+        }*@
+    </div>
+</td>

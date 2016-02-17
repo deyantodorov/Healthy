@@ -1,0 +1,19 @@
+﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
+@model HealthySystem.Web.Areas.Manager.ViewModels.Image.ImageViewModel
+@*@using (@Html.BeginForm("Add", "Image", FormMethod.Post, new { id = "addNewForm", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label class="control-label col-md-2">Добави картинка</label>
+        <div class="col-md-6">
+            <input type="file" class="form-control" name="ImagePath" id="ImagePath" />
+        </div>
+        <span class="alert alert-danger hidden" id="ImagePathAlert">Файла е прекалено голям. Трябва да е до 3 мб.</span>
+    </div>
+    @Html.EditorFor(m => m.ImageDescription)
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            @Html.Submit(new { @class = "btn btn-primary", value = "Добави" })
+        </div>
+    </div>
+}*@

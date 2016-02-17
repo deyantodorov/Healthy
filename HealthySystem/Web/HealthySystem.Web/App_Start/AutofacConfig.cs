@@ -7,7 +7,7 @@
     using Autofac.Integration.Mvc;
     using HealthySystem.Data;
     using HealthySystem.Data.Common;
-    using HealthySystem.Services.Web;
+    using HealthySystem.Services.Data.Contracts;
     using HealthySystem.Services.Web.Contracts;
     using HealthySystem.Web.Controllers;
 
@@ -51,23 +51,14 @@
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();
 
-            builder.Register(x => new HttpCacheService())
-                .As<ICacheService>()
-                .InstancePerRequest();
-
-            builder.Register(x => new Transliterator())
-                .As<ITransliterator>()
-                .InstancePerRequest();
-
             builder.RegisterAssemblyTypes(Assembly.GetExecutingAssembly())
                 .AssignableTo<BaseController>().PropertiesAutowired();
 
-            //var servicesAssembly = Assembly.GetAssembly(typeof(ITransliterator));
-            //builder.RegisterAssemblyTypes(servicesAssembly).AsImplementedInterfaces();
+            var servicesDataAssembly = Assembly.GetAssembly(typeof(IArticleService));
+            builder.RegisterAssemblyTypes(servicesDataAssembly).AsImplementedInterfaces();
 
-            //builder.Register(x => new IdentifierProvider())
-            //    .As<IIdentifierProvider>()
-            //    .InstancePerRequest();
+            var servicesWebAssembly = Assembly.GetAssembly(typeof(ICacheService));
+            builder.RegisterAssemblyTypes(servicesWebAssembly).AsImplementedInterfaces();
         }
     }
 }

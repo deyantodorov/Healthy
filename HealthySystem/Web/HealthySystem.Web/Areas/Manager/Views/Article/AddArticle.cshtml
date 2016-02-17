@@ -1,0 +1,57 @@
+﻿@using HealthySystem.Web.Areas.Manager.ViewModels.Article
+@model ArticleViewModel
+@{
+    ViewBag.Title = "Добавяне на статия";
+}
+
+@*<h3>@ViewBag.Title</h3>
+@using (Html.BeginForm("AddArticle", "Article", FormMethod.Post, new { @class = "form-horizontal", data = "form" }))
+{
+    @Html.AntiForgeryToken();
+
+    @Html.EditorFor(m => m.Title)
+    @Html.EditorFor(m => m.Alias)
+    @Html.EditorFor(m => m.RubricId, new { ListItem = Model.Rubrics })
+    @Html.EditorFor(m => m.Description)
+    @Html.EditorFor(m => m.Content)
+    @Html.HiddenFor(m => m.ImageId)
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Потърси картинка</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="imageSearch" />
+            <div id="imageSearchResult" class="mt-15">
+                @if (ViewBag.ImagePath != null && ViewBag.ImageDesc != null)
+                {
+                    <img src="@ViewBag.ImagePath" alt="@ViewBag.ImageDesc" width="100" class="img-circle" />
+                }
+            </div>
+        </div>
+        @Html.ValidationMessageFor(m => m.ImageId, null, new { @class = "alert-danger" })
+    </div>
+
+    @Html.EditorFor(m => m.Tags)
+
+    <div class="form-group mb-1" id="tagSearchResultBox">
+        <div class="col-md-offset-2 col-md-5" id="tagSearchResult"></div>
+    </div>
+
+    @Html.EditorFor(m => m.IsPublished)
+    @Html.EditorFor(m => m.AddDate, new { AddClass = "pw50" })
+    @Html.EditorFor(m => m.PublishDate, new { AddClass = "pw50" })
+    @Html.EditorFor(m => m.UnpublishDate, new { AddClass = "pw50" })
+    @Html.HiddenFor(m => m.AuthorName)
+    @Html.HiddenFor(m => m.ReferrerUrl)
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            @Html.Submit(new { @class = "btn btn-primary", value = "Добави статия" })
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-default ml-15">Откажи</a>
+        </div>
+    </div>
+}*@
+
+@section scripts
+{
+    <script src="~/Scripts/Article.js"></script>
+}

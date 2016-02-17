@@ -1,0 +1,19 @@
+﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
+@model HealthySystem.Web.Areas.Manager.ViewModels.Tag.TagViewModel
+@*@using (Ajax.BeginForm("AddTag", "Tag", new AjaxOptions()
+{
+    HttpMethod = "POST",
+    InsertionMode = InsertionMode.InsertBefore,
+    UpdateTargetId = "allTags",
+}, new { id = "addNewTagForm" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.EditorFor(m => m.Name)
+    @Html.EditorFor(m => m.Alias)
+    @Html.HiddenFor(m => m.Rank)
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            @Html.Submit(new { @class = "btn btn-primary", value = "Добави Таг" })
+        </div>
+    </div>
+}*@

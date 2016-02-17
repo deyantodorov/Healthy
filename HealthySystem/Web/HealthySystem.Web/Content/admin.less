@@ -1,0 +1,120 @@
+﻿.clearfix() {
+    .clearfix {
+        zoom: 1;
+
+        &:after {
+            display: block;
+            height: 0;
+            content: "";
+            clear: both;
+        }
+    }
+}
+
+.reset() {
+    body, header, section, footer, article, h1, h2, h3, h4, h5, h6, input, button, label, p, fieldset, nav, ul, li, a, span, strong, em {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    div, h1, h3, h4, h5, h6, header, content, footer, body, section, nav, article, aside {
+        display: block;
+    }
+
+    a img {
+        border: 0;
+    }
+}
+
+.convertEm(@selector, @amt) when (isem(@amt)) {
+    @{selector}: @amt;
+}
+
+.convertEm(@selector, @amt, @emInPx: @basefontsize) when (ispixel(@amt)) {
+    @{selector}: unit((@amt / @emInPx), em);
+}
+
+.gradient4colors(@bg1, @percent1, @bg2, @percent2, @bg3, @percent3, @bg4, @percent4) {
+    background: @bg1;
+    background: -moz-linear-gradient(top, @bg1 @percent1, @bg2 @percent2, @bg3 @percent3, @bg4 @percent4);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(@percent1,@bg1), color-stop(@percent2,@bg2), color-stop(@percent3,@bg3), color-stop(@percent4,@bg4));
+    background: -webkit-linear-gradient(top, @bg1 @percent1,@bg2 @percent2,@bg3 @percent3,@bg4 @percent4);
+    background: -o-linear-gradient(top, @bg1 @percent1,@bg2 @percent2,@bg3 @percent3,@bg4 @percent4);
+    background: -ms-linear-gradient(top, @bg1 @percent1,@bg2 @percent2,@bg3 @percent3,@bg4 @percent4);
+    background: linear-gradient(to bottom, @bg1 @percent1,@bg2 @percent2,@bg3 @percent3,@bg4 @percent4);
+}
+
+.gradient3colors(@bg1, @percent1, @bg2, @percent2, @bg3, @percent3) {
+    background: @bg1;
+    background: -moz-linear-gradient(top, @bg1 @percent1, @bg2 @percent2, @bg3 @percent3);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(@percent1,@bg1), color-stop(@percent2,@bg2), color-stop(@percent3,@bg3));
+    background: -webkit-linear-gradient(top, @bg1 @percent1,@bg2 @percent2,@bg3 @percent3);
+    background: -o-linear-gradient(top, @bg1 @percent1,@bg2 @percent2,@bg3 @percent3);
+    background: -ms-linear-gradient(top, @bg1 @percent1,@bg2 @percent2,@bg3 @percent3);
+    background: linear-gradient(to bottom, @bg1 @percent1,@bg2 @percent2,@bg3 @percent3);
+}
+
+.gradient2colors(@bg1, @percent1, @bg2, @percent2) {
+    background: @bg1;
+    background: -moz-linear-gradient(top, @bg1 @percent1, @bg2 @percent2);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(@percent1,@bg1), color-stop(@percent2,@bg2));
+    background: -webkit-linear-gradient(top, @bg1 @percent1,@bg2 @percent2);
+    background: -o-linear-gradient(top, @bg1 @percent1,@bg2 @percent2);
+    background: -ms-linear-gradient(top, @bg1 @percent1,@bg2 @percent2);
+    background: linear-gradient(to bottom, @bg1 @percent1,@bg2 @percent2);
+}
+
+// Constants
+
+@link: #428bca;
+@green: #3cb04a;
+@darkgreen: #1c8b2a;
+@lightgrey: #888888;
+@darkgrey: #333333;
+@white: #fff;
+@black: #000;
+
+@basefontsize: 16px;
+@baselineheight: 1.85em;
+
+@basefontfamily: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+@fontFranklin: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+.clearfix();
+.reset();
+
+body {
+    font-size: @basefontsize;
+    line-height: @baselineheight;
+    background: @white;
+    color: @black;
+    font-weight: 300;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+
+    .row {
+        clear: both;
+        margin: 0;
+
+        h1 {
+            clear: both;
+        }
+
+        div > h2, 
+        div > h3 {
+            margin: 60px 0 0 0;
+            padding: 0 0 0 15px;
+        }
+    }
+
+    .navbar-right {
+        margin: 0 0 0 0;
+    }
+
+    #loginForm {
+        width: 800px;
+        margin: 30px auto 0;
+        text-align: left;
+    }
+}

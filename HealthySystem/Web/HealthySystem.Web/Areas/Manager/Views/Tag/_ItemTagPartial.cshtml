@@ -1,0 +1,28 @@
+﻿@model HealthySystem.Web.Areas.Manager.ViewModels.Tag.TagViewModel
+<tr id="tag@(Model.Id)">
+    <td>@Model.Id</td>
+    <td>@Model.Name</td>
+    <td>@Model.Alias</td>
+    <td>
+        @Html.AntiForgeryToken()
+        @*@Ajax.ActionLink("Редактирай", "EditTag",
+        new { id = Model.Id },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "tag" + @Model.Id
+        },
+        new { @class = "btn btn-default" })
+
+        @Ajax.ActionLink("Изтрий", "DeleteTag",
+        new { id = Model.Id },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            Confirm = "Сигурен ли си, че искаш да изтриеш таг " + @Model.Name,
+            OnSuccess = "window.location.reload()"
+        },
+        new { @class = "btn btn-default" })*@
+    </td>
+</tr>

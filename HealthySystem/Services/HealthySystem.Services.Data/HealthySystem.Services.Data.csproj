@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleService.cs" />
+    <Compile Include="Contracts\IArticleService.cs" />
+    <Compile Include="Contracts\IImageService.cs" />
+    <Compile Include="ImageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +58,10 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\HealthySystem.Data.Common\HealthySystem.Data.Common.csproj">
+      <Project>{e5952439-0bbf-4a8e-9130-d8218ec9ec00}</Project>
+      <Name>HealthySystem.Data.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\HealthySystem.Data.Models\HealthySystem.Data.Models.csproj">
       <Project>{d6d6083a-fc2b-4c52-918d-1943d108d3e0}</Project>
       <Name>HealthySystem.Data.Models</Name>
@@ -63,9 +71,7 @@
       <Name>HealthySystem.Data</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Contracts\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

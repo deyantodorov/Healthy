@@ -1,0 +1,129 @@
+﻿@using HealthySystem.Web.Areas.Manager.ViewModels.Article
+@using HealthySystem.Web.Infrastructure.HtmlHelpers
+@*@model ArticleViewModel
+@{
+    ViewBag.Title = "Редактиране на статия";
+}
+
+<h3>@ViewBag.Title</h3>
+@using (Html.BeginForm("UpdateArticle", "Article", FormMethod.Post, new { @class = "form-horizontal", data = "form" }))
+{
+    @Html.AntiForgeryToken();
+    @Html.HiddenFor(m => m.Id)
+    @Html.EditorFor(m => m.Title)
+    @Html.EditorFor(m => m.Alias)
+    @Html.EditorFor(m => m.RubricId, new { ListItem = Model.Rubrics })
+    @Html.EditorFor(m => m.Description)
+    @Html.EditorFor(m => m.Content)
+    @Html.HiddenFor(m => m.ImageId)
+
+    <div class="form-group">
+        <label class="control-label col-md-2">Потърси картинка</label>
+        <div class="col-md-6">
+            <input type="text" class="form-control" id="imageSearch" />
+            <div id="imageSearchResult" class="mt-15">
+                @if (ViewBag.ImagePath != null && ViewBag.ImageDesc != null)
+                {
+                    <img src="@ViewBag.ImagePath" alt="@ViewBag.ImageDesc" width="100" class="img-circle" />
+                }
+            </div>
+        </div>
+        @Html.ValidationMessageFor(m => m.ImageId, null, new { @class = "alert-danger" })
+    </div>
+
+    @Html.EditorFor(m => m.Tags)
+
+    <div class="form-group mb-1" id="tagSearchResultBox">
+        <div class="col-md-offset-2 col-md-5" id="tagSearchResult"></div>
+    </div>
+
+    @Html.EditorFor(m => m.IsPublished)
+    @Html.EditorFor(m => m.AddDate, new { AddClass = "pw50" })
+    @Html.EditorFor(m => m.PublishDate, new { AddClass = "pw50" })
+    @Html.EditorFor(m => m.UnpublishDate, new { AddClass = "pw50" })
+    @Html.HiddenFor(m => m.AuthorName)
+    @Html.HiddenFor(m => m.ReferrerUrl)
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-5">
+            @Html.Submit(new { @class = "btn btn-primary", value = "Запиши статия" })
+            <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-default ml-15">Откажи</a>
+        </div>
+    </div>
+}*@
+
+@section scripts
+{
+    <script src="~/Scripts/Article.js"></script>
+}
+@*
+        <script>
+            // Transliterate Title
+            Site.PostTransliterator('#Title', '#Alias', '/Manager/Home/Transliterate');
+
+            // OnClick populate AddDate in PublishedDate
+            $('#IsPublished').bind('change', function () {
+                if ($(this).is(':checked')) {
+                    var addDate = $('#AddDate').val();
+                    $('#PublishDate').val(addDate);
+                } else {
+                    $('#PublishDate').val('');
+                }
+            });
+
+            // Search for Image
+            Site.SearchForTag('#imageSearch', '#imageSearchResult', '/Manager/Article/SearchForImage', onImageSuccess);
+
+            // Search for Tags
+            Site.SearchForTag('#Tags', '#tagSearchResult', '/Manager/Article/SearchForTag', onTagSuccess);
+
+            function onTagSuccess(data) {
+                var fragment = $(document.createDocumentFragment());
+
+                for (var i = 0; i < data.length; i++) {
+                    var obj = data[i];
+                    for (var key in obj) {
+                        var attrValue = obj[key];
+                        var element = $('<span>');
+                        element.text(attrValue);
+                        element.on('click', addToTags);
+                        element.addClass('btn btn-default mr-15 mb-15');
+                        fragment.append(element);
+                    }
+                }
+
+                $('#tagSearchResult').append(fragment);
+            }
+
+            function onImageSuccess(data) {
+                var fragment = $(document.createDocumentFragment());
+
+                for (var i = 0; i < data.length; i++) {
+                    var element = $('<img>');
+                    element.attr('src', data[i]["Path"]);
+                    element.attr('width', '100');
+                    element.attr('alt', data[i]["Id"]);
+                    element.attr('title', data[i]["Desc"]);
+                    element.on('click', addToImages);
+                    element.addClass('mr-15 mb-15 img-thumbnail pointer');
+                    fragment.append(element);
+                }
+
+                $('#imageSearchResult').append(fragment);
+            }
+
+            function addToTags() {
+                var current = $('#Tags').val() + $(this).text() + ', ';
+                $(this).removeClass('btn-default').addClass('btn-info');
+                $('#Tags').val(current);
+            }
+
+            function addToImages() {
+                $('#ImageId').val($(this).attr('alt'));
+                $(this).parent().children().removeClass('img-circle');
+                $(this).toggleClass('img-thumbnail').toggleClass('img-circle');
+            }
+
+        </script>
+    }
+*@

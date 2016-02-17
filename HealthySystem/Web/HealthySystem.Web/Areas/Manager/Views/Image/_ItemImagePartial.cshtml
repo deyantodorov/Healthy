@@ -1,0 +1,28 @@
+﻿@model HealthySystem.Web.Areas.Manager.ViewModels.Image.ImageListViewModel
+<tr id="image@(Model.Id)">
+    <td>@Model.Id</td>
+    <td>@Model.ImageDescription</td>
+    <td>@Model.ImagePath</td>
+    <td><img src="@Model.ImagePath" alt="@Model.ImageDescription" width="100" /></td>
+    <td>
+        @*@Ajax.ActionLink("Редактирай", "Edit",
+        new { id = Model.Id },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            InsertionMode = InsertionMode.Replace,
+            UpdateTargetId = "image" + @Model.Id
+        },
+        new { @class = "btn btn-default" })
+
+        @Ajax.ActionLink("Изтрий", "Delete",
+        new { id = Model.Id },
+        new AjaxOptions
+        {
+            HttpMethod = "POST",
+            Confirm = "Сигурен ли си, че искаш да изтриеш снимката " + @Model.Id,
+            OnSuccess = "window.location.reload()"
+        },
+        new { @class = "btn btn-default" })*@
+    </td>
+</tr>

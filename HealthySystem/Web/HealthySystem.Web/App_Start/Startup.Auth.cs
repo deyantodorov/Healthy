@@ -3,6 +3,7 @@
     using System;
     using HealthySystem.Data;
     using HealthySystem.Data.Models;
+    using HealthySystem.Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin;
@@ -25,7 +26,7 @@
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString(WebConstants.DefaultLoginPath),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.

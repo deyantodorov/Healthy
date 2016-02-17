@@ -4,13 +4,7 @@ namespace HealthySystem.Web.Areas.Manager
 {
     public class ManagerAreaRegistration : AreaRegistration
     {
-        public override string AreaName
-        {
-            get
-            {
-                return "Manager";
-            }
-        }
+        public override string AreaName => "Manager";
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
