@@ -19,7 +19,9 @@ namespace HealthySystem.Data.Migrations
             {
                 new ImportRoles(),
                 new ImportUsers(),
-                new ImportImages()
+                new ImportImages(),
+                new ImportTags(),
+                new ImportRubrics()
             };
 
             foreach (var contentImporter in importCommands)

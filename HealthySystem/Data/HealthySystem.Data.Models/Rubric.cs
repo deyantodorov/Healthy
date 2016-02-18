@@ -1,16 +1,19 @@
 ﻿namespace HealthySystem.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using HealthySystem.Data.Common.Models;
 
     public class Rubric : BaseModel<int>
     {
         [Required]
         [StringLength(150)]
+        [Index(IsUnique = true)]
         public string Name { get; set; }
 
         [Required]
         [StringLength(150)]
+        [Index(IsUnique = true)]
         public string Alias { get; set; }
 
         [StringLength(250)]

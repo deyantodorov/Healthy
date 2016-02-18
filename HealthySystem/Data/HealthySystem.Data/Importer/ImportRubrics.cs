@@ -5,24 +5,24 @@
     using System.Web.Hosting;
     using HealthySystem.Data.Importer.Contracts;
 
-    public class ImportImages : IDataImporter
+    public class ImportRubrics : IDataImporter
     {
         public void Import(ApplicationDbContext context)
         {
-            if (context.Images.Any())
+            if (context.Rubrics.Any())
             {
                 return;
             }
 
             string path = HostingEnvironment.MapPath("~/ImportData");
-            path = path + "/" + "images.txt";
+            path = path + "/" + "rubrics.txt";
 
             var fileImporter = new FileTextImporter();
-            var images = fileImporter.ReadImagesFromFile(path);
+            var rubrics = fileImporter.ReadRubricsFromFile(path);
 
-            for (int i = 0; i < images.Count; i++)
+            for (int i = 0; i < rubrics.Count; i++)
             {
-                context.Images.AddOrUpdate(images[i]);
+                context.Rubrics.AddOrUpdate(rubrics[i]);
 
                 if (i % 20 == 0)
                 {

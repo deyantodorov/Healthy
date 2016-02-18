@@ -10,6 +10,13 @@
 
     public class FileTextImporter : IFileTextImporter
     {
+        private const string EmptyDbRecord = "empty";
+
+        /// <summary>
+        /// Import old DB data for Images to new data structure for Images
+        /// </summary>
+        /// <param name="file">file path</param>
+        /// <returns>Collection of Image models ready for submit in DB</returns>
         public List<Image> ReadImagesFromFile(string file)
         {
             var images = new List<Image>();
@@ -17,69 +24,135 @@
             using (var input = new StreamReader(file))
             {
                 string line = input.ReadLine();
-                while (line != null)
-                {
-                    var currentWords = line.Split(new[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
 
-                    var image = new Image()
+                for (int i = 1; i <= 593; i++)
+                {
+                    var image = new Image();
+
+                    if (line == null)
                     {
-                        ImagePath = currentWords[1],
-                        ImageDescription = currentWords[2]
-                    };
+                        break;
+                    }
+
+                    var currentWords = line.Split(new[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
+                    var isBlank = currentWords[0] != i.ToString();
+
+                    if (isBlank)
+                    {
+                        image.ImagePath = EmptyDbRecord;
+                        image.ImageDescription = EmptyDbRecord;
+                        image.IsDeleted = true;
+                        image.DeletedOn = DateTime.Now;
+                    }
+                    else
+                    {
+                        image.ImagePath = currentWords[1];
+                        image.ImageDescription = currentWords[2];
+
+                        line = input.ReadLine();
+                    }
 
                     images.Add(image);
-
-                    line = input.ReadLine();
                 }
             }
 
             return images;
         }
 
-        public SortedSet<string> ReadTagFromFile(string inputFile)
+        /// <summary>
+        /// Import old DB data for Tags to new data structure for Tags
+        /// </summary>
+        /// <param name="file">file path</param>
+        /// <returns>Collection of Tag models ready for submit in DB</returns>
+        public List<Tag> ReadTagsFromFile(string file)
         {
-            var result = new SortedSet<string>();
+            var tags = new List<Tag>();
 
-            var input = new StreamReader(inputFile);
-
-            using (input)
+            using (var input = new StreamReader(file))
             {
                 string line = input.ReadLine();
 
-                while (line != null)
+                for (int i = 1; i <= 543; i++)
                 {
-                    var currentWords = line.Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    string textToAdd = GetWords(currentWords);
-                    result.Add(textToAdd);
+                    var tag = new Tag();
 
-                    line = input.ReadLine();
+                    if (line == null)
+                    {
+                        break;
+                    }
+
+                    var currentWords = line.Split(new[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
+                    var isBlank = currentWords[0] != i.ToString();
+
+                    if (isBlank)
+                    {
+                        tag.Name = EmptyDbRecord + i;
+                        tag.Alias = EmptyDbRecord + i;
+                        tag.Rank = 0;
+                        tag.IsDeleted = true;
+                        tag.DeletedOn = DateTime.Now;
+                    }
+                    else
+                    {
+                        tag.Name = currentWords[1];
+                        tag.Alias = currentWords[2];
+                        tag.Rank = int.Parse(currentWords[3]);
+
+                        line = input.ReadLine();
+                    }
+
+                    tags.Add(tag);
                 }
             }
 
-            return result;
+            return tags;
         }
 
-        public List<string> ReadRubricFromFile(string inputFile)
+        /// <summary>
+        /// Import old DB data for Rubrics to new data structure for Rubrics
+        /// </summary>
+        /// <param name="file">file path</param>
+        /// <returns>Collection of Rubric models ready for submit in DB</returns>
+        public List<Rubric> ReadRubricsFromFile(string file)
         {
-            var result = new List<string>();
+            var rubrics = new List<Rubric>();
 
-            var input = new StreamReader(inputFile);
-
-            using (input)
+            using (var input = new StreamReader(file))
             {
                 string line = input.ReadLine();
 
-                while (line != null)
+                for (int i = 1; i <= 7; i++)
                 {
-                    var currentWords = line.Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                    string textToAdd = GetWords(currentWords);
-                    result.Add(textToAdd);
+                    var rubric = new Rubric();
 
-                    line = input.ReadLine();
+                    if (line == null)
+                    {
+                        break;
+                    }
+
+                    var currentWords = line.Split(new[] { '@' }, StringSplitOptions.RemoveEmptyEntries);
+                    var isBlank = currentWords[0] != i.ToString();
+
+                    if (isBlank)
+                    {
+                        rubric.Name = EmptyDbRecord + i;
+                        rubric.Alias = EmptyDbRecord + i;
+                        rubric.IsDeleted = true;
+                        rubric.DeletedOn = DateTime.Now;
+                    }
+                    else
+                    {
+                        rubric.Name = currentWords[1];
+                        rubric.Alias = currentWords[4];
+
+                        line = input.ReadLine();
+                    }
+
+                    rubrics.Add(rubric);
                 }
             }
 
-            return result;
+            return rubrics;
         }
 
         public List<Article> ReadArticleFromFile(string inputFile)

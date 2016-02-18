@@ -68,6 +68,8 @@
     <Compile Include="Importer\FileTextImporter.cs" />
     <Compile Include="Importer\ImportImages.cs" />
     <Compile Include="Importer\ImportRoles.cs" />
+    <Compile Include="Importer\ImportRubrics.cs" />
+    <Compile Include="Importer\ImportTags.cs" />
     <Compile Include="Importer\ImportUsers.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -11,30 +11,38 @@
     {
         public void Import(ApplicationDbContext context)
         {
-            if (!context.Users.Any(u => u.UserName == WebConstants.AdminUserName))
+            this.CreateUser(context, WebConstants.AdminUserName, WebConstants.AdminEmail, WebConstants.AdminPassword, WebConstants.AdminRole);
+            this.CreateUser(context, WebConstants.EditorUserName, WebConstants.EditorEmail, WebConstants.EditorPassword, WebConstants.EditorRole);
+        }
+
+        private void CreateUser(ApplicationDbContext context, string userName, string userEmail, string userPass, string userRole)
+        {
+            if (context.Users.Any(u => u.UserName == userName))
             {
-                var store = new UserStore<User>(context);
-                var manager = new UserManager<User>(store)
-                {
-                    PasswordValidator = new PasswordValidator
-                    {
-                        RequiredLength = WebConstants.MinUserPasswordLength,
-                        RequireNonLetterOrDigit = false,
-                        RequireDigit = false,
-                        RequireLowercase = false,
-                        RequireUppercase = false,
-                    }
-                };
-
-                var user = new User
-                {
-                    UserName = WebConstants.AdminUserName,
-                    Email = WebConstants.AdminEmail
-                };
-
-                manager.Create(user, WebConstants.AdminPassword);
-                manager.AddToRole(user.Id, WebConstants.AdminRole);
+                return;
             }
+
+            var store = new UserStore<User>(context);
+            var manager = new UserManager<User>(store)
+            {
+                PasswordValidator = new PasswordValidator
+                {
+                    RequiredLength = WebConstants.MinUserPasswordLength,
+                    RequireNonLetterOrDigit = false,
+                    RequireDigit = false,
+                    RequireLowercase = false,
+                    RequireUppercase = false,
+                }
+            };
+
+            var user = new User
+            {
+                UserName = userName,
+                Email = userEmail
+            };
+
+            manager.Create(user, userPass);
+            manager.AddToRole(user.Id, userRole);
         }
     }
 }

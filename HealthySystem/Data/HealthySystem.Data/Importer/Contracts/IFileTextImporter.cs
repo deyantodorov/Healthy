@@ -7,9 +7,9 @@
     {
         List<Image> ReadImagesFromFile(string file);
 
-        SortedSet<string> ReadTagFromFile(string inputFile);
+        List<Tag> ReadTagsFromFile(string file);
 
-        List<string> ReadRubricFromFile(string inputFile);
+        List<Rubric> ReadRubricsFromFile(string file);
 
         List<Article> ReadArticleFromFile(string inputFile);
     }
