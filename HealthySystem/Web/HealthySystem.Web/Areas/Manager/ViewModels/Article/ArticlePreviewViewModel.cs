@@ -12,9 +12,8 @@
         public string Title { get; set; }
 
         public string RubricName { get; set; }
-        
-        // TODO: REMOVE
-        public DateTime AddDate { get; set; }
+
+        public DateTime CreatedOn { get; set; }
 
         public DateTime? PublishDate { get; set; }
 

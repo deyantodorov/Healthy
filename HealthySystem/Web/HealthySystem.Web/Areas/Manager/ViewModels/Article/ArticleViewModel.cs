@@ -40,7 +40,7 @@
         [Required]
         [Display(Name = "Дата на добавяне")]
         [UIHint("SingleLineText")]
-        public DateTime AddDate { get; set; }
+        public DateTime CreatedOn { get; set; }
 
         [Required]
         [Display(Name = "Дата на публикуване")]
