@@ -346,6 +346,7 @@
     <Content Include="Areas\Manager\Views\Tag\_ItemTagPartial.cshtml" />
     <Content Include="Content\admin.less" />
     <Content Include="Content\site.less" />
+    <Content Include="Areas\Manager\Views\Shared\_Paging.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>

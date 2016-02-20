@@ -1,0 +1,49 @@
+﻿@using HealthySystem.Common
+<div class="text-center">
+    <ul class="pagination pagination-lg">
+        @{
+            int totalPages = int.Parse(ViewData["TotalPages"].ToString());
+            int currentPage = int.Parse(ViewData["CurrentPage"].ToString());
+            int end = currentPage + WebConstants.AdminPagingSize;
+
+            if (end >= totalPages)
+            {
+                end = totalPages;
+            }
+
+            if (currentPage > 0)
+            {
+                <li>
+                    <a href="?page=@(currentPage - 1)">
+                        <span>&laquo;</span>
+                    </a>
+                </li>
+            }
+
+            for (int i = currentPage; i < end; i++)
+            {
+                if (currentPage == i)
+                {
+                    <li class="active">
+                        <span>@(i + 1)</span>
+                    </li>
+                }
+                else
+                {
+                    <li>
+                        <a href="?page=@i">@(i + 1)</a>
+                    </li>
+                }
+            }
+
+            if (currentPage < totalPages - 1)
+            {
+                <li>
+                    <a href="?page=@(currentPage + 1)">
+                        <span>&raquo;</span>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+</div>

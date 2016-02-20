@@ -14,13 +14,16 @@
             this.articles = articles;
         }
 
-        /// <summary>
-        /// Get all articles
-        /// </summary>
-        /// <returns>All articles without deleted</returns>
         public IQueryable<Article> GetAll()
         {
-            return this.articles.All().Where(a => !a.IsDeleted);
+            return this.articles
+                .All()
+                .Where(a => !a.IsDeleted);
+        }
+
+        public IQueryable<Article> GetAllFiltered(string order, string filter, string search, int page = 1)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

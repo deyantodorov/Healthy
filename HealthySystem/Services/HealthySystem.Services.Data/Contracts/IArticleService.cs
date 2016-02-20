@@ -6,5 +6,7 @@
     public interface IArticleService
     {
         IQueryable<Article> GetAll();
+
+        IQueryable<Article> GetAllFiltered(string order, string filter, string search, int page = 1);
     }
 }
