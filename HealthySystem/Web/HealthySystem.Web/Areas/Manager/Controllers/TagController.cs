@@ -146,7 +146,7 @@
             }
             else
             {
-                this.Session["Error"] = ModelConstants.Undeletable;
+                return new HttpStatusCodeResult(400);
             }
 
             return this.RedirectToAction("Index", "Tag");

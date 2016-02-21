@@ -1,5 +1,5 @@
 ﻿// Transliterate Title
-Site.PostTransliterator('#Title', '#Alias', '/Manager/Home/Transliterate');
+Manager.PostTransliterator('#Title', '#Alias', '/Manager/Home/Transliterate');
 
 // OnClick populate AddDate in PublishedDate
 $('#IsPublished').bind('change', function () {
@@ -12,10 +12,10 @@ $('#IsPublished').bind('change', function () {
 });
 
 // Search for Image
-Site.SearchForTag('#imageSearch', '#imageSearchResult', '/Manager/Article/SearchForImage', onImageSuccess);
+Manager.SearchForTag('#imageSearch', '#imageSearchResult', '/Manager/Article/SearchForImage', onImageSuccess);
 
 // Search for Tags
-Site.SearchForTag('#Tags', '#tagSearchResult', '/Manager/Article/SearchForTag', onTagSuccess);
+Manager.SearchForTag('#Tags', '#tagSearchResult', '/Manager/Article/SearchForTag', onTagSuccess);
 
 function onTagSuccess(data) {
     var fragment = $(document.createDocumentFragment());

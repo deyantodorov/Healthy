@@ -67,7 +67,7 @@
 @section scripts
 {
     <script>
-        Site.PostTransliterator('#Name', '#Alias', '/Manager/Home/Transliterate');
+        Manager.PostTransliterator('#Name', '#Alias', '/Manager/Home/Transliterate');
 
         function showHide() {
             $('#btnCancelAddTag').toggle();
@@ -82,5 +82,6 @@
             showHide();
             $('#addNewTagForm').trigger('reset');
         });
+
     </script>
 }

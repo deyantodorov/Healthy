@@ -1,7 +1,7 @@
-﻿var Site = (function () {
+﻿var Manager = (function () {
 
     // This function help you to transliterate what you need
-    
+
     function postToTransliterator(getFrom, setTo, postUrl) {
         $(getFrom).change(function () {
 
@@ -73,9 +73,16 @@
         });
     }
 
+    function displayError(msg) {
+
+        var err = $('<div class="mt-30 pt-30 text-center"><div class="alert alert-danger">' + msg + '</div></div').fadeIn().fadeOut(3000);
+        $('#manager').prepend(err);
+    }
+
     return {
         PostTransliterator: postToTransliterator,
         SearchForTag: searchForTag,
-        SearchForImage: searchForImage
+        SearchForImage: searchForImage,
+        DisplayError: displayError
     }
 })();
