@@ -1,6 +1,6 @@
 ﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
 @model HealthySystem.Web.Areas.Manager.ViewModels.Tag.TagViewModel
-@*@using (Ajax.BeginForm("AddTag", "Tag", new AjaxOptions()
+@using (Ajax.BeginForm("Add", "Tag", null, new AjaxOptions()
 {
     HttpMethod = "POST",
     InsertionMode = InsertionMode.InsertBefore,
@@ -16,4 +16,4 @@
             @Html.Submit(new { @class = "btn btn-primary", value = "Добави Таг" })
         </div>
     </div>
-}*@
+}

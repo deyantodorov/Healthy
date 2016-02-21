@@ -1,0 +1,17 @@
+﻿@model HealthySystem.Web.Areas.Manager.ViewModels.ErrorViewModel
+
+@{
+    ViewBag.Title = "Грешка";
+}
+
+@if (Model != null)
+{
+    <div class="mt-15 pt-15 mb-15 mt-15">
+        <div class="alert alert-danger">@Model.Message</div>
+    </div>
+}
+else
+{
+    <h4 class="text-danger">Грешка</h4>
+    <h5 class="text-danger">Възникна грешка при изпълнение на вашата заявка</h5>
+}

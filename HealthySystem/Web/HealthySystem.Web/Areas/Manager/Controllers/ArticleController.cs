@@ -32,6 +32,8 @@
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page = 0)
         {
             var all = this.articleService.GetAll();
+
+
             this.ViewBag.CurrentSort = sortOrder;
             this.ViewBag.IdSortParam = string.IsNullOrEmpty(sortOrder) ? "IdAsc" : string.Empty;
             this.ViewBag.NameSortParam = string.IsNullOrEmpty(sortOrder) ? "TitleDesc" : string.Empty;
@@ -75,7 +77,7 @@
 
             if (pageNumber > totalPages)
             {
-                return new HttpNotFoundResult("Page can't be found");
+                return this.NotFound("Page can't be found");
             }
 
             this.ViewBag.TotalPages = totalPages;

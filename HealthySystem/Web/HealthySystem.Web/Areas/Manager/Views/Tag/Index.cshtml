@@ -1,7 +1,6 @@
 ﻿@using HealthySystem.Web.Areas.Manager.ViewModels.Tag
 @using HealthySystem.Web.Infrastructure.HtmlHelpers
-@*@using PagedList.Mvc
-@model PagedList.IPagedList<TagViewModel>*@
+@model IEnumerable<TagViewModel>
 @{
     ViewBag.Title = "Тагове";
 }
@@ -20,7 +19,7 @@
             @Html.Submit(new { @class = "btn btn-default", value = "Търси" })
         </div>
         <div class="pull-right ml-15">
-            @Html.TextBox("SearchString", ViewBag.CurrentFilter as String, new { @class = "form-control" })
+            @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @class = "form-control" })
         </div>
         <div class="pull-right ml-30">
             <span class="pull-left pt-6">Потърси по име:</span>
@@ -31,7 +30,7 @@
     <div class="form-horizontal">
         @if (User.Identity.IsAuthenticated)
         {
-            @Html.Partial("_AddTagPartial", new TagViewModel())
+            @Html.Partial("_AddPartial", new TagViewModel())
         }
     </div>
 </div>
@@ -52,15 +51,14 @@
             {
                 foreach (var tag in Model)
                 {
-                    @*@Html.Partial("_ItemTagPartial", tag)*@
+                    @Html.Partial("_ItemPartial", tag)
                 }
             }
         </tbody>
         <tfoot>
             <tr>
                 <td colspan="5">
-                    Страници: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) от @Model.PageCount
-                    @*@Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
+                    @Html.Partial("_Paging", new { TotalPages = ViewBag.TotalPages, CurrentPage = ViewBag.CurrentPage })
                 </td>
             </tr>
         </tfoot>

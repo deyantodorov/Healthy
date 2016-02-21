@@ -4,7 +4,7 @@
     using HealthySystem.Data.Models;
     using HealthySystem.Web.Infrastructure.Mapping;
 
-    public class TagViewModel : IMapFrom<Tag>
+    public class TagViewModel : IMapFrom<Tag>, IMapTo<Tag>
     {
         public int Id { get; set; }
 

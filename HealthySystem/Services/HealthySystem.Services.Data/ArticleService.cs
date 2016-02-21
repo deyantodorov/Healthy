@@ -32,11 +32,7 @@
 
         public bool AnyByTitleAndId(string title, int id)
         {
-            if (string.IsNullOrEmpty(title))
-            {
-                throw new ArgumentNullException("title", "Title can't be null or empty");
-            }
-
+            this.IsNullOrEmpty(title);
             return this.articles.AllWithDeleted().Any(x => x.Title.ToLower().Equals(title.ToLower()) && x.Id != id);
         }
 
@@ -71,6 +67,14 @@
         {
             this.articles.Delete(article);
             this.articles.Save();
+        }
+
+        private void IsNullOrEmpty(string title)
+        {
+            if (string.IsNullOrEmpty(title))
+            {
+                throw new ArgumentNullException("title", "Can't be null or empty");
+            }
         }
     }
 }

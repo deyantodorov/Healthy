@@ -219,6 +219,7 @@
     <Compile Include="Areas\Identity\Controllers\AccountController.cs" />
     <Compile Include="Areas\Manager\ViewModels\Article\ArticlePreviewViewModel.cs" />
     <Compile Include="Areas\Manager\ViewModels\Article\ArticleViewModel.cs" />
+    <Compile Include="Areas\Manager\ViewModels\ErrorViewModel.cs" />
     <Compile Include="Areas\Manager\ViewModels\Image\ImageListViewModel.cs" />
     <Compile Include="Areas\Manager\ViewModels\Image\ImageViewModel.cs" />
     <Compile Include="Areas\Manager\ViewModels\Rubric\RubricViewModel.cs" />
@@ -325,7 +326,7 @@
     <Content Include="Areas\Manager\Views\Shared\EditorTemplates\SingleLineText.cshtml" />
     <Content Include="Areas\Manager\Views\Shared\EditorTemplates\SingleLineTextPassword.cshtml" />
     <Content Include="Areas\Manager\Views\Shared\EditorTemplates\TinyMce.cshtml" />
-    <Content Include="Areas\Manager\Views\Shared\_AdminError.cshtml" />
+    <Content Include="Areas\Manager\Views\Shared\_Error.cshtml" />
     <Content Include="Areas\Manager\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Manager\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Manager\Views\Article\Add.cshtml" />
@@ -341,9 +342,9 @@
     <Content Include="Areas\Manager\Views\Rubric\_EditRubricPartial.cshtml" />
     <Content Include="Areas\Manager\Views\Rubric\_ItemRubricPartial.cshtml" />
     <Content Include="Areas\Manager\Views\Tag\Index.cshtml" />
-    <Content Include="Areas\Manager\Views\Tag\_AddTagPartial.cshtml" />
-    <Content Include="Areas\Manager\Views\Tag\_EditTagPartial.cshtml" />
-    <Content Include="Areas\Manager\Views\Tag\_ItemTagPartial.cshtml" />
+    <Content Include="Areas\Manager\Views\Tag\_AddPartial.cshtml" />
+    <Content Include="Areas\Manager\Views\Tag\_UpdatePartial.cshtml" />
+    <Content Include="Areas\Manager\Views\Tag\_ItemPartial.cshtml" />
     <Content Include="Content\admin.less" />
     <Content Include="Content\site.less" />
     <Content Include="Areas\Manager\Views\Shared\_Paging.cshtml" />
