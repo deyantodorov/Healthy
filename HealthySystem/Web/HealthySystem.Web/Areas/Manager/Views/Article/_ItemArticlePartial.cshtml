@@ -6,8 +6,8 @@
     <td>@Model.CreatedOn</td>
     <td>@Model.PublishDate</td>
     <td>
-        @*@Html.ActionLink("Редактирай", "EditArticle", new { id = Model.Id }, new { @class = "btn btn-default" })
-        @Ajax.ActionLink("Изтрий", "DeleteArticle",
+        @Html.ActionLink("Редактирай", "Update", new { id = Model.Id }, new { @class = "btn btn-default" })
+        @Ajax.ActionLink("Изтрий", "Delete",
         new { id = Model.Id },
         new AjaxOptions
         {
@@ -15,6 +15,6 @@
             Confirm = "Сигурен ли си, че искаш да изтриеш статия " + @Model.Title,
             OnSuccess = "window.location.reload()"
         },
-        new { @class = "btn btn-default" })*@
+        new { @class = "btn btn-default" })
     </td>
 </tr>

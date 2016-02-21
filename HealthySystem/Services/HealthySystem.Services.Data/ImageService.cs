@@ -14,13 +14,14 @@
             this.images = images;
         }
 
-        /// <summary>
-        /// Get all images
-        /// </summary>
-        /// <returns>All images without deleted</returns>
         public IQueryable<Image> GetAll()
         {
-            return this.images.All().Where(i => !i.IsDeleted);
+            return this.images.All();
+        }
+
+        public Image GetById(int id)
+        {
+            return this.images.GetById(id);
         }
     }
 }

@@ -328,8 +328,8 @@
     <Content Include="Areas\Manager\Views\Shared\_AdminError.cshtml" />
     <Content Include="Areas\Manager\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Manager\Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Areas\Manager\Views\Article\AddArticle.cshtml" />
-    <Content Include="Areas\Manager\Views\Article\EditArticle.cshtml" />
+    <Content Include="Areas\Manager\Views\Article\Add.cshtml" />
+    <Content Include="Areas\Manager\Views\Article\Update.cshtml" />
     <Content Include="Areas\Manager\Views\Article\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Article\_ItemArticlePartial.cshtml" />
     <Content Include="Areas\Manager\Views\Image\Index.cshtml" />
@@ -354,8 +354,8 @@
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\app\article.js" />
+    <Content Include="Scripts\app\manager.js" />
     <Content Include="Scripts\app\site.js" />
-    <Content Include="Scripts\app\siteFront.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
@@ -363,6 +363,8 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.js" />
     <Content Include="Scripts\jquery-ui-1.11.4.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -524,6 +526,7 @@
     <Content Include="Scripts\tinymce\skins\lightgray\skin.min.css" />
     <Content Include="Scripts\tinymce\themes\modern\theme.js" />
     <Content Include="Scripts\tinymce\themes\modern\theme.min.js" />
+    <Content Include="Scripts\tinymce\tinymce.config.js" />
     <Content Include="Scripts\tinymce\tinymce.js" />
     <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Scripts\_references.js" />

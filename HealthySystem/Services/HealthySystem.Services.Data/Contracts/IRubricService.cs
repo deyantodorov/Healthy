@@ -3,10 +3,8 @@
     using System.Linq;
     using HealthySystem.Data.Models;
 
-    public interface IImageService
+    public interface IRubricService
     {
-        IQueryable<Image> GetAll();
-
-        Image GetById(int id);
+        IQueryable<Rubric> GetAll();
     }
 }

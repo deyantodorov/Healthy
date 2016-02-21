@@ -3,10 +3,10 @@
     using System.Linq;
     using HealthySystem.Data.Models;
 
-    public interface IImageService
+    public interface ITagService
     {
-        IQueryable<Image> GetAll();
+        IQueryable<Tag> GetAll();
 
-        Image GetById(int id);
+        Tag GetByName(string name);
     }
 }

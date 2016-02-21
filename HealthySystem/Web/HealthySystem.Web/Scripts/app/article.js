@@ -4,8 +4,8 @@ Site.PostTransliterator('#Title', '#Alias', '/Manager/Home/Transliterate');
 // OnClick populate AddDate in PublishedDate
 $('#IsPublished').bind('change', function () {
     if ($(this).is(':checked')) {
-        var addDate = $('#AddDate').val();
-        $('#PublishDate').val(addDate);
+        var createdOn = $('#CreatedOn').val();
+        $('#PublishDate').val(createdOn);
     } else {
         $('#PublishDate').val('');
     }

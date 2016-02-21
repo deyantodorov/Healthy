@@ -45,8 +45,12 @@
     <Compile Include="ArticleService.cs" />
     <Compile Include="Contracts\IArticleService.cs" />
     <Compile Include="Contracts\IImageService.cs" />
+    <Compile Include="Contracts\IRubricService.cs" />
+    <Compile Include="Contracts\ITagService.cs" />
     <Compile Include="ImageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RubricService.cs" />
+    <Compile Include="TagService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HealthySystem.Services.Data.ruleset" />

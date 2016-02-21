@@ -1,5 +1,6 @@
 ﻿namespace HealthySystem.Services.Data
 {
+    using System;
     using System.Linq;
     using HealthySystem.Data.Common;
     using HealthySystem.Data.Models;
@@ -16,14 +17,60 @@
 
         public IQueryable<Article> GetAll()
         {
-            return this.articles
-                .All()
-                .Where(a => !a.IsDeleted);
+            return this.articles.All();
         }
 
-        public IQueryable<Article> GetAllFiltered(string order, string filter, string search, int page = 1)
+        public Article GetById(int id)
         {
-            throw new System.NotImplementedException();
+            return this.articles.GetById(id);
+        }
+
+        public bool AnyByTitle(string title)
+        {
+            return this.articles.AllWithDeleted().Any(x => x.Title.ToLower().Equals(title.ToLower()));
+        }
+
+        public bool AnyByTitleAndId(string title, int id)
+        {
+            if (string.IsNullOrEmpty(title))
+            {
+                throw new ArgumentNullException("title", "Title can't be null or empty");
+            }
+
+            return this.articles.AllWithDeleted().Any(x => x.Title.ToLower().Equals(title.ToLower()) && x.Id != id);
+        }
+
+        public void Add(Article article)
+        {
+            this.articles.Add(article);
+            this.articles.Save();
+        }
+
+        public void Update(Article article)
+        {
+            var articleForUpdate = this.articles.GetById(article.Id);
+
+            articleForUpdate.Title = article.Title;
+            articleForUpdate.Alias = article.Alias;
+            articleForUpdate.Description = article.Description;
+            articleForUpdate.Content = article.Content;
+            articleForUpdate.IsPublished = article.IsPublished;
+            articleForUpdate.PublishDate = article.PublishDate;
+            articleForUpdate.UnpublishDate = article.UnpublishDate;
+            articleForUpdate.Rank = article.Rank;
+            articleForUpdate.ImageId = article.ImageId;
+            articleForUpdate.RubricId = article.RubricId;
+            articleForUpdate.AuthorId = article.AuthorId;
+            articleForUpdate.Tags = article.Tags;
+            articleForUpdate.Comments = article.Comments;
+
+            this.articles.Save();
+        }
+
+        public void Delete(Article article)
+        {
+            this.articles.Delete(article);
+            this.articles.Save();
         }
     }
 }

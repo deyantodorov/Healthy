@@ -7,6 +7,16 @@
     {
         IQueryable<Article> GetAll();
 
-        IQueryable<Article> GetAllFiltered(string order, string filter, string search, int page = 1);
+        Article GetById(int id);
+
+        bool AnyByTitle(string title);
+
+        bool AnyByTitleAndId(string title, int id);
+
+        void Add(Article article);
+
+        void Update(Article article);
+
+        void Delete(Article article);
     }
 }

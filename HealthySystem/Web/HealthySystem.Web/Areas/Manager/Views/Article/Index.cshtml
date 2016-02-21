@@ -7,7 +7,7 @@
 <h2>@ViewBag.Title</h2>
 <div class="row p15">
     <div class="pull-left">
-        @*@Html.ActionLink("Добави нова статия", "AddArticle", "Article", null, new { @class = "btn btn-primary" })*@
+        @Html.ActionLink("Добави нова статия", "Add", "Article", null, new { @class = "btn btn-primary" })
     </div>
 
     @using (@Html.BeginForm("Index", "Article", FormMethod.Get))

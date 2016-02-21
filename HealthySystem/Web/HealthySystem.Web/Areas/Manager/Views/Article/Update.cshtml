@@ -1,14 +1,17 @@
 ﻿@using HealthySystem.Web.Areas.Manager.ViewModels.Article
+@using HealthySystem.Web.Infrastructure.HtmlHelpers
 @model ArticleViewModel
 @{
-    ViewBag.Title = "Добавяне на статия";
+    ViewBag.Title = "Редактиране на статия";
 }
 
-@*<h3>@ViewBag.Title</h3>
-@using (Html.BeginForm("AddArticle", "Article", FormMethod.Post, new { @class = "form-horizontal", data = "form" }))
+<h3>@ViewBag.Title</h3>
+<hr />
+@using (Html.BeginForm("Update", "Article", FormMethod.Post, new { @class = "form-horizontal", data = "form" }))
 {
     @Html.AntiForgeryToken();
 
+    @Html.HiddenFor(m => m.Id)
     @Html.EditorFor(m => m.Title)
     @Html.EditorFor(m => m.Alias)
     @Html.EditorFor(m => m.RubricId, new { ListItem = Model.Rubrics })
@@ -37,21 +40,23 @@
     </div>
 
     @Html.EditorFor(m => m.IsPublished)
-    @Html.EditorFor(m => m.AddDate, new { AddClass = "pw50" })
     @Html.EditorFor(m => m.PublishDate, new { AddClass = "pw50" })
     @Html.EditorFor(m => m.UnpublishDate, new { AddClass = "pw50" })
-    @Html.HiddenFor(m => m.AuthorName)
+    @Html.HiddenFor(m => m.CreatedOn)
+    @Html.HiddenFor(m => m.AuthorId)
     @Html.HiddenFor(m => m.ReferrerUrl)
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
-            @Html.Submit(new { @class = "btn btn-primary", value = "Добави статия" })
+            @Html.Submit(new { @class = "btn btn-primary", value = "Запиши статия" })
             <a href="javascript:void(0);" onclick="window.history.back();" class="btn btn-default ml-15">Откажи</a>
         </div>
     </div>
-}*@
+}
 
 @section scripts
 {
-    <script src="~/Scripts/Article.js"></script>
+    <script src="~/Scripts/tinymce/tinymce.min.js"></script>
+    <script src="~/Scripts/tinymce/tinymce.config.js"></script>
+    <script src="~/Scripts/app/article.js"></script>
 }

@@ -8,26 +8,27 @@
     using AutoMapper;
     using HealthySystem.Web.Infrastructure.Mapping;
     using System.Text;
+    using HealthySystem.Common;
     using HealthySystem.Data.Models;
 
     public class ArticleViewModel : IMapFrom<Article>, IMapTo<Article>, IHaveCustomMappings
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ModelConstants.Required)]
         [UIHint("SingleLineText")]
         [Display(Name = "Заглавие")]
-        [StringLength(150, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(150, ErrorMessage = ModelConstants.StringLength, MinimumLength = 6)]
         public string Title { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ModelConstants.Required)]
         [Display(Name = "Описание")]
-        [StringLength(250, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(250, ErrorMessage = ModelConstants.StringLength, MinimumLength = 6)]
         [UIHint("MultiLineText")]
         public string Description { get; set; }
 
         [AllowHtml]
-        [Required]
+        [Required(ErrorMessage = ModelConstants.Required)]
         [Display(Name = "Статия")]
         [DataType("TinyMce")]
         [UIHint("TinyMce")]
@@ -37,12 +38,12 @@
         [UIHint("CheckBox")]
         public bool IsPublished { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ModelConstants.Required)]
         [Display(Name = "Дата на добавяне")]
         [UIHint("SingleLineText")]
         public DateTime CreatedOn { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ModelConstants.Required)]
         [Display(Name = "Дата на публикуване")]
         [UIHint("SingleLineText")]
         public DateTime? PublishDate { get; set; }
@@ -53,24 +54,24 @@
 
         public int? ImageId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ModelConstants.Required)]
         [Display(Name = "URL")]
         [UIHint("SingleLineText")]
         [StringLength(150)]
         public string Alias { get; set; }
 
+        [Required(ErrorMessage = ModelConstants.Required)]
         [Display(Name = "Категория")]
         [UIHint("DropDownList")]
         public int RubricId { get; set; }
 
         public IEnumerable<SelectListItem> Rubrics { get; set; }
 
-        [Required]
-        [Display(Name = "Автор")]
-        [UIHint("SingleLineText")]
+        [Required(ErrorMessage = ModelConstants.Required)]
         [StringLength(128)]
-        public string AuthorName { get; set; }
+        public string AuthorId { get; set; }
 
+        [Required(ErrorMessage = ModelConstants.Required)]
         [Display(Name = "Тагове")]
         [UIHint("SingleLineText")]
         public string Tags { get; set; }
@@ -80,7 +81,7 @@
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Article, ArticleViewModel>()
-                .ForMember(dest => dest.AuthorName, opt => opt.MapFrom(src => src.Author.Id))
+                .ForMember(dest => dest.AuthorId, opt => opt.MapFrom(src => src.Author.Id))
                 .ForMember(dest => dest.Tags, opt => opt.MapFrom(src => this.GenerateTags(src.Tags)))
                 .ForMember(dest => dest.ImageId, opt => opt.MapFrom(src => src.ImageId))
                 .ReverseMap();

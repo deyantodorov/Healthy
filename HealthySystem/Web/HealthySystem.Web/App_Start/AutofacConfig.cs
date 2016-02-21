@@ -8,6 +8,7 @@
     using HealthySystem.Data;
     using HealthySystem.Data.Common;
     using HealthySystem.Services.Data.Contracts;
+    using HealthySystem.Services.Web;
     using HealthySystem.Services.Web.Contracts;
     using HealthySystem.Web.Controllers;
 
@@ -47,6 +48,10 @@
                 .As<DbContext>()
                 .InstancePerRequest();
 
+            builder.Register(x => new HttpCacheService())
+                .As<ICacheService>()
+                .InstancePerRequest();
+
             builder.RegisterGeneric(typeof(DbRepository<>))
                 .As(typeof(IDbRepository<>))
                 .InstancePerRequest();
@@ -57,7 +62,7 @@
             var servicesDataAssembly = Assembly.GetAssembly(typeof(IArticleService));
             builder.RegisterAssemblyTypes(servicesDataAssembly).AsImplementedInterfaces();
 
-            var servicesWebAssembly = Assembly.GetAssembly(typeof(ICacheService));
+            var servicesWebAssembly = Assembly.GetAssembly(typeof(ITransliterator));
             builder.RegisterAssemblyTypes(servicesWebAssembly).AsImplementedInterfaces();
         }
     }
