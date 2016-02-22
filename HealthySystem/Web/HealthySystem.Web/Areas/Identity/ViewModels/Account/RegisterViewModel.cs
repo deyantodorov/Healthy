@@ -1,23 +1,27 @@
 ﻿namespace HealthySystem.Web.Areas.Identity.ViewModels.Account
 {
     using System.ComponentModel.DataAnnotations;
+    using HealthySystem.Common;
 
     public class RegisterViewModel
     {
-        [Required]
+        [Required(ErrorMessage = ModelConstants.Required)]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "Е-мейл")]
+        [UIHint("SingleLineTextTiny")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = ModelConstants.Required)]
+        [StringLength(100, ErrorMessage = ModelConstants.StringLength, MinimumLength = WebConstants.MinUserPasswordLength)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Парола")]
+        [UIHint("SingleLineTextPasswordTiny")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Потвърди парола")]
+        [Compare("Password", ErrorMessage = ModelConstants.ConfirmPassword)]
+        [UIHint("SingleLineTextPasswordTiny")]
         public string ConfirmPassword { get; set; }
     }
 }

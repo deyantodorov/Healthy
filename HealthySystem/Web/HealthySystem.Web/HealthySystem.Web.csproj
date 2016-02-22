@@ -610,6 +610,8 @@
     <Content Include="Views\Shared\EditorTemplates\SingleLineTextPassword.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TinyMce.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SingleLineTextPasswordTiny.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SingleLineTextTiny.cshtml" />
+    <Content Include="Views\Shared\_LogOffPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-2.2.0.min.map" />

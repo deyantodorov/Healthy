@@ -424,3 +424,20 @@ body a:focus {
 .pb-10 {
   padding-bottom: 10px;
 }
+.ml-15 {
+  margin-left: 15px;
+}
+.field-validation-error {
+  padding: 5px;
+}
+.public-profile-menu {
+  padding-right: 15px;
+  font-size: .9em;
+}
+.public-profile-menu div {
+  display: inline-block;
+  padding: 0 5px;
+}
+.public-profile-menu a {
+  color: #888;
+}

@@ -1,0 +1,8 @@
+﻿@model object
+<div class="form-group">
+    @Html.LabelFor(m => m, new { @class = "control-label col-md-3" })
+    <div class="col-md-6">
+        @Html.ValidationMessageFor(m => m, null, new { @class = "alert-danger" })
+        @Html.TextBoxFor(m => m, new {@class = "form-control " + ViewBag.AddClass})
+    </div>
+</div>

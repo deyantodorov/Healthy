@@ -122,14 +122,18 @@
             switch (result)
             {
                 case SignInStatus.Success:
-                    return this.RedirectToLocal(returnUrl);
+
+                    return string.IsNullOrWhiteSpace(returnUrl)
+                        ? this.RedirectToAction("Index", "Home", new { area = string.Empty })
+                        : this.RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return this.View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return this.RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
                 case SignInStatus.Failure:
                 default:
-                    this.ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    this.ModelState.AddModelError("UserName", "Невалидно 'Потребителско име' или 'Парола'.");
                     return this.View(model);
             }
         }
@@ -197,14 +201,15 @@
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await this.SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    await this.SignInManager.SignInAsync(user, isPersistent: true, rememberBrowser: true);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    return this.RedirectToAction("Index", "Home");
+
+                    return this.RedirectToAction("Index", "Home", new { area = string.Empty });
                 }
 
                 this.AddErrors(result);
