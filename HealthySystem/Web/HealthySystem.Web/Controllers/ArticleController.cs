@@ -21,8 +21,13 @@
         [HttpGet]
         public ActionResult Index(string alias)
         {
+            if (string.IsNullOrWhiteSpace(alias))
+            {
+                return this.RedirectToActionPermanent("Index", "Home");
+            }
+
             var article = this.articleService.GetAll()
-                .Where(x => x.Alias == alias.Trim())
+                .Where(x => x.Alias.ToLower().Equals(alias.ToLower().Trim()))
                 .To<ArticleSitePageViewModel>()
                 .SingleOrDefault();
 
@@ -35,8 +40,6 @@
             {
                 article.Content = this.InjectAdsInContent(article.Content);
             }
-
-            article.Image = Images.GetImageFromCache(article.Image, WebConstants.ImageWidth, WebConstants.ImageMaxHeight);
 
             this.ViewBag.Tags = this.GetTags();
 

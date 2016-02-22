@@ -3,7 +3,9 @@
     using System;
     using System.Web.Mvc;
     using AutoMapper;
+    using HealthySystem.Common;
     using HealthySystem.Data.Models;
+    using HealthySystem.Web.Infrastructure.Images;
     using HealthySystem.Web.Infrastructure.Mapping;
 
     public class ArticleSitePageViewModel : IMapFrom<Article>, IHaveCustomMappings
@@ -16,6 +18,8 @@
         public string Content { get; set; }
 
         public string Image { get; set; }
+
+        public string ImageCache => Images.GetImageFromCache(this.Image, WebConstants.ImageWidth, WebConstants.ImageMaxHeight);
 
         public DateTime Date { get; set; }
 

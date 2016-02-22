@@ -5,24 +5,28 @@
     using System.Web.Mvc;
     using HealthySystem.Common;
     using HealthySystem.Services.Data.Contracts;
-    using HealthySystem.Web.Infrastructure.Images;
+    using HealthySystem.Services.Web.Contracts;
     using HealthySystem.Web.Infrastructure.Mapping;
     using HealthySystem.Web.ViewModels;
 
     public class SearchController : SiteController
     {
         private readonly IArticleService articleService;
+        private readonly IHtmlSecuritySanitizer htmlSecuritySanitizer;
 
-        public SearchController(IArticleService articleService)
+        public SearchController(IArticleService articleService, IHtmlSecuritySanitizer htmlSecuritySanitizer)
         {
             this.articleService = articleService;
+            this.htmlSecuritySanitizer = htmlSecuritySanitizer;
         }
 
-        // TODO: Sanitize it
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Index(string search, int? page)
         {
+            search = this.htmlSecuritySanitizer.Clean(search);
+
             int pageSize;
             if (page != null)
             {
@@ -44,8 +48,6 @@
             this.ViewBag.Tags = this.GetTags();
             this.ViewBag.Page = pageSize;
             this.ViewBag.Title = search.Trim();
-
-            articles.ForEach(x => x.Image = Images.GetImageFromCache(x.Image, WebConstants.ImageWidth, WebConstants.ImageMaxHeight));
 
             return this.View(articles);
         }

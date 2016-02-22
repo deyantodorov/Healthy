@@ -1,7 +1,9 @@
 ﻿namespace HealthySystem.Web.ViewModels
 {
     using AutoMapper;
+    using HealthySystem.Common;
     using HealthySystem.Data.Models;
+    using HealthySystem.Web.Infrastructure.Images;
     using HealthySystem.Web.Infrastructure.Mapping;
 
     public class ArticleSitePreviewViewModel : IMapFrom<Article>, IHaveCustomMappings
@@ -15,6 +17,8 @@
         public string Alias { get; set; }
 
         public string Image { get; set; }
+
+        public string ImageCache => Images.GetImageFromCache(this.Image, WebConstants.ImageWidth, WebConstants.ImageMaxHeight);
 
         public void CreateMappings(IMapperConfiguration configuration)
         {

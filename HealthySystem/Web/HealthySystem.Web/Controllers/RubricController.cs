@@ -1,11 +1,9 @@
 ﻿namespace HealthySystem.Web.Controllers
 {
-    using System;
     using System.Linq;
     using System.Web.Mvc;
     using HealthySystem.Common;
     using HealthySystem.Services.Data.Contracts;
-    using HealthySystem.Web.Infrastructure.Images;
     using HealthySystem.Web.Infrastructure.Mapping;
     using HealthySystem.Web.ViewModels;
 
@@ -23,6 +21,11 @@
         [HttpGet]
         public ActionResult Index(string alias, int? page)
         {
+            if (string.IsNullOrWhiteSpace(alias))
+            {
+                return this.RedirectToActionPermanent("Index", "Home");
+            }
+
             int pageSize;
             if (page != null)
             {
@@ -33,20 +36,14 @@
                 pageSize = 1;
             }
 
-            // TODO: Extract to service
             // Fake rubric name return 404 error
             if (!this.rubricService.GetAll().Any(x => x.Alias.ToLower().Equals(alias.ToLower())))
             {
                 return new HttpNotFoundResult();
             }
 
-            // TODO: Extract to service
             // Get list of articles with current rubric
-            var articles = this.articleService.GetAll()
-                    .Where(x => x.IsPublished && x.PublishDate <= DateTime.Now && x.Rubric.Alias == alias)
-                    .OrderByDescending(x => x.PublishDate)
-                    .Skip((pageSize - 1) * WebConstants.SiteRubricPageSize)
-                    .Take(WebConstants.SiteRubricPageSize)
+            var articles = this.articleService.GetPublishedFromRubricByAlias(alias, pageSize, WebConstants.SiteRubricPageSize)
                     .To<ArticleSitePreviewViewModel>()
                     .ToList();
 
@@ -94,8 +91,6 @@
                     this.ViewBag.Description = WebConstants.KrasotaDesc;
                     break;
             }
-
-            articles.ForEach(x => x.Image = Images.GetImageFromCache(x.Image, WebConstants.ImageWidth, WebConstants.ImageMaxHeight));
 
             return this.View(articles);
         }

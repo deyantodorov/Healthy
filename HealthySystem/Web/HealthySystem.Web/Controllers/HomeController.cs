@@ -5,7 +5,6 @@
     using System.Web.Mvc;
     using HealthySystem.Common;
     using HealthySystem.Services.Data.Contracts;
-    using HealthySystem.Web.Infrastructure.Images;
     using HealthySystem.Web.Infrastructure.Mapping;
     using HealthySystem.Web.ViewModels;
 
@@ -31,8 +30,6 @@
                 .ToList(),
                 WebConstants.Min5);
 
-            articles.ForEach(x => x.Image = Images.GetImageFromCache(x.Image, WebConstants.ImageWidth, WebConstants.ImageMaxHeight));
-
             this.ViewBag.Tags = this.GetTags();
 
             return this.View(articles);
@@ -51,6 +48,24 @@
                 WebConstants.Min60);
 
             return this.View(articles);
+        }
+
+        [HttpGet]
+        public ActionResult NotFound()
+        {
+            this.Response.StatusCode = 404;
+
+            this.ViewBag.Tags = this.GetTags();
+            return this.View();
+        }
+
+        [HttpGet]
+        public ActionResult Error()
+        {
+            this.Response.StatusCode = 500;
+
+            this.ViewBag.Tags = this.GetTags();
+            return this.View();
         }
     }
 }

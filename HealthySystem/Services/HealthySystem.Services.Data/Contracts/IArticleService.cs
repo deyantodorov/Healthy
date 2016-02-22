@@ -9,6 +9,10 @@
 
         Article GetById(int id);
 
+        IQueryable<Article> GetPublishedFromRubricByAlias(string alias, int pageSize, int toSkip);
+
+        IQueryable<Article> GetPublishedFromTagByAlias(string alias, int pageSize, int toSkip);
+
         bool AnyByTitle(string title);
 
         bool AnyByTitleAndId(string title, int id);

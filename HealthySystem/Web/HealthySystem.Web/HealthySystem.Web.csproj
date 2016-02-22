@@ -232,6 +232,7 @@
     <Compile Include="Controllers\RubricController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\SitemapController.cs" />
     <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -362,6 +363,8 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\social.png" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\app\article.js" />
     <Content Include="Scripts\app\manager.js" />
@@ -646,6 +649,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Identity\Views\Shared\" />
+    <Folder Include="Views\Sitemap\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

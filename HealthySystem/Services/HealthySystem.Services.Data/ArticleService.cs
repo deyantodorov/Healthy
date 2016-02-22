@@ -25,6 +25,24 @@
             return this.articles.GetById(id);
         }
 
+        public IQueryable<Article> GetPublishedFromRubricByAlias(string alias, int pageSize, int toSkip)
+        {
+            return this.articles.All()
+                .Where(x => x.IsPublished && x.PublishDate <= DateTime.Now && x.Rubric.Alias.ToLower().Equals(alias.ToLower()))
+                .OrderByDescending(x => x.PublishDate)
+                .Skip((pageSize - 1) * toSkip)
+                .Take(toSkip);
+        }
+
+        public IQueryable<Article> GetPublishedFromTagByAlias(string alias, int pageSize, int toSkip)
+        {
+            return this.articles.All()
+                .Where(x => x.IsPublished && x.PublishDate < DateTime.Now && x.Tags.Any(y => y.Alias.ToLower().Equals(alias.ToLower())))
+                .OrderByDescending(x => x.PublishDate)
+                .Skip((pageSize - 1) * toSkip)
+                .Take(toSkip);
+        }
+
         public bool AnyByTitle(string title)
         {
             return this.articles.AllWithDeleted().Any(x => x.Title.ToLower().Equals(title.ToLower()));
