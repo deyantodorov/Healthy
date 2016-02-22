@@ -1,11 +1,11 @@
-﻿@model HealthySystem.Web.Areas.Manager.ViewModels.Image.ImageListViewModel
+﻿@model HealthySystem.Web.Areas.Manager.ViewModels.Image.ImagePreviewViewModel
 <tr id="image@(Model.Id)">
     <td>@Model.Id</td>
     <td>@Model.ImageDescription</td>
     <td>@Model.ImagePath</td>
     <td><img src="@Model.ImagePath" alt="@Model.ImageDescription" width="100" /></td>
     <td>
-        @*@Ajax.ActionLink("Редактирай", "Edit",
+        @Ajax.ActionLink("Редактирай", "Edit",
         new { id = Model.Id },
         new AjaxOptions
         {
@@ -23,6 +23,6 @@
             Confirm = "Сигурен ли си, че искаш да изтриеш снимката " + @Model.Id,
             OnSuccess = "window.location.reload()"
         },
-        new { @class = "btn btn-default" })*@
+        new { @class = "btn btn-default" })
     </td>
 </tr>

@@ -4,7 +4,7 @@
     using HealthySystem.Data.Models;
     using Infrastructure.Mapping;
 
-    public class ImageListViewModel : IMapFrom<Image>
+    public class ImagePreviewViewModel : IMapFrom<Image>, IMapTo<Image>
     {
         [Key]
         public int Id { get; set; }

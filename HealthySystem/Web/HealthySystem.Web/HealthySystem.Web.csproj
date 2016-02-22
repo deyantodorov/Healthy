@@ -220,7 +220,7 @@
     <Compile Include="Areas\Manager\ViewModels\Article\ArticlePreviewViewModel.cs" />
     <Compile Include="Areas\Manager\ViewModels\Article\ArticleViewModel.cs" />
     <Compile Include="Areas\Manager\ViewModels\ErrorViewModel.cs" />
-    <Compile Include="Areas\Manager\ViewModels\Image\ImageListViewModel.cs" />
+    <Compile Include="Areas\Manager\ViewModels\Image\ImagePreviewViewModel.cs" />
     <Compile Include="Areas\Manager\ViewModels\Image\ImageViewModel.cs" />
     <Compile Include="Areas\Manager\ViewModels\Rubric\RubricViewModel.cs" />
     <Compile Include="Areas\Manager\ViewModels\Tag\TagViewModel.cs" />
@@ -334,9 +334,9 @@
     <Content Include="Areas\Manager\Views\Article\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Article\_ItemArticlePartial.cshtml" />
     <Content Include="Areas\Manager\Views\Image\Index.cshtml" />
-    <Content Include="Areas\Manager\Views\Image\_AddImagePartial.cshtml" />
-    <Content Include="Areas\Manager\Views\Image\_EditImagePartial.cshtml" />
-    <Content Include="Areas\Manager\Views\Image\_ItemImagePartial.cshtml" />
+    <Content Include="Areas\Manager\Views\Image\_AddPartial.cshtml" />
+    <Content Include="Areas\Manager\Views\Image\_EditPartial.cshtml" />
+    <Content Include="Areas\Manager\Views\Image\_ItemPartial.cshtml" />
     <Content Include="Areas\Manager\Views\Rubric\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Rubric\_AddRubricPartial.cshtml" />
     <Content Include="Areas\Manager\Views\Rubric\_EditRubricPartial.cshtml" />

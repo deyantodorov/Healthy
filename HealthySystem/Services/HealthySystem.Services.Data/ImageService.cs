@@ -23,5 +23,26 @@
         {
             return this.images.GetById(id);
         }
+
+        public void Add(Image image)
+        {
+            this.images.Add(image);
+            this.images.Save();
+        }
+
+        public void Update(Image image)
+        {
+            var imageForUpdate = this.GetById(image.Id);
+
+            imageForUpdate.ImageDescription = image.ImageDescription;
+
+            this.images.Save();
+        }
+
+        public void Delete(Image image)
+        {
+            this.images.Delete(image);
+            this.images.Save();
+        }
     }
 }

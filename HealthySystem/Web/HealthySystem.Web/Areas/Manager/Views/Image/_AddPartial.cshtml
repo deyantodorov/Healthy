@@ -1,6 +1,6 @@
 ﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
 @model HealthySystem.Web.Areas.Manager.ViewModels.Image.ImageViewModel
-@*@using (@Html.BeginForm("Add", "Image", FormMethod.Post, new { id = "addNewForm", enctype = "multipart/form-data" }))
+@using (@Html.BeginForm("Add", "Image", FormMethod.Post, new { id = "addNewForm", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     <div class="form-group">
@@ -16,4 +16,4 @@
             @Html.Submit(new { @class = "btn btn-primary", value = "Добави" })
         </div>
     </div>
-}*@
+}

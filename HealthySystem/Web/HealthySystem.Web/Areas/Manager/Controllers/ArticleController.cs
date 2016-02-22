@@ -33,7 +33,6 @@
         {
             var all = this.articleService.GetAll();
 
-
             this.ViewBag.CurrentSort = sortOrder;
             this.ViewBag.IdSortParam = string.IsNullOrEmpty(sortOrder) ? "IdAsc" : string.Empty;
             this.ViewBag.NameSortParam = string.IsNullOrEmpty(sortOrder) ? "TitleDesc" : string.Empty;

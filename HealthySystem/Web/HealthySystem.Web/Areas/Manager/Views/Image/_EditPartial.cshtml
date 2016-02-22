@@ -1,5 +1,5 @@
 ﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
-@model HealthySystem.Web.Areas.Manager.ViewModels.Image.ImageListViewModel
+@model HealthySystem.Web.Areas.Manager.ViewModels.Image.ImagePreviewViewModel
     <td colspan="5">
         <div class="form-horizontal">
 
@@ -9,7 +9,7 @@
             </div>
         </div>
 
-        @*@using (Ajax.BeginForm("Update", "Image", new AjaxOptions()
+        @using (Ajax.BeginForm("Update", "Image", new AjaxOptions()
         {
             HttpMethod = "POST",
             InsertionMode = InsertionMode.ReplaceWith,
@@ -34,6 +34,6 @@
                 new { @class = "btn btn-default" })
                 </div>
             </div>
-        }*@
+        }
     </div>
 </td>

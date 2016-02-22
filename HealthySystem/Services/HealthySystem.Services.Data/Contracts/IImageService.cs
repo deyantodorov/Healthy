@@ -8,5 +8,11 @@
         IQueryable<Image> GetAll();
 
         Image GetById(int id);
+
+        void Add(Image image);
+
+        void Update(Image image);
+
+        void Delete(Image image);
     }
 }

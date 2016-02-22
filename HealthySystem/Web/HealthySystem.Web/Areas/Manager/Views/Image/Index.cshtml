@@ -1,7 +1,6 @@
 ﻿@using HealthySystem.Web.Areas.Manager.ViewModels.Image
 @using HealthySystem.Web.Infrastructure.HtmlHelpers
-@*@using PagedList.Mvc
-@model PagedList.IPagedList<ImageListViewModel>*@
+@model IEnumerable<ImagePreviewViewModel>
 @{
     ViewBag.Title = "Снимки";
 }
@@ -32,7 +31,7 @@
     <div class="form-horizontal">
         @if (User.Identity.IsAuthenticated)
         {
-            @Html.Partial("_AddImagePartial", new ImageViewModel())
+            @Html.Partial("_AddPartial", new ImageViewModel())
         }
     </div>
 </div>
@@ -53,15 +52,14 @@
             {
                 foreach (var tag in Model)
                 {
-                    @*@Html.Partial("_ItemImagePartial", tag)*@
+                    @Html.Partial("_ItemPartial", tag)
                 }
             }
         </tbody>
         <tfoot>
             <tr>
                 <td colspan="5">
-                    @*Страници: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) от @Model.PageCount
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))*@
+                    @Html.Partial("_Paging", new { TotalPages = ViewBag.TotalPages, CurrentPage = ViewBag.CurrentPage })
                 </td>
             </tr>
         </tfoot>

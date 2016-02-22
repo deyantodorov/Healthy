@@ -1,6 +1,7 @@
 ﻿namespace HealthySystem.Web.Areas.Manager.ViewModels.Rubric
 {
     using System.ComponentModel.DataAnnotations;
+    using HealthySystem.Common;
     using HealthySystem.Data.Models;
     using HealthySystem.Web.Infrastructure.Mapping;
 
@@ -9,7 +10,7 @@
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ModelConstants.Required)]
         [Display(Name = "Име")]
         [UIHint("SingleLineText")]
         public string Name { get; set; }
@@ -18,7 +19,7 @@
         [UIHint("SingleLineText")]
         public int? ParentId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = ModelConstants.Required)]
         [Display(Name = "URL")]
         [UIHint("SingleLineText")]
         public string Alias { get; set; }

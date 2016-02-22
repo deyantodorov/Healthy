@@ -13,6 +13,8 @@
 
         bool AnyByTitleAndId(string title, int id);
 
+        bool HasImageId(int imageId);
+
         void Add(Article article);
 
         void Update(Article article);

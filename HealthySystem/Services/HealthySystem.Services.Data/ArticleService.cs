@@ -36,6 +36,11 @@
             return this.articles.AllWithDeleted().Any(x => x.Title.ToLower().Equals(title.ToLower()) && x.Id != id);
         }
 
+        public bool HasImageId(int imageId)
+        {
+            return this.articles.AllWithDeleted().Any(x => x.ImageId == imageId);
+        }
+
         public void Add(Article article)
         {
             this.articles.Add(article);
