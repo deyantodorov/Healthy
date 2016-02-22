@@ -1,0 +1,12 @@
+﻿@using HealthySystem.Web.ViewModels
+@model IList<TagSiteViewModel>
+<div id="aside">
+    <h1>Здравни теми</h1>
+
+    @foreach (var tag in Model)
+    {
+        <h2>
+            <a href="~/t/@tag.Alias">@tag.Name</a>
+        </h2>
+    }
+</div>

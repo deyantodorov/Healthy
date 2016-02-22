@@ -1,0 +1,63 @@
+﻿@using HealthySystem.Web.ViewModels
+@model IList<ArticleSitePreviewViewModel>
+@{
+    ViewBag.Intro = @ViewBag.Title;
+    ViewBag.Description = string.Format("{0} - всичко за вашето здраве, лечение и здравословни съвети. {0} - винаги най-добрите здравни съвети!", @ViewBag.Title);
+    ViewBag.Title = @ViewBag.Title + " - лечение и здраве";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="section">
+    <h1>@ViewBag.Intro</h1>
+    <div class="container">
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <div class="col-md-@(i < 2 ? "4" : "3") article-preview">
+                <div class="article-preview-image">
+                    <a href="~/@Model[i].Alias">
+                        <img src="@Model[i].Image" alt="@Model[i].Title" />
+                    </a>
+                </div>
+                <h2>
+                    <a href="~/@Model[i].Alias">@Model[i].Title</a>
+                </h2>
+                <p class="mb-100">@Model[i].Description ...</p>
+            </div>
+
+            if (i == 1)
+            {
+                <div class="col-md-4">
+                    @Html.Partial("_AdUnitTopRight")
+                </div>
+            }
+
+            if (i == 1 || i == 5 || i == 9 || i == 13)
+            {
+                <div class="separator"></div>
+            
+                switch (i)
+                {
+                    case 5:
+                        @Html.Partial("_AdUnitMiddle");
+                        break;
+                    case 13:
+                        @Html.Partial("_AdUnitBottom");
+                        break;
+                }
+            }
+        }
+    </div>
+    <div class="paging">
+        @if ((int)ViewBag.Page != 0 && (int)ViewBag.Page != 1)
+        {
+            <a href="?page=@((int) ViewBag.Page - 2)" rel="next">Назад</a>
+        }
+
+        @if (!(Model.Count < 14))
+        {
+            <a href="?page=@ViewBag.Page" rel="next">Още от @ViewBag.Title</a>
+        }
+    </div>
+</div>
+
+@Html.Partial("_Tags", (IList<TagSiteViewModel>)ViewBag.Tags)

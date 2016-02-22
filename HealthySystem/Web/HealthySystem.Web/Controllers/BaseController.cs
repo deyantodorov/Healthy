@@ -10,10 +10,5 @@
         public ICacheService Cache { get; set; }
 
         protected IMapper Mapper => AutoMapperConfig.Configuration.CreateMapper();
-
-        protected HttpNotFoundResult NotFound(string message)
-        {
-            return this.HttpNotFound(message);
-        }
     }
 }

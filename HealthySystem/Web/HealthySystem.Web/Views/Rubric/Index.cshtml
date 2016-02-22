@@ -1,21 +1,22 @@
-﻿@using HealthySystem.Common
-@using HealthySystem.Web.ViewModels
-@model IList<ArticleSitePreviewViewModel>
+﻿@using HealthySystem.Web.ViewModels
+@model IList<HealthySystem.Web.ViewModels.ArticleSitePreviewViewModel>
 
 @{
-    ViewBag.Title = WebConstants.HomeTitle;
-    ViewBag.Description = WebConstants.HomeDesc;
+    ViewBag.Title = ViewBag.Title;
+    ViewBag.Description = ViewBag.Description;
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div id="section">
-    <h1>Здравни новини</h1>
+    <h1>@ViewBag.Title</h1>
     <div class="container">
         @for (int i = 0; i < Model.Count; i++)
         {
             <div class="col-md-@(i < 2 ? "4" : "3") article-preview">
                 <div class="article-preview-image">
                     <a href="~/@Model[i].Alias">
-                        <img src="@Model[i].Image" alt="@Model[i].Title"/>
+                        <img src="@Model[i].Image" alt="@Model[i].Title" />
                     </a>
                 </div>
                 <h2>
@@ -31,22 +32,31 @@
                 </div>
             }
 
-            if (i == 1 || i == 5 || i == 9 || i == 13 || i == 17)
+            if (i == 1 || i == 5 || i ==9 || i == 13)
             {
                 <div class="separator"></div>
-
+            
                 switch (i)
                 {
                     case 5:
-                        @Html.Partial("_AdUnitMiddle")
-                        ;
+                        @Html.Partial("_AdUnitMiddle");
                         break;
                     case 9:
-                        @Html.Partial("_AdUnitBottom")
-                        ;
+                        @Html.Partial("_AdUnitBottom");
                         break;
                 }
             }
+        }
+    </div>
+    <div class="paging">
+        @if ((int)ViewBag.Page != 0 && (int)ViewBag.Page != 1)
+        {
+            <a href="?page=@((int) ViewBag.Page - 2)" rel="next">Назад</a>
+        }
+
+        @if (!(Model.Count < 14))
+        {
+            <a href="?page=@ViewBag.Page" rel="next">Още от @ViewBag.PagingTitle</a>
         }
     </div>
 </div>

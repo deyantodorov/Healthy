@@ -1,0 +1,78 @@
+﻿@using HealthySystem.Common
+@using HealthySystem.Web.ViewModels
+
+@model HealthySystem.Web.ViewModels.ArticleSitePageViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    ViewBag.Description = Model.Description;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    ViewBag.OgUrl = WebConstants.Domain + "/" + Model.Alias;
+    ViewBag.OgType = "website";
+    ViewBag.OgTitle = Model.Title;
+    ViewBag.OgDescription = Model.Description;
+    ViewBag.OgImage = WebConstants.Domain + Model.Image;
+}
+
+<div id="section" class="article">
+    <h1>@Model.Title</h1>
+    <div class="article-attributes">
+        Дата: @Model.Date.ToString("yyyy-MM-dd HH:mm:ss"), от: @Html.ActionLink("Здравко Здравков", "All", "Home")
+        <div class="share-buttons">
+            <div class="fbshare">
+                <a alt="Сподели с Facebook" target="_blank"
+                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                   href="https://www.facebook.com/sharer/sharer.php?u=@ViewBag.OgUrl">
+                    <span class="fbShareCount">facebook <b></b></span>
+                </a>
+            </div>
+            <div class="gplus">
+                <a alt="Сподели с Google+" target="_blank"
+                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                   href="https://plus.google.com/share?url=@ViewBag.OgUrl">
+                    <span class="gPlusCount">G+</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="article-image">
+        <img src="@Model.Image" alt="@Model.Title" />
+    </div>
+
+    <div class="article-content">
+        @Html.Partial("_AdUnitArticleTopRight")
+        @Html.Raw(Model.Content)
+        @Html.Partial("_AdUnitArticleBottom")
+    </div>
+</div>
+@Html.Partial("_Tags", (IList<TagSiteViewModel>)ViewBag.Tags)
+
+@section scripts
+{
+    <script>
+        // count fb shares
+        $.ajax({
+            type: 'GET',
+            url: 'https://graph.facebook.com/@ViewBag.OgUrl',
+            success: function (data) {
+                displayCount(data);
+            }
+        });
+
+        function displayCount(response) {
+            var json = response;
+
+            if (!json.hasOwnProperty('shares')) {
+                return;
+            }
+
+            var count = json.shares;
+
+            if(parseInt(count) > 0){
+                $('.fbShareCount > b').text(count);
+            }
+        }
+    </script>
+}

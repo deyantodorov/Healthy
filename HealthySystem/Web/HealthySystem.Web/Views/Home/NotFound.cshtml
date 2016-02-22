@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Страницата не беше намерена";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h2>@ViewBag.Title</h2>
+    <p>Страницата, която търсите не беше намерене, моля придържайте се към навигацията</p>
+</div>
+
+@Html.Partial("_Tags", (IList<TagSiteViewModel>)ViewBag.Tags)

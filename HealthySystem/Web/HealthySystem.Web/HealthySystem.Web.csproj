@@ -224,10 +224,15 @@
     <Compile Include="Areas\Manager\ViewModels\Image\ImageViewModel.cs" />
     <Compile Include="Areas\Manager\ViewModels\Rubric\RubricViewModel.cs" />
     <Compile Include="Areas\Manager\ViewModels\Tag\TagViewModel.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\Identity\Controllers\ManageController.cs" />
     <Compile Include="App_Start\GlimpseSecurityPolicy.cs" />
+    <Compile Include="Controllers\RubricController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\TagController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -250,6 +255,10 @@
     <Compile Include="Startup.cs" />
     <Compile Include="Areas\Identity\ViewModels\Manage\SetPasswordViewModel.cs" />
     <Compile Include="Areas\Identity\ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\ArticleSiteShortPreviewViewModel.cs" />
+    <Compile Include="ViewModels\ArticleSitePageViewModel.cs" />
+    <Compile Include="ViewModels\ArticleSitePreviewViewModel.cs" />
+    <Compile Include="ViewModels\TagSiteViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\admin.css">
@@ -573,6 +582,26 @@
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\readme.md" />
     <Content Include="Scripts\tinymce\langs\readme.md" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
+    <Content Include="Views\Shared\_Search.cshtml" />
+    <Content Include="Views\Shared\_Tags.cshtml" />
+    <Content Include="Views\Shared\_AdTop.cshtml" />
+    <Content Include="Views\Shared\_AdUnitArticleBottom.cshtml" />
+    <Content Include="Views\Shared\_AdUnitArticleTopRight.cshtml" />
+    <Content Include="Views\Shared\_AdUnitBottom.cshtml" />
+    <Content Include="Views\Shared\_AdUnitMiddle.cshtml" />
+    <Content Include="Views\Shared\_AdUnitTopRight.cshtml" />
+    <Content Include="Views\Shared\_FbSdk.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_GoogleAnalytics.cshtml" />
+    <Content Include="Views\Shared\_GooglePlus.cshtml" />
+    <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Rubric\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Tag\Index.cshtml" />
+    <Content Include="Views\Home\All.cshtml" />
+    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Home\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-2.2.0.min.map" />
@@ -617,7 +646,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\Identity\Views\Shared\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

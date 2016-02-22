@@ -1,0 +1,19 @@
+﻿@using HealthySystem.Common
+@model IList<ArticleSiteShortPreviewViewModel>
+
+@{
+    ViewBag.Title = WebConstants.AllTitle;
+    ViewBag.Description = WebConstants.AllDesc;
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="section" class="article">
+    <h1>Всичко от Здравко Здравков</h1>
+    <ul>
+        @foreach (var article in Model)
+        {
+            <li><a href="~/@article.Alias">@article.Title</a></li>
+        }
+    </ul>
+</div>

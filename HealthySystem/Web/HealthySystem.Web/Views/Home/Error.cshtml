@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Възникна грешка";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="text-center">
+    <h2>@ViewBag.Title</h2>
+    <p>Възникна грешка, моля придържайте се към навигацията или опитайте отново по-късно</p>
+</div>
+
+@Html.Partial("_Tags", (IList<TagSiteViewModel>)ViewBag.Tags)

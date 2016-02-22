@@ -1,0 +1,37 @@
+﻿<div id="nav" class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav nav-justified">
+                <li class="@(Request.Url.AbsoluteUri.IndexOf("r/zdrave") > -1 ? "active" : "")">
+                    <a href="~/r/zdrave">Здраве</a>
+                </li>
+                <li class="@(Request.Url.AbsoluteUri.IndexOf("r/lechenie") > -1 ? "active" : "")">
+                    <a href="~/r/lechenie">Лечение</a>
+                </li>
+                <li class="@(Request.Url.AbsoluteUri.IndexOf("r/zdravoslovno-hranene") > -1 ? "active" : "")">
+                    <a href="~/r/zdravoslovno-hranene">Хранене</a>
+                </li>
+                <li class="@(Request.Url.AbsoluteUri.IndexOf("r/detsa") > -1 ? "active" : "")">
+                    <a href="~/r/detsa">Деца</a>
+                </li>
+                <li class="@(Request.Url.AbsoluteUri.IndexOf("r/krasota") > -1 ? "active" : "")">
+                    <a href="~/r/krasota">Красота</a>
+                </li>
+                <li class="@(Request.Url.AbsoluteUri.IndexOf("r/psihologiya") > -1 ? "active" : "")">
+                    <a href="~/r/psihologiya">Психология</a>
+                </li>
+                <li class="@(Request.Url.AbsoluteUri.IndexOf("r/seks-i-zdrave") > -1 ? "active" : "")">
+                    <a href="~/r/seks-i-zdrave">Секс</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

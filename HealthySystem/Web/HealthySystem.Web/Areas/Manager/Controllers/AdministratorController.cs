@@ -6,5 +6,9 @@
     [Authorize(Roles = "Administrator, Editor")]
     public class AdministratorController : BaseController
     {
+        protected HttpNotFoundResult NotFound(string message)
+        {
+            return this.HttpNotFound(message);
+        }
     }
 }
