@@ -5,7 +5,7 @@
     using HealthySystem.Data.Models;
     using HealthySystem.Web.Infrastructure.Mapping;
 
-    public class RubricViewModel : IMapFrom<Rubric>
+    public class RubricViewModel : IMapFrom<Rubric>, IMapTo<Rubric>
     {
         [Key]
         public int Id { get; set; }

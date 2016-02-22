@@ -1,10 +1,13 @@
-﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
+﻿@using HealthySystem.Common
+@using HealthySystem.Web.Infrastructure.HtmlHelpers
 @model HealthySystem.Web.Areas.Manager.ViewModels.Rubric.RubricViewModel
-@*@using (Ajax.BeginForm("AddRubric", "Rubric", new AjaxOptions()
+@using (Ajax.BeginForm("Add", "Rubric", null, new AjaxOptions()
 {
     HttpMethod = "POST",
     InsertionMode = InsertionMode.InsertBefore,
     UpdateTargetId = "allRubrics",
+    OnFailure = "Manager.DisplayError('" + ModelConstants.ModelError + "')",
+    OnSuccess = "$('#btnCancelAddRubric').trigger('click');"
 }, new { id = "addNewRubricForm" }))
 {
     @Html.AntiForgeryToken()
@@ -16,4 +19,4 @@
             @Html.Submit(new { @class = "btn btn-primary", value = "Добави рубрика" })
         </div>
     </div>
-}*@
+}

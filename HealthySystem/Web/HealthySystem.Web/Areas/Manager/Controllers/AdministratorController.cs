@@ -3,8 +3,7 @@
     using System.Web.Mvc;
     using HealthySystem.Web.Controllers;
 
-    // TODO: RESTRICT TO ADMINISTRATOR OR EDITOR
-    [Authorize]
+    [Authorize(Roles = "Administrator, Editor")]
     public class AdministratorController : BaseController
     {
     }

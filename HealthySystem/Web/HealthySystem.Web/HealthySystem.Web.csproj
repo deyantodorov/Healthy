@@ -338,9 +338,9 @@
     <Content Include="Areas\Manager\Views\Image\_EditPartial.cshtml" />
     <Content Include="Areas\Manager\Views\Image\_ItemPartial.cshtml" />
     <Content Include="Areas\Manager\Views\Rubric\Index.cshtml" />
-    <Content Include="Areas\Manager\Views\Rubric\_AddRubricPartial.cshtml" />
-    <Content Include="Areas\Manager\Views\Rubric\_EditRubricPartial.cshtml" />
-    <Content Include="Areas\Manager\Views\Rubric\_ItemRubricPartial.cshtml" />
+    <Content Include="Areas\Manager\Views\Rubric\_AddPartial.cshtml" />
+    <Content Include="Areas\Manager\Views\Rubric\_EditPartial.cshtml" />
+    <Content Include="Areas\Manager\Views\Rubric\_ItemPartial.cshtml" />
     <Content Include="Areas\Manager\Views\Tag\Index.cshtml" />
     <Content Include="Areas\Manager\Views\Tag\_AddPartial.cshtml" />
     <Content Include="Areas\Manager\Views\Tag\_UpdatePartial.cshtml" />

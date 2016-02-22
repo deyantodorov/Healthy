@@ -1,4 +1,5 @@
-﻿@model HealthySystem.Web.Areas.Manager.ViewModels.Image.ImagePreviewViewModel
+﻿@using HealthySystem.Common
+@model HealthySystem.Web.Areas.Manager.ViewModels.Image.ImagePreviewViewModel
 <tr id="image@(Model.Id)">
     <td>@Model.Id</td>
     <td>@Model.ImageDescription</td>
@@ -21,6 +22,7 @@
         {
             HttpMethod = "POST",
             Confirm = "Сигурен ли си, че искаш да изтриеш снимката " + @Model.Id,
+            OnFailure = "Manager.DisplayError('" + ModelConstants.Undeletable + "')",
             OnSuccess = "window.location.reload()"
         },
         new { @class = "btn btn-default" })

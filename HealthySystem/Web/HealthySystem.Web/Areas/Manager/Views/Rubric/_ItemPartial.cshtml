@@ -1,12 +1,12 @@
-﻿@model HealthySystem.Web.Areas.Manager.ViewModels.Rubric.RubricViewModel
+﻿@using HealthySystem.Common
+@model HealthySystem.Web.Areas.Manager.ViewModels.Rubric.RubricViewModel
 <tr id="rubric@(Model.Id)">
     <td>@Model.Id</td>
     <td>@Model.Name</td>
     <td>@Model.Alias</td>
     <td>@Model.ParentId</td>
     <td>
-        @*@Html.AntiForgeryToken()
-        @Ajax.ActionLink("Редактирай", "EditRubric",
+        @Ajax.ActionLink("Редактирай", "Edit",
         new { id = Model.Id },
         new AjaxOptions
         {
@@ -16,14 +16,15 @@
         },
         new { @class = "btn btn-default" })
 
-        @Ajax.ActionLink("Изтрий", "DeleteRubric",
+        @Ajax.ActionLink("Изтрий", "Delete",
         new { id = Model.Id },
         new AjaxOptions
         {
             HttpMethod = "POST",
             Confirm = "Сигурен ли си, че искаш да изтриеш рубриката " + @Model.Name,
+            OnFailure = "Manager.DisplayError('" + ModelConstants.Undeletable + "')",
             OnSuccess = "window.location.reload()"
         },
-        new { @class = "btn btn-default" })*@
+        new { @class = "btn btn-default" })
     </td>
 </tr>

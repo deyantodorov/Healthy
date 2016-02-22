@@ -15,6 +15,8 @@
 
         bool HasImageId(int imageId);
 
+        bool HasRubricId(int rubricId);
+
         void Add(Article article);
 
         void Update(Article article);

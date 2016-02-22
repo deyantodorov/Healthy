@@ -147,8 +147,7 @@
 
             if (this.articleService.HasImageId(id))
             {
-                this.TempData.Add(ModelConstants.Error, ModelConstants.Undeletable);
-                return this.RedirectToAction("Index", "Image");
+                return new HttpStatusCodeResult(400, ModelConstants.Undeletable);
             }
 
             this.imageService.Delete(image);

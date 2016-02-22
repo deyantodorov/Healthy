@@ -8,6 +8,7 @@
         public const string TagExist = "Вече съществува таг с това име.";
         public const string ModelError = "Съществува грешка в информацията за модела.";
         public const string FileNotFound = "Файлът не може да бъде намерен.";
+        public const string NotFound = "Не може да бъде намерен.";
         public const string Error = "Error";
         public const string Undeletable = "Информацията не може да бъде изтрита. Вече се използва!";
     }

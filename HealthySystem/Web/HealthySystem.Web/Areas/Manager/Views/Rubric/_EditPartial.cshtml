@@ -9,7 +9,7 @@
             </div>
         </div>
 
-        @*@using (Ajax.BeginForm("SaveEditRubric", "Rubric", new AjaxOptions()
+        @using (Ajax.BeginForm("Update", "Rubric", new AjaxOptions()
         {
             HttpMethod = "POST",
             InsertionMode = InsertionMode.ReplaceWith,
@@ -30,7 +30,7 @@
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-5">
                     @Html.Submit(new { @class = "btn btn-default", value = "Запиши" })
-                    @Ajax.ActionLink("Откажи", "CancelEditRubric", null,
+                    @Ajax.ActionLink("Откажи", "UpdateCancel", null,
                 new { id = Model.Id },
                 new AjaxOptions
                 {
@@ -41,7 +41,7 @@
                 new { @class = "btn btn-default" })
                 </div>
             </div>
-        }*@
+        }
     </div>
 </td>
 <script>

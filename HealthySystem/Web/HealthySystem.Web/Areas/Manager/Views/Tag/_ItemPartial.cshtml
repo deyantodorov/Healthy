@@ -21,7 +21,8 @@
         {
             HttpMethod = "POST",
             Confirm = "Сигурен ли си, че искаш да изтриеш таг " + @Model.Name,
-            OnFailure = "Manager.DisplayError('" + ModelConstants.Undeletable + "')"
+            OnFailure = "Manager.DisplayError('" + ModelConstants.Undeletable + "')",
+            OnSuccess = "window.location.reload()"
         },
         new { @class = "btn btn-default" })
     </td>

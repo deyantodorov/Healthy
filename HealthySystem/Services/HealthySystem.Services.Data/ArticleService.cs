@@ -41,6 +41,11 @@
             return this.articles.AllWithDeleted().Any(x => x.ImageId == imageId);
         }
 
+        public bool HasRubricId(int rubricId)
+        {
+            return this.articles.AllWithDeleted().Any(x => x.RubricId == rubricId);
+        }
+
         public void Add(Article article)
         {
             this.articles.Add(article);

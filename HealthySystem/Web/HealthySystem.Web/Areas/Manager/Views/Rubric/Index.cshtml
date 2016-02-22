@@ -1,5 +1,5 @@
 ﻿@using HealthySystem.Web.Areas.Manager.ViewModels.Rubric
-@model IList<RubricViewModel>
+@model IEnumerable<RubricViewModel>
 @{
     ViewBag.Title = "Рубрика";
 }
@@ -18,7 +18,7 @@
     <div class="form-horizontal">
         @if (User.Identity.IsAuthenticated)
         {
-            @Html.Partial("_AddRubricPartial", new RubricViewModel())
+            @Html.Partial("_AddPartial", new RubricViewModel())
         }
     </div>
 </div>
@@ -40,7 +40,7 @@
             {
                 foreach (var rubric in Model)
                 {
-                    @Html.Partial("_ItemRubricPartial", rubric)
+                    @Html.Partial("_ItemPartial", rubric)
                 }
             }
         </tbody>
