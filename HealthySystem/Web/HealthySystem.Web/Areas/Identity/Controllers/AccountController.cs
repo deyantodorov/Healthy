@@ -1,13 +1,17 @@
 ﻿namespace HealthySystem.Web.Areas.Identity.Controllers
 {
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
     using System.Web;
     using System.Web.Mvc;
+    using HealthySystem.Common;
+    using HealthySystem.Data;
     using HealthySystem.Data.Models;
     using HealthySystem.Web.Areas.Identity.ViewModels.Account;
     using HealthySystem.Web.Controllers;
     using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
 
@@ -16,18 +20,21 @@
     {
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
+        private readonly ApplicationDbContext data;
 
         private ApplicationSignInManager signInManager;
         private ApplicationUserManager userManager;
 
         public AccountController()
         {
+            // TODO: Find a way to fix this with AutoFac
+            this.data = new ApplicationDbContext();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
-            this.UserManager = userManager;
-            this.SignInManager = signInManager;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -44,7 +51,54 @@
 
         private IAuthenticationManager AuthenticationManager => this.HttpContext.GetOwinContext().Authentication;
 
-        // GET: /Account/Login
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public ActionResult Index()
+        {
+            if (this.TempData.ContainsKey(ModelConstants.Error))
+            {
+                this.ViewBag.Error = this.TempData[ModelConstants.Error];
+            }
+            else if (this.TempData.ContainsKey(ModelConstants.Success))
+            {
+                this.ViewBag.Success = this.TempData[ModelConstants.Success];
+            }
+
+            return this.View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpGet]
+        public ActionResult AddRole()
+        {
+            return this.View();
+        }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddRole(RoleViewModel model)
+        {
+            if (model == null || !this.ModelState.IsValid)
+            {
+                this.TempData.Add(ModelConstants.Error, ModelConstants.ModelError);
+                return this.View(model);
+            }
+
+            if (this.data.Roles.Any(x => x.Name.ToLower().Equals(model.Name.ToLower())))
+            {
+                this.ModelState.AddModelError("Name", "Ролята " + model.Name + " вече съществува");
+                return this.View(model);
+            }
+
+            var role = this.Mapper.Map<IdentityRole>(model);
+            this.data.Roles.Add(role);
+            this.data.SaveChanges();
+            this.TempData.Add(ModelConstants.Success, "Ролята " + model.Name + " е добавена успешно.");
+
+            return this.RedirectToAction("Index");
+        }
+
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -52,7 +106,6 @@
             return this.View();
         }
 
-        // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -81,8 +134,7 @@
             }
         }
 
-        // GET: /Account/VerifyCode
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator, Editor")]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
             // Require that the user has already logged in via username/password or external login
@@ -99,9 +151,8 @@
             });
         }
 
-        // POST: /Account/VerifyCode
+        [Authorize(Roles = "Administrator, Editor")]
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
@@ -129,14 +180,12 @@
             }
         }
 
-        // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
         {
             return this.View();
         }
 
-        // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -165,7 +214,71 @@
             return this.View(model);
         }
 
-        // GET: /Account/ConfirmEmail
+        [HttpGet]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult RegisterUserByManager()
+        {
+            var model = new RegisterUserByManagerViewModel
+            {
+                UserRoles = this.GetRoles(),
+            };
+
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Administrator")]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterUserByManager(RegisterUserByManagerViewModel model)
+        {
+            if (model == null || !this.ModelState.IsValid)
+            {
+                return this.RedirectToAction("RegisterUserByManager");
+            }
+
+            var user = new User
+            {
+                UserName = model.UserName,
+                Email = model.Email
+            };
+
+            var result = await this.UserManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                var store = new UserStore<User>(this.data);
+                var manager = new UserManager<User>(store);
+
+                if (!string.IsNullOrWhiteSpace(model.UserRoleId))
+                {
+                    var roleName = this.data
+                        .Roles
+                        .Where(x => x.Id == model.UserRoleId)
+                        .ToList()
+                        .First()
+                        .Name;
+
+                    manager.AddToRole(user.Id, roleName);
+                    this.data.SaveChanges();
+                    this.TempData.Add(ModelConstants.Success, "Потребителят с име " + model.UserName + " и роля " + roleName + " е добавен успешно.");
+
+                    return this.RedirectToAction("Index");
+                }
+
+                this.data.SaveChanges();
+                this.TempData.Add(ModelConstants.Success, "Потребителят с име " + model.UserName + " е добавен успешно.");
+
+                return this.RedirectToAction("Index");
+            }
+
+            this.AddErrors(result);
+
+            model.UserRoles = this.GetRoles();
+
+            // If we got this far, something failed, redisplay form
+            return this.View(model);
+        }
+
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
@@ -178,14 +291,12 @@
             return this.View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
-        // GET: /Account/ForgotPassword
         [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
             return this.View();
         }
 
-        // POST: /Account/ForgotPassword
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -212,21 +323,18 @@
             return this.View(model);
         }
 
-        // GET: /Account/ForgotPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ForgotPasswordConfirmation()
         {
             return this.View();
         }
 
-        // GET: /Account/ResetPassword
         [AllowAnonymous]
         public ActionResult ResetPassword(string code)
         {
             return code == null ? this.View("Error") : this.View();
         }
 
-        // POST: /Account/ResetPassword
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -254,16 +362,14 @@
             return this.View();
         }
 
-        // GET: /Account/ResetPasswordConfirmation
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
             return this.View();
         }
 
-        // POST: /Account/ExternalLogin
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator, Editor")]
         [ValidateAntiForgeryToken]
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
@@ -271,8 +377,7 @@
             return new ChallengeResult(provider, this.Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
-        // GET: /Account/SendCode
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator, Editor")]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
             var userId = await this.SignInManager.GetVerifiedUserIdAsync();
@@ -286,9 +391,8 @@
             return this.View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
-        // POST: /Account/SendCode
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator, Editor")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(SendCodeViewModel model)
         {
@@ -306,8 +410,7 @@
             return this.RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
         }
 
-        // GET: /Account/ExternalLoginCallback
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator, Editor")]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
             var loginInfo = await this.AuthenticationManager.GetExternalLoginInfoAsync();
@@ -335,9 +438,8 @@
             }
         }
 
-        // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator, Editor")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
         {
@@ -374,17 +476,15 @@
             return this.View(model);
         }
 
-        // POST: /Account/LogOff
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             this.AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return this.RedirectToAction("Index", "Home");
+            return this.RedirectToAction("Index", "Home", new { area = string.Empty });
         }
 
-        // GET: /Account/ExternalLoginFailure
-        [AllowAnonymous]
+        [Authorize(Roles = "Administrator, Editor")]
         public ActionResult ExternalLoginFailure()
         {
             return this.View();
@@ -426,6 +526,19 @@
             }
 
             return this.RedirectToAction("Index", "Home");
+        }
+
+        private IEnumerable<SelectListItem> GetRoles()
+        {
+            var roles = this.data.Roles
+                .Select(x => new SelectListItem()
+                {
+                    Value = x.Id.ToString(),
+                    Text = x.Name
+                })
+                .ToList();
+
+            return roles;
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

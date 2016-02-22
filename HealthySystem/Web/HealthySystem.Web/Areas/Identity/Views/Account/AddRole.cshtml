@@ -1,0 +1,21 @@
+﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
+@model HealthySystem.Web.Areas.Identity.ViewModels.Account.RoleViewModel
+@{
+    ViewBag.Title = "Добави нова роля";
+    Layout = "~/Areas/Manager/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr/>
+@using (Html.BeginForm("AddRole", "Account", new { area = "Identity" }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.EditorFor(m => m.Name)
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.Submit(new { @class = "btn btn-primary", value = "Добави" })
+            @Html.ActionLink("Откажи", "Index", "Account", new {area = "Identity"}, new { @class = "btn btn-default ml-15" })
+        </div>
+    </div>
+}

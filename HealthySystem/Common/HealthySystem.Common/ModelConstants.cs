@@ -10,6 +10,8 @@
         public const string FileNotFound = "Файлът не може да бъде намерен.";
         public const string NotFound = "Не може да бъде намерен.";
         public const string Error = "Error";
+        public const string Success = "Success";
         public const string Undeletable = "Информацията не може да бъде изтрита. Вече се използва!";
+        public const string ConfirmPassword = "Полетата 'Парола' и 'Потвърди паролата' не съвпадат.";
     }
 }

@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Управление на роли и потребители";
+    Layout = "~/Areas/Manager/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Title</h2>
+<hr />
+@if (ViewBag.StatusMessage != null)
+{
+    <div class="alert alert-success">
+        @ViewBag.StatusMessage
+    </div>
+}
+<div class="row pt-25 text-center">
+    <div class="col-md-6">
+        @Html.ActionLink("Добави нова роля", "AddRole", "Account", new { area = "Identity" }, new { @class = "btn btn-lg btn-primary" })
+    </div>
+    <div class="col-md-6">
+        @Html.ActionLink("Добави нов потребител", "RegisterUserByManager", "Account", new { area = "Identity" }, new { @class = "btn btn-lg btn-primary" })
+    </div>
+</div>

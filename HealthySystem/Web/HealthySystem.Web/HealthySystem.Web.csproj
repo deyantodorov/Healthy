@@ -209,6 +209,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\ViewEngineConfig.cs" />
     <Compile Include="Areas\Identity\IdentityAreaRegistration.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Account\RegisterUserByManagerViewModel.cs" />
+    <Compile Include="Areas\Identity\ViewModels\Account\RoleViewModel.cs" />
     <Compile Include="Areas\Manager\Controllers\AdministratorController.cs" />
     <Compile Include="Areas\Manager\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Manager\Controllers\HomeController.cs" />
@@ -329,16 +331,9 @@
     <Content Include="Areas\Identity\Views\web.config" />
     <Content Include="Areas\Identity\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Manager\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Manager\Views\Shared\EditorTemplates\CheckBox.cshtml" />
-    <Content Include="Areas\Manager\Views\Shared\EditorTemplates\DropDownList.cshtml" />
-    <Content Include="Areas\Manager\Views\Shared\EditorTemplates\Enum.cshtml" />
-    <Content Include="Areas\Manager\Views\Shared\EditorTemplates\MultiLineText.cshtml" />
-    <Content Include="Areas\Manager\Views\Shared\EditorTemplates\SingleLineText.cshtml" />
-    <Content Include="Areas\Manager\Views\Shared\EditorTemplates\SingleLineTextPassword.cshtml" />
-    <Content Include="Areas\Manager\Views\Shared\EditorTemplates\TinyMce.cshtml" />
     <Content Include="Areas\Manager\Views\Shared\_Error.cshtml" />
     <Content Include="Areas\Manager\Views\Shared\_Layout.cshtml" />
-    <Content Include="Areas\Manager\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Areas\Manager\Views\Article\Add.cshtml" />
     <Content Include="Areas\Manager\Views\Article\Update.cshtml" />
     <Content Include="Areas\Manager\Views\Article\Index.cshtml" />
@@ -358,6 +353,9 @@
     <Content Include="Content\admin.less" />
     <Content Include="Content\site.less" />
     <Content Include="Areas\Manager\Views\Shared\_Paging.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\AddRole.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\RegisterUserByManager.cshtml" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
@@ -573,8 +571,7 @@
     <Content Include="Areas\Identity\Views\Manage\ManageLogins.cshtml" />
     <Content Include="Areas\Identity\Views\Manage\SetPassword.cshtml" />
     <Content Include="Areas\Identity\Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Areas\Identity\Views\Account\Lockout.cshtml" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.woff" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="Scripts\tinymce\skins\lightgray\fonts\tinymce.json" />
@@ -605,6 +602,13 @@
     <Content Include="Views\Home\All.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Home\NotFound.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\CheckBox.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DropDownList.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultiLineText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SingleLineText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SingleLineTextPassword.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\TinyMce.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-2.2.0.min.map" />

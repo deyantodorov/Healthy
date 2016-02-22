@@ -30,7 +30,7 @@
                         @if (User.IsInRole(WebConstants.AdminRole))
                         {
                             <li>@Html.ActionLink("Рубрики", "Index", "Rubric")</li>
-                            @*<li>@Html.ActionLink("Потребители", "Index", "Account")</li>*@
+                            <li>@Html.ActionLink("Потребители", "Index", "Account", new { area = "Identity" }, null)</li>
                         }
 
                     </ul>
@@ -45,6 +45,12 @@
             {
                 <div class="mt-30 pt-30 text-center">
                     <div class="alert alert-danger">@ViewBag.Error</div>
+                </div>
+            }
+            else if (ViewBag.Success != null)
+            {
+                <div class="mt-30 pt-30 text-center">
+                    <div class="alert alert-success">@ViewBag.Success</div>
                 </div>
             }
             @RenderBody()
