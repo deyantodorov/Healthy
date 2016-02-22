@@ -609,6 +609,7 @@
     <Content Include="Views\Shared\EditorTemplates\SingleLineText.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SingleLineTextPassword.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\TinyMce.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\SingleLineTextPasswordTiny.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-2.2.0.min.map" />

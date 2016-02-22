@@ -1,23 +1,27 @@
 ﻿namespace HealthySystem.Web.Areas.Identity.ViewModels.Manage
 {
     using System.ComponentModel.DataAnnotations;
+    using HealthySystem.Common;
 
     public class ChangePasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = ModelConstants.Required)]
         [DataType(DataType.Password)]
-        [Display(Name = "Current password")]
+        [Display(Name = "Текуща парола")]
+        [UIHint("SingleLineTextPasswordTiny")]
         public string OldPassword { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Required(ErrorMessage = ModelConstants.Required)]
+        [StringLength(100, ErrorMessage = ModelConstants.StringLength, MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "New password")]
+        [Display(Name = "Нова парола")]
+        [UIHint("SingleLineTextPasswordTiny")]
         public string NewPassword { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm new password")]
-        [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
+        [Display(Name = "Повтори нова парола")]
+        [Compare("NewPassword", ErrorMessage = ModelConstants.ConfirmPassword)]
+        [UIHint("SingleLineTextPasswordTiny")]
         public string ConfirmPassword { get; set; }
     }
 }

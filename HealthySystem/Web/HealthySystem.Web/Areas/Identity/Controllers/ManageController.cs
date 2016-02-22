@@ -24,8 +24,8 @@
 
         public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
-            this.UserManager = userManager;
-            this.SignInManager = signInManager;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
         }
 
         public enum ManageMessageId
@@ -53,14 +53,13 @@
 
         private IAuthenticationManager AuthenticationManager => this.HttpContext.GetOwinContext().Authentication;
 
-        // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             this.ViewBag.StatusMessage =
-                message == ManageMessageId.ChangePasswordSuccess ? "Your password has been changed."
+                message == ManageMessageId.ChangePasswordSuccess ? "Паролата ви е сменена."
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.SetTwoFactorSuccess ? "Your two-factor authentication provider has been set."
-                : message == ManageMessageId.Error ? "An error has occurred."
+                : message == ManageMessageId.Error ? "Възникна грешка."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
                 : string.Empty;
@@ -77,7 +76,7 @@
             return this.View(model);
         }
 
-        // POST: /Manage/RemoveLogin
+        [Authorize(Roles = "Administrator, Editor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemoveLogin(string loginProvider, string providerKey)
@@ -102,13 +101,13 @@
             return this.RedirectToAction("ManageLogins", new { Message = message });
         }
 
-        // GET: /Manage/AddPhoneNumber
+        [Authorize(Roles = "Administrator, Editor")]
         public ActionResult AddPhoneNumber()
         {
             return this.View();
         }
 
-        // POST: /Manage/AddPhoneNumber
+        [Authorize(Roles = "Administrator, Editor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
@@ -133,7 +132,7 @@
             return this.RedirectToAction("VerifyPhoneNumber", new { PhoneNumber = model.Number });
         }
 
-        // POST: /Manage/EnableTwoFactorAuthentication
+        [Authorize(Roles = "Administrator, Editor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EnableTwoFactorAuthentication()
@@ -148,7 +147,7 @@
             return this.RedirectToAction("Index", "Manage");
         }
 
-        // POST: /Manage/DisableTwoFactorAuthentication
+        [Authorize(Roles = "Administrator, Editor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DisableTwoFactorAuthentication()
@@ -163,7 +162,7 @@
             return this.RedirectToAction("Index", "Manage");
         }
 
-        // GET: /Manage/VerifyPhoneNumber
+        [Authorize(Roles = "Administrator, Editor")]
         public async Task<ActionResult> VerifyPhoneNumber(string phoneNumber)
         {
             var code = await this.UserManager.GenerateChangePhoneNumberTokenAsync(this.User.Identity.GetUserId(), phoneNumber);
@@ -172,7 +171,7 @@
             return phoneNumber == null ? this.View("Error") : this.View(new VerifyPhoneNumberViewModel { PhoneNumber = phoneNumber });
         }
 
-        // POST: /Manage/VerifyPhoneNumber
+        [Authorize(Roles = "Administrator, Editor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyPhoneNumber(VerifyPhoneNumberViewModel model)
@@ -199,7 +198,7 @@
             return this.View(model);
         }
 
-        // POST: /Manage/RemovePhoneNumber
+        [Authorize(Roles = "Administrator, Editor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RemovePhoneNumber()
@@ -219,13 +218,11 @@
             return this.RedirectToAction("Index", new { Message = ManageMessageId.RemovePhoneSuccess });
         }
 
-        // GET: /Manage/ChangePassword
         public ActionResult ChangePassword()
         {
             return this.View();
         }
 
-        // POST: /Manage/ChangePassword
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
@@ -251,13 +248,13 @@
             return this.View(model);
         }
 
-        // GET: /Manage/SetPassword
+        [Authorize(Roles = "Administrator, Editor")]
         public ActionResult SetPassword()
         {
             return this.View();
         }
 
-        // POST: /Manage/SetPassword
+        [Authorize(Roles = "Administrator, Editor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
@@ -283,7 +280,7 @@
             return this.View(model);
         }
 
-        // GET: /Manage/ManageLogins
+        [Authorize(Roles = "Administrator, Editor")]
         public async Task<ActionResult> ManageLogins(ManageMessageId? message)
         {
             this.ViewBag.StatusMessage =
@@ -306,7 +303,7 @@
             });
         }
 
-        // POST: /Manage/LinkLogin
+        [Authorize(Roles = "Administrator, Editor")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult LinkLogin(string provider)
@@ -315,7 +312,7 @@
             return new AccountController.ChallengeResult(provider, this.Url.Action("LinkLoginCallback", "Manage"), this.User.Identity.GetUserId());
         }
 
-        // GET: /Manage/LinkLoginCallback
+        [Authorize(Roles = "Administrator, Editor")]
         public async Task<ActionResult> LinkLoginCallback()
         {
             var loginInfo = await this.AuthenticationManager.GetExternalLoginInfoAsync(XsrfKey, this.User.Identity.GetUserId());
