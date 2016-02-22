@@ -439,5 +439,38 @@ body a:focus {
   padding: 0 5px;
 }
 .public-profile-menu a {
-  color: #888;
+  color: #888888;
+}
+.see-more h6 {
+  text-transform: uppercase;
+  width: 100%;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  font-size: 1.5em;
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
+  text-shadow: 1px 1px 1px #888888;
+}
+.see-more p {
+  padding: 5px 0 !important;
+}
+.see-more a {
+  color: #3cb04a;
+}
+.see-more a:hover {
+  color: #428bca;
+}
+#comments {
+  margin: 15px 0 15px;
+}
+#comments .comment-item p {
+  padding: 5px 0;
+}
+#comments h6 {
+  text-transform: uppercase;
+  width: 100%;
+  padding: 10px;
+  margin: 0 0 20px 0;
+  font-size: 1.5em;
+  font-family: Calibri, 'Trebuchet MS', sans-serif;
+  text-shadow: 1px 1px 1px #888888;
 }

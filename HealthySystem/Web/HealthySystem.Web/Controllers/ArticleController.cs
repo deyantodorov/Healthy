@@ -1,21 +1,28 @@
 ﻿namespace HealthySystem.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Text;
     using System.Web.Mvc;
     using HealthySystem.Common;
+    using HealthySystem.Data.Models;
     using HealthySystem.Services.Data.Contracts;
-    using HealthySystem.Web.Infrastructure.Images;
+    using HealthySystem.Services.Web.Contracts;
     using HealthySystem.Web.Infrastructure.Mapping;
     using HealthySystem.Web.ViewModels;
+    using Microsoft.AspNet.Identity;
 
     public class ArticleController : SiteController
     {
         private readonly IArticleService articleService;
+        private readonly ICommentService commentService;
+        private readonly IHtmlSecuritySanitizer htmlSecuritySanitizer;
 
-        public ArticleController(IArticleService articleService)
+        public ArticleController(IArticleService articleService, ICommentService commentService, IHtmlSecuritySanitizer htmlSecuritySanitizer)
         {
             this.articleService = articleService;
+            this.commentService = commentService;
+            this.htmlSecuritySanitizer = htmlSecuritySanitizer;
         }
 
         [HttpGet]
@@ -25,6 +32,22 @@
             {
                 return this.RedirectToActionPermanent("Index", "Home");
             }
+
+            if (this.TempData.ContainsKey("DoubleComment"))
+            {
+                this.ViewBag.DoubleComment = this.TempData["DoubleComment"];
+                this.TempData.Remove("DoubleComment");
+            }
+
+            // TODO: Bug in Article and AdSense display
+            // var cacheName = alias.Replace("-", string.Empty);
+            // var article = this.Cache.Get(
+            //    cacheName,
+            //    () => this.articleService.GetAll()
+            //    .Where(x => x.Alias.ToLower().Equals(alias.ToLower().Trim()))
+            //    .To<ArticleSitePageViewModel>()
+            //    .SingleOrDefault(),
+            //    WebConstants.Min5);
 
             var article = this.articleService.GetAll()
                 .Where(x => x.Alias.ToLower().Equals(alias.ToLower().Trim()))
@@ -36,6 +59,18 @@
                 return this.HttpNotFound();
             }
 
+            var otherArticles = this.Cache.Get(
+                "SeeMore" + article.RubricId,
+                () => this.articleService.GetAll()
+                .Where(x => x.IsPublished && x.PublishDate <= DateTime.Now && x.Id != article.Id && x.RubricId == article.RubricId)
+                .OrderByDescending(x => x.CreatedOn)
+                .Take(WebConstants.SiteOtherArticlesSize)
+                .To<ArticleSiteShortPreviewViewModel>()
+                .ToList(),
+                WebConstants.Min15);
+
+            article.OtherArticles = otherArticles;
+
             if (article.Content.Length > WebConstants.ArticleTextSplitLength + WebConstants.ArticleTextSplitLengthExtra)
             {
                 article.Content = this.InjectAdsInContent(article.Content);
@@ -44,6 +79,50 @@
             this.ViewBag.Tags = this.GetTags();
 
             return this.View(article);
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        [ValidateAntiForgeryToken]
+        public ActionResult Comment(CommentViewModel comment)
+        {
+            if (comment != null && this.ModelState.IsValid)
+            {
+                comment.Content = this.htmlSecuritySanitizer.Clean(comment.Content);
+                comment.Author = this.htmlSecuritySanitizer.Clean(comment.Author);
+                comment.ArticleAlias = this.htmlSecuritySanitizer.Clean(comment.ArticleAlias);
+
+                var alias = comment.ArticleAlias.Split('/').Last().ToLower();
+                var userId = this.User.Identity.GetUserId();
+
+                var article = this.articleService.GetAll()
+                    .FirstOrDefault(x => x.Alias.Equals(alias));
+
+                if (article == null)
+                {
+                    return this.RedirectToAction("Index");
+                }
+
+                if (article.Comments.LastOrDefault(x => x.AuthorId == userId) != null)
+                {
+                    // Last comment is again by me
+                    this.TempData.Add("DoubleComment", "Моля, изчакайте да ви отоговорят преди да коментирате отново!");
+                    return this.Redirect("/" + comment.ArticleAlias + "#comments");
+                }
+
+                var newComment = new Comment()
+                {
+                    Content = comment.Content,
+                    AuthorId = userId,
+                    ArticleId = article.Id
+                };
+
+                this.commentService.Add(newComment);
+
+                return this.Redirect("/" + comment.ArticleAlias + "#comments");
+            }
+
+            return this.RedirectToAction("Index");
         }
 
         private string InjectAdsInContent(string content)

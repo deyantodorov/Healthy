@@ -42,11 +42,47 @@
     </div>
 
     <div class="article-content">
-        @Html.Partial("_AdUnitArticleTopRight")
+        @Html.Partial("_AdUnitArticleTopRight", Model.OtherArticles)
         @Html.Raw(Model.Content)
         @Html.Partial("_AdUnitArticleBottom")
     </div>
+
+    <div id="comments" class="text-center">
+        <div class="comments-title">
+            <h6>@(Model.Comments.Count() == 1 ? Model.Comments.Count() + " коментар" : Model.Comments.Count() + " коментара") : "@Model.Title"</h6>
+        </div>
+        @foreach (var comment in Model.Comments)
+        {
+            <div class="comment-item">
+                <p><strong>@comment.Author</strong></p>
+                <div>@comment.Content</div>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(this.ViewBag.DoubleComment))
+        {
+            <div class="alert alert-danger">@ViewBag.DoubleComment</div>
+        }
+
+        @if (this.User.Identity.IsAuthenticated)
+        {
+            <div class="comment-post">
+                @Html.Partial("_CommentPostPartial", new CommentViewModel() { ArticleAlias = Model.Alias })
+            </div>
+        }
+        else
+        {
+            <hr />
+            <p>
+                <em>
+                    За да коментираш е нужно да си регистриран потребител.
+                    Избери @Html.ActionLink("Вход", "Login", "Account", new { area = "Identity" }, null) или @Html.ActionLink("Регистрация", "Register", "Account", new { area = "Identity" }, null)?
+                </em>
+            </p>
+        }
+    </div>
 </div>
+
 @Html.Partial("_Tags", (IList<TagSiteViewModel>)ViewBag.Tags)
 
 @section scripts
@@ -70,9 +106,11 @@
 
             var count = json.shares;
 
-            if(parseInt(count) > 0){
+            if (parseInt(count) > 0) {
                 $('.fbShareCount > b').text(count);
             }
         }
     </script>
+
+    @Scripts.Render("~/bundles/jqueryval")
 }

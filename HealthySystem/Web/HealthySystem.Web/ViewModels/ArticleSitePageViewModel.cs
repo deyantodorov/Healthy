@@ -1,6 +1,7 @@
 ﻿namespace HealthySystem.Web.ViewModels
 {
     using System;
+    using System.Collections.Generic;
     using System.Web.Mvc;
     using AutoMapper;
     using HealthySystem.Common;
@@ -10,6 +11,8 @@
 
     public class ArticleSitePageViewModel : IMapFrom<Article>, IHaveCustomMappings
     {
+        public int Id { get; set; }
+
         public string Title { get; set; }
 
         public string Description { get; set; }
@@ -25,12 +28,19 @@
 
         public string Alias { get; set; }
 
+        public int RubricId { get; set; }
+
+        public IEnumerable<ArticleSiteShortPreviewViewModel> OtherArticles { get; set; }
+
+        public IEnumerable<CommentViewModel> Comments { get; set; }
+
         public void CreateMappings(IMapperConfiguration configuration)
         {
             configuration.CreateMap<Article, ArticleSitePageViewModel>()
                 .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.Image.ImagePath))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.PublishDate))
-                .ForMember(dest => dest.Alias, opt => opt.MapFrom(src => "r/" + src.Rubric.Alias + "/" + src.Alias));
+                .ForMember(dest => dest.Alias, opt => opt.MapFrom(src => "r/" + src.Rubric.Alias + "/" + src.Alias))
+                .ForMember(dest => dest.Comments, opt => opt.MapFrom(s => s.Comments));
         }
     }
 }

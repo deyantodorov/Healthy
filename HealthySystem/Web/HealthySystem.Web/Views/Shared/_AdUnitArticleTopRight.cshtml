@@ -1,10 +1,19 @@
-﻿<div class="au-article-top-right clearfix">
+﻿@model IEnumerable<HealthySystem.Web.ViewModels.ArticleSiteShortPreviewViewModel>
+<div class="au-article-top-right clearfix">
     <ins class="adsbygoogle"
-         style="display:block"
+         style="display: block"
          data-ad-client="ca-pub-4597731759312348"
          data-ad-slot="4141238312"
          data-ad-format="auto"></ins>
     <script>
         (adsbygoogle = window.adsbygoogle || []).push({});
     </script>
+
+    <div class="see-more">
+        <h6>Виж още:</h6>
+        @foreach (var item in Model)
+        {
+            <p><a href="/@item.Alias">@item.Title</a></p>
+        }
+    </div>
 </div>

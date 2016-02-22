@@ -261,6 +261,7 @@
     <Compile Include="ViewModels\ArticleSiteShortPreviewViewModel.cs" />
     <Compile Include="ViewModels\ArticleSitePageViewModel.cs" />
     <Compile Include="ViewModels\ArticleSitePreviewViewModel.cs" />
+    <Compile Include="ViewModels\CommentViewModel.cs" />
     <Compile Include="ViewModels\TagSiteViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -612,6 +613,8 @@
     <Content Include="Views\Shared\EditorTemplates\SingleLineTextPasswordTiny.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\SingleLineTextTiny.cshtml" />
     <Content Include="Views\Shared\_LogOffPartial.cshtml" />
+    <Content Include="Views\Article\_CommentPostPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultiLineTextWide.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-2.2.0.min.map" />

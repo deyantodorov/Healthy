@@ -549,6 +549,48 @@ body {
     }
 
     a {
-        color: #888;
+        color: @lightgrey;
+    }
+}
+
+.see-more {
+    h6 {
+        text-transform: uppercase;
+        width: 100%;
+        padding: 10px;
+        margin: 0 0 20px 0;
+        font-size: 1.5em;
+        font-family: Calibri, 'Trebuchet MS', sans-serif;
+        text-shadow: 1px 1px 1px #888888;
+    }
+
+    p {
+        padding: 5px 0 !important;
+    }
+
+    a {
+        color: @green;
+
+        &:hover {
+            color: @link;
+        }
+    }
+}
+
+#comments {
+    margin: 15px 0 15px;
+
+    .comment-item p {
+        padding: 5px 0;
+    }
+
+    h6 {
+        text-transform: uppercase;
+        width: 100%;
+        padding: 10px;
+        margin: 0 0 20px 0;
+        font-size: 1.5em;
+        font-family: Calibri, 'Trebuchet MS', sans-serif;
+        text-shadow: 1px 1px 1px #888888;
     }
 }

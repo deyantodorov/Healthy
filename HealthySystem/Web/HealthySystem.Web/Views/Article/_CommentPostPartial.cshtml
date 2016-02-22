@@ -1,0 +1,14 @@
+﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
+@model CommentViewModel
+@using (Html.BeginForm("Comment", "Article", new { area = string.Empty }, FormMethod.Post, null))
+{
+    @Html.AntiForgeryToken()
+    @Html.EditorFor(m => m.Content)
+    @Html.HiddenFor(m => m.ArticleAlias)
+    <div class="form-group">
+        <div class="col-md-offset-5 col-md-2">
+            <br />
+            @Html.Submit(new { @class = "btn btn-lg btn-default", value = "Публикувай" })
+        </div>
+    </div>
+}

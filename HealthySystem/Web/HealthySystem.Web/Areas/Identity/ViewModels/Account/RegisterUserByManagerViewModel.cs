@@ -7,13 +7,13 @@
     public class RegisterUserByManagerViewModel
     {
         [Required(ErrorMessage = ModelConstants.Required)]
-        [Display(Name = "Потребителско име")]
-        [StringLength(16, MinimumLength = 5)]
+        [Display(Name = "Потребител")]
+        [StringLength(16, ErrorMessage = ModelConstants.StringLength, MinimumLength = WebConstants.MinUserPasswordLength)]
         [UIHint("SingleLineText")]
         public string UserName { get; set; }
 
         [Required(ErrorMessage = ModelConstants.Required)]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Невалиден Е-мейл адрес")]
         [Display(Name = "Е-майл")]
         [UIHint("SingleLineText")]
         public string Email { get; set; }
