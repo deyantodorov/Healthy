@@ -8,16 +8,16 @@
     [TestClass]
     public class RubricsRouteTests
     {
-        //[TestMethod]
-        //public void TestRubricId()
-        //{
-        //    var url = "1";
-        //    var routeCollection = new RouteCollection();
-        //    RouteConfig.RegisterRoutes(routeCollection);
+        [TestMethod]
+        public void TestRubricId()
+        {
+            var url = "/121123";
+            var routeCollection = new RouteCollection();
+            RouteConfig.RegisterRoutes(routeCollection);
 
-        //    routeCollection
-        //        .ShouldMap(url)
-        //        .To<HomeController>(x => x.Index());
-        //}
+            routeCollection
+                .ShouldMap(url)
+                .To<HomeController>(x => x.Index());
+        }
     }
 }

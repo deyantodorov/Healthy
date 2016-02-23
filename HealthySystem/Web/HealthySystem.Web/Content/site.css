@@ -437,9 +437,13 @@ body a:focus {
 .public-profile-menu div {
   display: inline-block;
   padding: 0 5px;
+  font-weight: bold;
 }
 .public-profile-menu a {
-  color: #888888;
+  color: #3cb04a;
+}
+.public-profile-menu a:hover {
+  color: #428bca;
 }
 .see-more h6 {
   text-transform: uppercase;

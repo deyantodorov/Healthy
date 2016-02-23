@@ -12,6 +12,7 @@
         {
             HttpMethod = "POST",
             InsertionMode = InsertionMode.Replace,
+            OnFailure = "Manager.DisplayError('" + ModelConstants.ModelError + "')",
             UpdateTargetId = "rubric" + @Model.Id
         },
         new { @class = "btn btn-default" })

@@ -12,8 +12,10 @@
 {
     @Html.AntiForgeryToken()
     @Html.EditorFor(m => m.Name)
-    @Html.EditorFor(m => m.ParentId)
     @Html.EditorFor(m => m.Alias)
+    @Html.EditorFor(m => m.Title)
+    @Html.EditorFor(m => m.Description)
+    @Html.EditorFor(m => m.ParentId)
     <div class="form-group">
         <div class="col-md-offset-2 col-md-5">
             @Html.Submit(new { @class = "btn btn-primary", value = "Добави рубрика" })

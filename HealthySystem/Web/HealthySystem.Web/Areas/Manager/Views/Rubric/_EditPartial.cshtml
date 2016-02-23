@@ -1,4 +1,5 @@
-﻿@using HealthySystem.Web.Infrastructure.HtmlHelpers
+﻿@using HealthySystem.Common
+@using HealthySystem.Web.Infrastructure.HtmlHelpers
 @model HealthySystem.Web.Areas.Manager.ViewModels.Rubric.RubricViewModel
 <td colspan="5">
     <div class="form-horizontal">
@@ -13,7 +14,8 @@
         {
             HttpMethod = "POST",
             InsertionMode = InsertionMode.ReplaceWith,
-            UpdateTargetId = "rubric" + @Model.Id
+            UpdateTargetId = "rubric" + @Model.Id,
+            OnFailure = "Manager.DisplayError('" + ModelConstants.ModelError + "')"
         }))
         {
             <div class="form-group">
@@ -24,9 +26,11 @@
             </div>
             @Html.HiddenFor(m => m.Id)
             @Html.EditorFor(m => m.Name, new { AddClass = "tagToEdit" })
-            @Html.EditorFor(m => m.ParentId)
             @Html.EditorFor(m => m.Alias, new { AddClass = "tagToSave" })
-
+            @Html.EditorFor(m => m.Title, new { AddClass = "tagToEdit" })
+            @Html.EditorFor(m => m.Description, new { AddClass = "tagToEdit" })
+            @Html.EditorFor(m => m.ParentId)
+            
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-5">
                     @Html.Submit(new { @class = "btn btn-default", value = "Запиши" })
@@ -44,6 +48,7 @@
         }
     </div>
 </td>
+
 <script>
     Manager.PostTransliterator('.tagToEdit', '.tagToSave', '/Manager/Home/Transliterate');
 </script>

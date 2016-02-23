@@ -42,7 +42,7 @@
 
             var rubric = this.Mapper.Map<Rubric>(model);
 
-            if (!this.IsCorrectRubric(rubric) || !this.TryFindRubricByParentId(rubric))
+            if (this.IncorrectRubric(rubric))
             {
                 return new HttpStatusCodeResult(400, ModelConstants.ModelError);
             }
@@ -69,7 +69,8 @@
             }
 
             var forUpdate = this.Mapper.Map<Rubric>(model);
-            if (!this.IsCorrectRubric(forUpdate) || !this.TryFindRubricByParentId(forUpdate))
+
+            if (this.IncorrectRubric(forUpdate))
             {
                 return new HttpStatusCodeResult(400, ModelConstants.ModelError);
             }
@@ -117,22 +118,18 @@
             return rubric;
         }
 
-        private bool IsCorrectRubric(Rubric rubric)
+        private bool IncorrectRubric(Rubric rubric)
         {
-            var tryFind = this.rubricService
-                .GetAll()
-                .Where(r => r.Name == rubric.Name
-                        && r.ParentId == rubric.ParentId
-                        && r.Alias == rubric.Alias)
-                .ToList();
+            bool isParentRubricExist = false;
 
-            return !tryFind.Any() && rubric.Id != rubric.ParentId;
-        }
+            if (rubric.ParentId != null)
+            {
+                isParentRubricExist = !this.rubricService.GetAll().Any(x => x.Id != rubric.Id && x.Id == rubric.ParentId);
+            }
 
-        private bool TryFindRubricByParentId(Rubric rubric)
-        {
-            var tryFind = this.rubricService.GetById(rubric.ParentId ?? 0);
-            return tryFind != null || rubric.ParentId == null;
+            bool isParentRubricIdIsMyId = rubric.Id == rubric.ParentId;
+
+            return isParentRubricExist || isParentRubricIdIsMyId;
         }
     }
 }

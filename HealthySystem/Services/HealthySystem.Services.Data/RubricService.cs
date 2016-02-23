@@ -30,8 +30,9 @@
             var rubricToUpdate = this.GetById(rubric.Id);
 
             rubricToUpdate.Name = rubric.Name;
-            rubricToUpdate.Description = rubric.Description;
             rubricToUpdate.Alias = rubric.Alias;
+            rubricToUpdate.Title = rubric.Title;
+            rubricToUpdate.Description = rubric.Description;
             rubricToUpdate.ParentId = rubric.ParentId;
 
             this.rubrics.Save();

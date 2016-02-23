@@ -144,6 +144,8 @@
                     {
                         rubric.Name = currentWords[1];
                         rubric.Alias = currentWords[4];
+                        rubric.Title = currentWords[5];
+                        rubric.Description = currentWords[6];
 
                         line = input.ReadLine();
                     }

@@ -23,13 +23,13 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Начало", "Index", "Home")</li>
-                        <li>@Html.ActionLink("Съдържание", "Index", "Article")</li>
-                        <li>@Html.ActionLink("Тагове", "Index", "Tag")</li>
-                        <li>@Html.ActionLink("Снимки", "Index", "Image")</li>
+                        <li>@Html.ActionLink("Начало", "Index", "Home", new { area = "Manager" }, null)</li>
+                        <li>@Html.ActionLink("Съдържание", "Index", "Article", new { area = "Manager" }, null)</li>
+                        <li>@Html.ActionLink("Тагове", "Index", "Tag", new { area = "Manager" }, null)</li>
+                        <li>@Html.ActionLink("Снимки", "Index", "Image", new { area = "Manager" }, null)</li>
                         @if (User.IsInRole(WebConstants.AdminRole))
                         {
-                            <li>@Html.ActionLink("Рубрики", "Index", "Rubric")</li>
+                            <li>@Html.ActionLink("Рубрики", "Index", "Rubric", new { area = "Manager" }, null)</li>
                             <li>@Html.ActionLink("Потребители", "Index", "Account", new { area = "Identity" }, null)</li>
                         }
 

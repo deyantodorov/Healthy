@@ -36,8 +36,11 @@
                 pageSize = 1;
             }
 
-            // Fake rubric name return 404 error
-            if (!this.rubricService.GetAll().Any(x => x.Alias.ToLower().Equals(alias.ToLower())))
+            // Get rubric info
+            var rubric = this.rubricService.GetAll()
+                .FirstOrDefault(x => x.Alias == alias);
+
+            if (rubric == null)
             {
                 return new HttpNotFoundResult();
             }
@@ -49,48 +52,9 @@
 
             this.ViewBag.Tags = this.GetTags();
             this.ViewBag.Page = pageSize;
-
-            // Get rubric title
-            string title = this.rubricService.GetAll()
-                .Where(x => x.Alias == alias)
-                .Select(x => x.Name)
-                .Single();
-
-            this.ViewBag.Title = string.Empty;
-            this.ViewBag.Description = string.Empty;
-            this.ViewBag.PagingTitle = title;
-
-            switch (title.ToLower())
-            {
-                case "лечение":
-                    this.ViewBag.Title = WebConstants.LechenieTitle;
-                    this.ViewBag.Description = WebConstants.LechenieDesc;
-                    break;
-                case "здраве":
-                    this.ViewBag.Title = WebConstants.ZdraveTitle;
-                    this.ViewBag.Description = WebConstants.ZdraveDesc;
-                    break;
-                case "психология":
-                    this.ViewBag.Title = WebConstants.PsihologiyaTitle;
-                    this.ViewBag.Description = WebConstants.PsihologiyaDesc;
-                    break;
-                case "здравословно хранене":
-                    this.ViewBag.Title = WebConstants.ZdravoslovnoHraneneTitle;
-                    this.ViewBag.Description = WebConstants.ZdravoslovnoHraneneDesc;
-                    break;
-                case "секс и здраве":
-                    this.ViewBag.Title = WebConstants.SeksZdraveTitle;
-                    this.ViewBag.Description = WebConstants.SeksZdraveDesc;
-                    break;
-                case "деца":
-                    this.ViewBag.Title = WebConstants.DetsaTitle;
-                    this.ViewBag.Description = WebConstants.DetsaDesc;
-                    break;
-                case "красота":
-                    this.ViewBag.Title = WebConstants.KrasotaTitle;
-                    this.ViewBag.Description = WebConstants.KrasotaDesc;
-                    break;
-            }
+            this.ViewBag.Title = rubric.Title;
+            this.ViewBag.Description = rubric.Description;
+            this.ViewBag.PagingTitle = rubric.Name.ToLower();
 
             return this.View(articles);
         }
