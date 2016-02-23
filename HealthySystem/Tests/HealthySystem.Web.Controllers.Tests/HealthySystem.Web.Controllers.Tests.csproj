@@ -89,6 +89,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="FakeDbRepository\ArticleDbRepository.cs" />
     <Compile Include="HomeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -103,6 +104,18 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\HealthySystem.Data.Common\HealthySystem.Data.Common.csproj">
+      <Project>{E5952439-0BBF-4A8E-9130-D8218EC9EC00}</Project>
+      <Name>HealthySystem.Data.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Data\HealthySystem.Data.Models\HealthySystem.Data.Models.csproj">
+      <Project>{D6D6083A-FC2B-4C52-918D-1943D108D3E0}</Project>
+      <Name>HealthySystem.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\HealthySystem.Services.Data\HealthySystem.Services.Data.csproj">
+      <Project>{5EE2CBAF-0424-4CB6-A01A-4AB99CAB6071}</Project>
+      <Name>HealthySystem.Services.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Services\HealthySystem.Services.Web\HealthySystem.Services.Web.csproj">
       <Project>{aefabf28-8e1f-42b8-b04c-c8926a9a6b71}</Project>
       <Name>HealthySystem.Services.Web</Name>
