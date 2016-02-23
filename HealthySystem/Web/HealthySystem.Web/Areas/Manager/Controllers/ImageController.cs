@@ -193,7 +193,7 @@
         }
 
         [HttpPost]
-        public ActionResult UpdateCancel(int id)
+        public ActionResult Cancel(int id)
         {
             var image = this.imageService.GetById(id);
             var imageViewModel = this.Mapper.Map<ImagePreviewViewModel>(image);
