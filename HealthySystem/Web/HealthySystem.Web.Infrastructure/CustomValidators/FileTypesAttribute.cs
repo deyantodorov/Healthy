@@ -24,7 +24,7 @@
             }
 
             var fileExt = Path.GetExtension((value as HttpPostedFileBase).FileName).Substring(1);
-            return types.Contains(fileExt, StringComparer.OrdinalIgnoreCase);
+            return this.types.Contains(fileExt, StringComparer.OrdinalIgnoreCase);
         }
 
         public override string FormatErrorMessage(string name)

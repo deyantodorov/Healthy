@@ -222,13 +222,14 @@
             Article article = new Article
             {
                 Title = list[1].Trim(),
-                //Alias = Transliterator.GetTextInEnglish(list[1].Trim()),
                 Description = list[2].Length >= 250 ? list[2].Substring(0, 250) : list[2],
                 RubricId = GetNewRubricId(list[3]),
                 Content = list[4].Trim(),
                 IsPublished = true,
-                //PublishDate = DateConverter.FromUnixToSystemDateTime(list[5]),
-                //AddDate = list.Count < 7 ? DateConverter.FromUnixToSystemDateTime(list[5]) : DateConverter.FromUnixToSystemDateTime(list[6]),
+
+                // Alias = Transliterator.GetTextInEnglish(list[1].Trim()),
+                // PublishDate = DateConverter.FromUnixToSystemDateTime(list[5]),
+                // AddDate = list.Count < 7 ? DateConverter.FromUnixToSystemDateTime(list[5]) : DateConverter.FromUnixToSystemDateTime(list[6]),
             };
 
             return article;
@@ -237,6 +238,8 @@
         /// <summary>
         /// Return new parent id's from current db
         /// </summary>
+        /// <param name="oldId">old id</param>
+        /// <returns>new parent id</returns>
         private static int GetNewRubricId(string oldId)
         {
             int newId = int.Parse(oldId);

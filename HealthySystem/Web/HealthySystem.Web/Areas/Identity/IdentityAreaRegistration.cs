@@ -12,8 +12,7 @@ namespace HealthySystem.Web.Areas.Identity
                 "Identity_default",
                 "Identity/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new[] { "HealthySystem.Web.Areas.Identity.Controllers" }
-            );
+                new[] { "HealthySystem.Web.Areas.Identity.Controllers" });
         }
     }
 }

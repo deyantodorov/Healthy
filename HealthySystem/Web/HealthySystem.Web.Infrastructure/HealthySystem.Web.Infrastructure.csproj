@@ -74,8 +74,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomValidators\FileSize.cs" />
-    <Compile Include="CustomValidators\FileType.cs" />
+    <Compile Include="CustomValidators\FileSizeAttribute.cs" />
+    <Compile Include="CustomValidators\FileTypesAttribute.cs" />
     <Compile Include="HtmlHelpers\HtmlExtensions.cs" />
     <Compile Include="Images\Images.cs" />
     <Compile Include="Mapping\AutoMapperConfig.cs" />

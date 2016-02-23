@@ -48,7 +48,6 @@
             //    .To<ArticleSitePageViewModel>()
             //    .SingleOrDefault(),
             //    WebConstants.Min5);
-
             var article = this.articleService.GetAll()
                 .Where(x => x.Alias.ToLower().Equals(alias.ToLower().Trim()))
                 .To<ArticleSitePageViewModel>()

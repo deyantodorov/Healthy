@@ -44,9 +44,9 @@
             this.controller.WithCallTo(x => x.Index()).ShouldRenderDefaultView();
         }
 
-        //[TestMethod]
-        //public void TestHomeControllerIndexShouldMapDataCorrectly()
-        //{
+        // [TestMethod]
+        // public void TestHomeControllerIndexShouldMapDataCorrectly()
+        // {
         //    this.controller.WithCallTo(x => x.Index())
         //        .ShouldRenderView("Index")
         //        .WithModel<ArticleSitePreviewViewModel>(
@@ -54,6 +54,6 @@
         //            {
         //                Assert.AreEqual(ArticleDbRepository.GetArticles().ToList()[vm.Id - 1], vm.Id);
         //            }).AndNoModelErrors();
-        //}
+        // }
     }
 }

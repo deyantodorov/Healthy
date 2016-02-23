@@ -9,8 +9,8 @@
         [Key]
         public int Id { get; set; }
 
+        // [UIHint("UploadFile")]
         [Required]
-        //[UIHint("UploadFile")]
         [Display(Name = "Добави картинка")]
         public string ImagePath { get; set; }
 
