@@ -31,8 +31,20 @@
                         {
                             <li>@Html.ActionLink("Рубрики", "Index", "Rubric", new { area = "Manager" }, null)</li>
                             <li>@Html.ActionLink("Потребители", "Index", "Account", new { area = "Identity" }, null)</li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Настройки
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/Glimpse.axd" target="_blank">Glimpse</a></li>
+                                    <li><a href="~/Elmah.axd" target="_blank">Elmah</a></li>
+                                    <li><a href="#">Facebook</a></li>
+                                    <li><a href="#">Google Plus</a></li>
+                                    <li><a href="#">Google Analytics</a></li>
+                                </ul>
+                            </li>
                         }
-
                     </ul>
                     @Html.Partial("_LoginPartial")
                 </div>

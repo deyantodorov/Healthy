@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace HealthySystem.Web.Areas.Manager
+﻿namespace HealthySystem.Web.Areas.Manager
 {
+    using System.Web.Mvc;
+
     public class ManagerAreaRegistration : AreaRegistration
     {
         public override string AreaName => "Manager";

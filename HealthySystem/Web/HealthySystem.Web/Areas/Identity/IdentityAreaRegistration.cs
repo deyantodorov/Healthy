@@ -1,7 +1,7 @@
-﻿using System.Web.Mvc;
-
-namespace HealthySystem.Web.Areas.Identity
+﻿namespace HealthySystem.Web.Areas.Identity
 {
+    using System.Web.Mvc;
+
     public class IdentityAreaRegistration : AreaRegistration
     {
         public override string AreaName => "Identity";

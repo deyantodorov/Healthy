@@ -10,8 +10,8 @@
     using HealthySystem.Web.Areas.Manager.ViewModels.Article;
     using HealthySystem.Web.Areas.Manager.ViewModels.Rubric;
     using HealthySystem.Web.Infrastructure.Mapping;
-    using Microsoft.AspNet.Identity;
     using Infrastructure.Images;
+    using Microsoft.AspNet.Identity;
 
     public class ArticleController : AdministratorController
     {

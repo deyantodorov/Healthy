@@ -122,11 +122,11 @@
             string fileNameSaveAs = Math.Abs(fileName.GetHashCode() ^ fileName.Length) + "-" + fileName;
             model.ImagePath.SaveAs(Path.Combine(hddPath, fileNameSaveAs));
 
-            string dbPath = "/" + WebConstants.DirectoryUpload + "/" + currentFolder + "/" + fileNameSaveAs;
+            string imageDbPath = "/" + WebConstants.DirectoryUpload + "/" + currentFolder + "/" + fileNameSaveAs;
 
             var image = new Image()
             {
-                ImagePath = dbPath,
+                ImagePath = imageDbPath,
                 ImageDescription = model.ImageDescription
             };
 

@@ -4,12 +4,12 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Linq;
+    using System.Text;
     using System.Web.Mvc;
     using AutoMapper;
-    using HealthySystem.Web.Infrastructure.Mapping;
-    using System.Text;
     using HealthySystem.Common;
     using HealthySystem.Data.Models;
+    using HealthySystem.Web.Infrastructure.Mapping;
 
     public class ArticleViewModel : IMapFrom<Article>, IMapTo<Article>, IHaveCustomMappings
     {

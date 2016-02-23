@@ -1,9 +1,9 @@
 ﻿namespace HealthySystem.Web
 {
     using System;
+    using HealthySystem.Common;
     using HealthySystem.Data;
     using HealthySystem.Data.Models;
-    using HealthySystem.Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin;
