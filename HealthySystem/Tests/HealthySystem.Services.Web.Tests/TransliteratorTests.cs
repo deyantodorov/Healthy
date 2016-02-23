@@ -16,45 +16,45 @@
         [TestMethod]
         public void TestAllCharactersCorrectConversionFromBgToEn()
         {
-            var bgChars = "абвгдежийкзлмнопрстуфхцчшщъьюя";
-            var enChars = "abvgdezhiykzlmnoprstufhtschshshtayyuya";
+            var bulgarianChars = "абвгдежийкзлмнопрстуфхцчшщъьюя";
+            var englishChars = "abvgdezhiykzlmnoprstufhtschshshtayyuya";
 
-            var converted = this.transliterator.GetTextInEnglish(bgChars);
+            var converted = this.transliterator.GetTextInEnglish(bulgarianChars);
 
-            Assert.AreEqual(enChars, converted);
+            Assert.AreEqual(englishChars, converted);
         }
 
         [TestMethod]
         public void TestAllCharactersCorrectConversionDifferentCasingFromBgToEn()
         {
-            var bgChars = "АбвгдежийкЗлмнопрсТуФхцчшщъьюЯ";
-            var enChars = "abvgdezhiykzlmnoprstufhtschshshtayyuya";
+            var bulgarianChars = "АбвгдежийкЗлмнопрсТуФхцчшщъьюЯ";
+            var englishChars = "abvgdezhiykzlmnoprstufhtschshshtayyuya";
 
-            var converted = this.transliterator.GetTextInEnglish(bgChars);
+            var converted = this.transliterator.GetTextInEnglish(bulgarianChars);
 
-            Assert.AreEqual(enChars, converted);
+            Assert.AreEqual(englishChars, converted);
         }
 
         [TestMethod]
         public void TestFromBgToEnWithDashes()
         {
-            var bgChars = "Абвг - деЗлм - - нопрсТуФх - - ч   aaaA";
-            var enChars = "abvg-dezlm-noprstufh-ch-aaaa";
+            var bulgarianChars = "Абвг - деЗлм - - нопрсТуФх - - ч   aaaA";
+            var englishChars = "abvg-dezlm-noprstufh-ch-aaaa";
 
-            var converted = this.transliterator.GetTextInEnglish(bgChars);
+            var converted = this.transliterator.GetTextInEnglish(bulgarianChars);
 
-            Assert.AreEqual(enChars, converted);
+            Assert.AreEqual(englishChars, converted);
         }
 
         [TestMethod]
         public void TestFromBgToEnWithSymbols()
         {
-            var bgChars = "Абвг - деЗлм - ! * ~- нопрсТуФх - - ч ^!(@  aaaA";
-            var enChars = "abvg-dezlm-noprstufh-ch-aaaa";
+            var bulgarianChars = "Абвг - деЗлм - ! * ~- нопрсТуФх - - ч ^!(@  aaaA";
+            var englishChars = "abvg-dezlm-noprstufh-ch-aaaa";
 
-            var converted = this.transliterator.GetTextInEnglish(bgChars);
+            var converted = this.transliterator.GetTextInEnglish(bulgarianChars);
 
-            Assert.AreEqual(enChars, converted);
+            Assert.AreEqual(englishChars, converted);
         }
     }
 }

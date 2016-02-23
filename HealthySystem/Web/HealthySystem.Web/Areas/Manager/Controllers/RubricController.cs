@@ -80,7 +80,7 @@
         }
 
         [HttpPost]
-        public ActionResult UpdateCancel(int id)
+        public ActionResult Cancel(int id)
         {
             return this.PartialView("_ItemPartial", this.GetRubricById(id));
         }

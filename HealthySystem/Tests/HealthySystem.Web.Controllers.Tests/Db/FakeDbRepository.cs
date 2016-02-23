@@ -1,4 +1,4 @@
-﻿namespace HealthySystem.Web.Controllers.Tests
+﻿namespace HealthySystem.Web.Controllers.Tests.Db
 {
     using System;
     using System.Collections.Generic;

@@ -25,6 +25,11 @@
         [ValidateInput(false)]
         public ActionResult Index(string search, int? page)
         {
+            if (string.IsNullOrEmpty(search))
+            {
+                return this.RedirectToActionPermanent("Index", "Home");
+            }
+
             search = this.htmlSecuritySanitizer.Clean(search);
 
             int pageSize;

@@ -1,17 +1,17 @@
-﻿namespace HealthySystem.Web.Controllers.Tests
+﻿namespace HealthySystem.Web.Controllers.Tests.Site
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using TestStack.FluentMVCTesting;
 
     [TestClass]
-    public class TagControllerTests : BaseControllerTests
+    public class SearchControllerTests : BaseControllerTests
     {
-        private TagController controller;
+        private SearchController controller;
 
         [TestInitialize]
         public void Setup()
         {
-            this.controller = new TagController(this.articleServiceMock.Object)
+            this.controller = new SearchController(this.articleServiceMock.Object, this.securitySanitizer.Object)
             {
                 Cache = this.cacheServiceMock.Object
             };

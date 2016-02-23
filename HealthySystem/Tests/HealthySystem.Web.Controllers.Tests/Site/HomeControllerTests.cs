@@ -1,4 +1,4 @@
-﻿namespace HealthySystem.Web.Controllers.Tests
+﻿namespace HealthySystem.Web.Controllers.Tests.Site
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using TestStack.FluentMVCTesting;
