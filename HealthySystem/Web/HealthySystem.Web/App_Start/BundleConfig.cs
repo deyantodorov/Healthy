@@ -10,7 +10,7 @@
             RegisterStyleBundles(bundles);
 
             // TODO: Set TRUE in production
-            BundleTable.EnableOptimizations = false;
+            BundleTable.EnableOptimizations = true;
         }
 
         private static void RegisterScriptBundles(BundleCollection bundles)

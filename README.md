@@ -1,3 +1,8 @@
 # Healthy
 
-	This files are missing, because contains sensitive information: Web.Release.config, WebConstants.cs
+This files are missing:
+	
+	- Web.Release.config
+	- WebConstants.cs
+
+*Contains sensitive information, which is not for public usage*
