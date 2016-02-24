@@ -11,9 +11,9 @@
         [TestInitialize]
         public void Setup()
         {
-            this.controller = new TagController(this.articleServiceMock.Object)
+            this.controller = new TagController(this.ArticleServiceMock.Object)
             {
-                Cache = this.cacheServiceMock.Object
+                Cache = this.CacheServiceMock.Object
             };
         }
 

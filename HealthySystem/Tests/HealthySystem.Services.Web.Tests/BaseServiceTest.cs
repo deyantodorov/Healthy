@@ -9,10 +9,10 @@
     [TestClass]
     public abstract class BaseServiceTest
     {
-        protected AutoMapperConfig autoMapperConfig;
-        protected Mock<IArticleService> articleServiceMock;
-        protected Mock<IRubricService> rubricServiceMock;
-        protected Mock<ITagService> tagServiceMock;
+        private AutoMapperConfig autoMapperConfig;
+        private Mock<IArticleService> articleServiceMock;
+        private Mock<IRubricService> rubricServiceMock;
+        private Mock<ITagService> tagServiceMock;
 
         public void Init()
         {

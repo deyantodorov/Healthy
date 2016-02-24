@@ -16,7 +16,7 @@
         [TestInitialize]
         public void Setup()
         {
-            this.badRubric= new RubricViewModel()
+            this.badRubric = new RubricViewModel()
             {
                 Alias = "alias",
                 Description = "alias",
@@ -26,7 +26,7 @@
                 Title = "title"
             };
 
-            this.goodRubric= new RubricViewModel()
+            this.goodRubric = new RubricViewModel()
             {
                 Alias = "alias",
                 Description = "alias",
@@ -36,7 +36,7 @@
                 Title = "title"
             };
 
-            this.controller = new RubricController(this.rubricServiceMock.Object, this.articleServiceMock.Object);
+            this.controller = new RubricController(this.RubricServiceMock.Object, this.ArticleServiceMock.Object);
         }
 
         [TestMethod]

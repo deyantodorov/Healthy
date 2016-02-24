@@ -94,9 +94,11 @@
   <ItemGroup>
     <Compile Include="BaseControllerTests.cs" />
     <Compile Include="Db\FakeDbRepository.cs" />
+    <Compile Include="Manager\ManagerImageControllerTests.cs" />
     <Compile Include="Manager\ManagerRubricControllerTests.cs" />
     <Compile Include="Manager\ManagerTagControllerTests.cs" />
     <Compile Include="Manager\ManagerHomeControllerTests.cs" />
+    <Compile Include="Manager\MemoryFile.cs" />
     <Compile Include="Site\HomeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site\SearchControllerTests.cs" />

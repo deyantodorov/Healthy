@@ -11,9 +11,9 @@
         [TestInitialize]
         public void Setup()
         {
-            this.controller = new SearchController(this.articleServiceMock.Object, this.securitySanitizer.Object)
+            this.controller = new SearchController(this.ArticleServiceMock.Object, this.SecuritySanitizer.Object)
             {
-                Cache = this.cacheServiceMock.Object
+                Cache = this.CacheServiceMock.Object
             };
         }
 

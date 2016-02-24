@@ -12,7 +12,7 @@
         [TestInitialize]
         public void Setup()
         {
-            this.controller = new HomeController(this.transliterator.Object);
+            this.controller = new HomeController(this.Transliterator.Object);
         }
 
         [TestMethod]

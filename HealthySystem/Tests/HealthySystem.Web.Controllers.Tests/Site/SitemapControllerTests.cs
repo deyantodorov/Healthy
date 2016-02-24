@@ -10,9 +10,9 @@
         [TestInitialize]
         public void Setup()
         {
-            this.controller = new SitemapController(this.articleServiceMock.Object, this.rubricServiceMock.Object)
+            this.controller = new SitemapController(this.ArticleServiceMock.Object, this.RubricServiceMock.Object)
             {
-                Cache = this.cacheServiceMock.Object
+                Cache = this.CacheServiceMock.Object
             };
         }
     }

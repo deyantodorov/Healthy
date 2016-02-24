@@ -15,7 +15,7 @@
         public void Setup()
         {
             this.model = new TagViewModel() { Alias = "tag", Name = "tag", Rank = 0 };
-            this.controller = new TagController(this.tagServiceMock.Object);
+            this.controller = new TagController(this.TagServiceMock.Object);
         }
 
         [TestMethod]

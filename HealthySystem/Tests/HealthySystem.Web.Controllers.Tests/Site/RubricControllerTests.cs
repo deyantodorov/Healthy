@@ -11,9 +11,9 @@
         [TestInitialize]
         public void Setup()
         {
-            this.controller = new RubricController(this.rubricServiceMock.Object, this.articleServiceMock.Object)
+            this.controller = new RubricController(this.RubricServiceMock.Object, this.ArticleServiceMock.Object)
             {
-                Cache = this.cacheServiceMock.Object
+                Cache = this.CacheServiceMock.Object
             };
         }
 

@@ -234,5 +234,44 @@
 
             return result.AsQueryable();
         }
+
+        public static IQueryable<Image> GetImages()
+        {
+            var result = new List<Image>()
+            {
+                new Image()
+                {
+                    Id = 1,
+                    CreatedOn = DateTime.Now,
+                    ModifiedOn = null,
+                    IsDeleted = false,
+                    DeletedOn = null,
+                    ImageDescription = "Описание на снимка 1",
+                    ImagePath = "image1.jpg"
+                },
+                new Image()
+                {
+                    Id = 2,
+                    CreatedOn = DateTime.Now,
+                    ModifiedOn = null,
+                    IsDeleted = false,
+                    DeletedOn = null,
+                    ImageDescription = "Описание на снимка 2",
+                    ImagePath = "image2.jpg"
+                },
+                new Image()
+                {
+                    Id = 3,
+                    CreatedOn = DateTime.Now,
+                    ModifiedOn = null,
+                    IsDeleted = false,
+                    DeletedOn = null,
+                    ImageDescription = "Описание на снимка 3",
+                    ImagePath = "image3.jpg"
+                }
+            };
+
+            return result.AsQueryable();
+        }
     }
 }
