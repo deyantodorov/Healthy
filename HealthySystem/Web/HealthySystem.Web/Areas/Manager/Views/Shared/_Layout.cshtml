@@ -37,11 +37,12 @@
                                     <b class="caret"></b>
                                 </a>
                                 <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink(WebConstants.AdminMenuTitleManageDelete, "Index", "ManageDelete", new { area = "Manager" }, null)</li>
+                                    <li>@Html.ActionLink(WebConstants.AdminMenuTitleFacebook, "Index", "Facebook", new { area = "Manager" }, null)</li>
+                                    <li>@Html.ActionLink(WebConstants.AdminMenuTitleGooglePlus, "Index", "GooglePlus", new { area = "Manager" }, null)</li>
+                                    <li>@Html.ActionLink(WebConstants.AdminMenuTitleGoogleAnalytics, "Index", "GoogleAnalytics", new {area = "Manager"}, null)</li>
                                     <li><a href="~/Glimpse.axd" target="_blank">Glimpse</a></li>
                                     <li><a href="~/Elmah.axd" target="_blank">Elmah</a></li>
-                                    <li><a href="#">Facebook</a></li>
-                                    <li><a href="#">Google Plus</a></li>
-                                    <li><a href="#">Google Analytics</a></li>
                                 </ul>
                             </li>
                         }

@@ -16,6 +16,10 @@
         public const string EditorRole = "Editor";
         public const int AdminPageSize = 20;
         public const int AdminPagingSize = 10;
+        public const string AdminMenuTitleFacebook = "Facebook";
+        public const string AdminMenuTitleGooglePlus = "Google Plus";
+        public const string AdminMenuTitleGoogleAnalytics = "Google Analytics";
+        public const string AdminMenuTitleManageDelete = "Управление на изтрито съдържание";
 
         // Cache time in secconds 30 min = 30 * 60 = 1800 seconds
         public const int AdminCacheTime = 1800;

@@ -211,8 +211,12 @@
     <Compile Include="Areas\Identity\ViewModels\Account\RoleViewModel.cs" />
     <Compile Include="Areas\Manager\Controllers\AdministratorController.cs" />
     <Compile Include="Areas\Manager\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Manager\Controllers\FacebookController.cs" />
+    <Compile Include="Areas\Manager\Controllers\GoogleAnalyticsController.cs" />
+    <Compile Include="Areas\Manager\Controllers\GooglePlusController.cs" />
     <Compile Include="Areas\Manager\Controllers\HomeController.cs" />
     <Compile Include="Areas\Manager\Controllers\ImageController.cs" />
+    <Compile Include="Areas\Manager\Controllers\ManageDeleteController.cs" />
     <Compile Include="Areas\Manager\Controllers\RubricController.cs" />
     <Compile Include="Areas\Manager\Controllers\TagController.cs" />
     <Compile Include="Areas\Manager\ManagerAreaRegistration.cs" />
@@ -324,6 +328,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Manager\Views\Facebook\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\GooglePlus\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\GoogleAnalytics\Index.cshtml" />
+    <Content Include="Areas\Manager\Views\ManageDelete\Index.cshtml" />
     <None Include="HealthySystem.Web.ruleset" />
     <Content Include="Areas\Manager\Views\web.config" />
     <Content Include="Areas\Manager\Views\_ViewStart.cshtml" />
