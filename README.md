@@ -20,22 +20,22 @@
     - Create Google Sitemap 
 
 # Result:
-    - **[megazdrave.com](http://megazdrave.com)**
-    - **0** StyleCop errors
-    - **44** Unit Tests passed
-    - **3298** URLS crawled (30 parallel threads) by XENU with **0** client or server errors for just 00:01:02 minutes
-    - controllers > 15
-    - actions > 40
-    - templates >= 10
-    - 2 areas
-    - partial views > 10
+- **http://megazdrave.com**
+- **0** StyleCop errors
+- **44** Unit Tests passed
+- **3298** URLS crawled (30 parallel threads) by XENU with **0** client or server errors for just 00:01:02 minutes
+- controllers > 15
+- actions > 40
+- display/editor templates >= 10
+- 2 areas
+- partial views > 10
 
 # Used technologies
-    - ASP.NET MVC and Visual Studio 2015 (Removed Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Microsoft.Net.Compilers. Why? You could read here: http://stackoverflow.com/questions/32282880/publish-website-without-roslyn)
-    - MS SQL Server + Entity Framework 6 + Service Layer
-    - Bootstrap, JQuery, TinyMCE
-    - Autofac, Automapper etc.
+- ASP.NET MVC and Visual Studio 2015 (Removed Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Microsoft.Net.Compilers. Why? You could read here: http://stackoverflow.com/questions/32282880/publish-website-without-roslyn)
+- MS SQL Server + Entity Framework 6 + Service Layer
+- Bootstrap, JQuery, TinyMCE
+- Autofac, Automapper etc.
     
 **This file is missing, cause contains sensitive information, which is not for public usage:**
 	
-	- Web.Release.config
+- Web.Release.config
