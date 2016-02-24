@@ -16,7 +16,7 @@
 
         private void CreateRole(ApplicationDbContext context, string roleName)
         {
-            if (context.Roles.Any(r => r.Name == roleName))
+            if (context.Roles.Any())
             {
                 return;
             }

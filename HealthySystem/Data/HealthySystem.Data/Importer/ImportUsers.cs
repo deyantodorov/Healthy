@@ -17,7 +17,7 @@
 
         private void CreateUser(ApplicationDbContext context, string userName, string userEmail, string userPass, string userRole)
         {
-            if (context.Users.Any(u => u.UserName == userName))
+            if (context.Users.Any())
             {
                 return;
             }
