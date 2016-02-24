@@ -664,6 +664,7 @@
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\Elmah\" />
     <Folder Include="Areas\Identity\Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>

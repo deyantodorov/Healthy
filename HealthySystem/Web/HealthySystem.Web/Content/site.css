@@ -430,6 +430,9 @@ body a:focus {
 .field-validation-error {
   padding: 5px;
 }
+.mt-30 {
+  margin-top: 30px;
+}
 .public-profile-menu {
   padding-right: 15px;
   font-size: .9em;

@@ -2,7 +2,7 @@
 **Teleric Academy ASP.NET MVC Final Project**
 
 # Task
-1. Create fully functional seo optimized website with area for administrator, editor, registered users and not registered users.
+1. Create fully functional seo optimized responsive website with area for administrator, editor, registered users and not registered users.
     - Administrator - should be able to manage everything and have access to system tools like:
         - Glimpse
         - Elmah
