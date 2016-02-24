@@ -65,6 +65,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="HealthySystem.Services.Web.Tests.ruleset" />
     <None Include="packages.config" />
   </ItemGroup>
