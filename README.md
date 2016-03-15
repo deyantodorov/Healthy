@@ -20,7 +20,6 @@
     - Create Google Sitemap 
 
 # Result:
-- **http://megazdrave.com**
 - **0** StyleCop errors
 - **44** Unit Tests passed
 - **3298** URLS crawled (30 parallel threads) by XENU with **0** client or server errors for just 00:01:02 minutes
