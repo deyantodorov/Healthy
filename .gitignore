@@ -240,3 +240,5 @@ Cache/
 Uploads/
 ImportData/
 /HealthySystem/Web/HealthySystem.Web/Web.Release.config
+**/appsettings.*.json
+
