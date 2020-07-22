@@ -1,14 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.6" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.6" />
-  </ItemGroup>
 
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\HealthySystem.ruleset</CodeAnalysisRuleSet>
@@ -19,7 +13,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Contracts\" />
+    <Folder Include="Web\Contracts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HtmlSanitizer" Version="5.0.331" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HealthySystem.Common\HealthySystem.Common.csproj" />
+    <ProjectReference Include="..\HealthySystem.Data\HealthySystem.Data.csproj" />
   </ItemGroup>
 
 </Project>

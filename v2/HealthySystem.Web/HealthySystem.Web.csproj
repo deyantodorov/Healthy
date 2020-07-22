@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -19,7 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HealthySystem.Common\HealthySystem.Common.csproj" />
     <ProjectReference Include="..\HealthySystem.Data\HealthySystem.Data.csproj" />
+    <ProjectReference Include="..\HealthySystem.Services\HealthySystem.Services.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
