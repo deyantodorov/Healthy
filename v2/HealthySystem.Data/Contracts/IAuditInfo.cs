@@ -1,7 +1,7 @@
-﻿namespace HealthySystem.Data.Contracts
-{
-    using System;
+﻿using System;
 
+namespace HealthySystem.Data.Contracts
+{
     public interface IAuditInfo
     {
         DateTime CreatedOn { get; set; }

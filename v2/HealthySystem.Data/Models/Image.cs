@@ -1,8 +1,9 @@
-﻿namespace HealthySystem.Data.Models
-{
-    using System.ComponentModel.DataAnnotations;
-    using HealthySystem.Data.Common.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
+using HealthySystem.Data.Common.Models;
+
+namespace HealthySystem.Data.Models
+{
     public class Image : BaseModel<int>
     {
         [Required]

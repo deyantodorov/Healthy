@@ -1,10 +1,10 @@
-﻿namespace HealthySystem.Data.Common.Models
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+
+using HealthySystem.Data.Contracts;
+
+namespace HealthySystem.Data.Common.Models
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
-
-    using HealthySystem.Data.Contracts;
-
     public abstract class BaseModel<TKey> : IAuditInfo, IDeletableEntity
     {
         [Key]

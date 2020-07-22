@@ -1,13 +1,13 @@
-﻿namespace HealthySystem.Data.Common
+﻿using System;
+using System.Linq;
+
+using HealthySystem.Data.Common.Models;
+using HealthySystem.Data.Contracts;
+
+using Microsoft.EntityFrameworkCore;
+
+namespace HealthySystem.Data.Common
 {
-    using System;
-    using System.Linq;
-
-    using HealthySystem.Data.Common.Models;
-    using HealthySystem.Data.Contracts;
-
-    using Microsoft.EntityFrameworkCore;
-
     // TODO: Why BaseModel<int> instead BaseModel<TKey>?
     public class DbRepository<T> : IDbRepository<T>
         where T : BaseModel<int>

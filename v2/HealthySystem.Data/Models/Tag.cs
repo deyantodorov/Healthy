@@ -1,11 +1,10 @@
-﻿namespace HealthySystem.Data.Models
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+using HealthySystem.Data.Common.Models;
+
+namespace HealthySystem.Data.Models
 {
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    using HealthySystem.Data.Common.Models;
-
     public class Tag : BaseModel<int>
     {
         [Required]

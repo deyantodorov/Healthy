@@ -1,8 +1,9 @@
-﻿namespace HealthySystem.Data.Contracts
-{
-    using System.Linq;
-    using HealthySystem.Data.Common.Models;
+﻿using System.Linq;
 
+using HealthySystem.Data.Common.Models;
+
+namespace HealthySystem.Data.Contracts
+{
     public interface IDbRepository<T> : IDbRepository<T, int>
         where T : BaseModel<int>
     {

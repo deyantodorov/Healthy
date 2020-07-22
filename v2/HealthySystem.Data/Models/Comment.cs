@@ -1,9 +1,10 @@
-﻿namespace HealthySystem.Data.Models
-{
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using HealthySystem.Data.Common.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
+using HealthySystem.Data.Common.Models;
+
+namespace HealthySystem.Data.Models
+{
     public class Comment : BaseModel<int>
     {
         [Required]

@@ -1,7 +1,7 @@
-﻿namespace HealthySystem.Data.Contracts
-{
-    using System;
+﻿using System;
 
+namespace HealthySystem.Data.Contracts
+{
     public interface IDeletableEntity
     {
         bool IsDeleted { get; set; }

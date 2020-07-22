@@ -1,9 +1,9 @@
-﻿namespace HealthySystem.Data.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+using HealthySystem.Data.Common.Models;
+
+namespace HealthySystem.Data.Models
 {
-    using System.ComponentModel.DataAnnotations;
-
-    using HealthySystem.Data.Common.Models;
-
     public class Rubric : BaseModel<int>
     {
         [Required]
